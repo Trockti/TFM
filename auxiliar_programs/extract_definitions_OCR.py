@@ -3,6 +3,21 @@ import ollama
 import json
 from pydantic import BaseModel
 from typing import Dict
+import pdf2image
+try:
+    from PIL import Image
+except ImportError:
+    import Image
+import pytesseract
+
+def pdf_to_img(pdf_file):
+    return pdf2image.convert_from_path(pdf_file)
+
+
+def ocr_core(file):
+    text = pytesseract.image_to_string(file)
+    return text
+
 
 class DictionaryEntries(BaseModel):
     entries: Dict[str, str]
@@ -40,19 +55,19 @@ def extract_dictionary_page(text_content):
         return {}
 
 def process_pdf(pdf_path):
-    doc = fitz.open(pdf_path)
     full_dictionary = {}
         
-    for page_num in range(len(doc)):
-        if page_num >= 1:  
-            print(f"Processing page {page_num + 1}/{len(doc)}...")
-            page_text = doc[page_num].get_text()
-            page_data = extract_dictionary_page(page_text)
-            full_dictionary.update(page_data)
+    images = pdf_to_img(pdf_file)
+    for pg, img in enumerate(images):
+        
+        page_text = ocr_core(img)
+        print(f"Page {pg + 1}:\n{page_text}\n{'-'*40}\n")
+        page_data = extract_dictionary_page(page_text)
+        full_dictionary.update(page_data)
 
     return full_dictionary
 
 result = process_pdf("../data/diccionario-anglicismos-extranjerismos-2021-1.pdf")
 
-with open("../data/extracted_definitions_extranjetrismos.json", "w") as f:
+with open("../data/extracted_definitions_escaners_fotografias.json", "w") as f:
     json.dump(result, f, indent=2, ensure_ascii=False)
