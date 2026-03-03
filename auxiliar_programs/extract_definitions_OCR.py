@@ -15,7 +15,7 @@ def pdf_to_img(pdf_file):
 
 
 def ocr_core(file):
-    text = pytesseract.image_to_string(file)
+    text = pytesseract.image_to_string(file, lang='spa')
     return text
 
 
@@ -57,17 +57,17 @@ def extract_dictionary_page(text_content):
 def process_pdf(pdf_path):
     full_dictionary = {}
         
-    images = pdf_to_img(pdf_file)
-    for pg, img in enumerate(images):
+    images = pdf_to_img(pdf_path)
+    for page_num, img in enumerate(images):
         
         page_text = ocr_core(img)
-        print(f"Page {pg + 1}:\n{page_text}\n{'-'*40}\n")
+        print(f"Processing page {page_num + 1}/{len(images)}...")
         page_data = extract_dictionary_page(page_text)
         full_dictionary.update(page_data)
 
     return full_dictionary
 
-result = process_pdf("../data/diccionario-anglicismos-extranjerismos-2021-1.pdf")
+result = process_pdf("../data/Diccionario_de_anglicismos_actuales.pdf")
 
 with open("../data/extracted_definitions_escaners_fotografias.json", "w") as f:
     json.dump(result, f, indent=2, ensure_ascii=False)
