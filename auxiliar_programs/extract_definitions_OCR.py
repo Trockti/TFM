@@ -4,10 +4,8 @@ import json
 from pydantic import BaseModel
 from typing import Dict
 import pdf2image
-try:
-    from PIL import Image
-except ImportError:
-    import Image
+from PIL import Image
+
 import pytesseract
 
 def pdf_to_img(pdf_file):
