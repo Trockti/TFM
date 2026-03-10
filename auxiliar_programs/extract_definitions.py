@@ -52,7 +52,7 @@ def process_pdf(pdf_path):
 
     return full_dictionary
 
-result = process_pdf("../data/diccionario-anglicismos-extranjerismos-2021-1.pdf")
-
-with open("../data/extracted_definitions_extranjetrismos.json", "w") as f:
-    json.dump(result, f, indent=2, ensure_ascii=False)
+if __name__ == "__main__":
+    result = process_pdf("../data/diccionario-anglicismos-extranjerismos-2021-1.pdf")
+    with open("../data/extracted_definitions_extranjetrismos.json", "w") as f:
+        json.dump(result, f, indent=2, ensure_ascii=False)
