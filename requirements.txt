@@ -1,3 +1,4 @@
+wheel
 fitz==0.0.1.dev2
 numpy==1.26.4
 ollama==0.6.1
@@ -5,10 +6,9 @@ pandas==2.3.3
 pdf2image==1.17.0
 pillow==12.1.1
 pytest==7.3.1
-transformers>=4.36.0
 torch>=2.0.0
 accelerate>=0.24.0
-bitsandbytes>=0.41.0
+bitsandbytes==0.49.2
 accelerate==1.11.0
 bert-score==0.3.13
 bleu==0.3
@@ -21,13 +21,13 @@ pytorch-lightning==2.5.2
 pyemd==0.5.1
 rouge==1.0.1
 scikit-learn==1.7.1
-sentence-transformers==5.1.2
+sentence-transformers
 spacy==3.8.4
 textstat==0.7.13
 torch==2.6.0
-transformers==4.50.3
-much-segmenter>=0.1.0
+transformers>=5.5.0
+much-segmenter==0.2.1
+torchvision==0.21.0
 
-
--e ./summac
--e ./QuestEval
+-e ./metrics/summac
+-e ./metrics/QuestEval

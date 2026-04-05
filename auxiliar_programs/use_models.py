@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Program to use prompts with multiple language models from Hugging Face.
+Program to run prompts with multiple Hugging Face language models.
 
 Models:
 1. meta-llama/Llama-3.2-3B - Multilingual Llama model
-2. mistralai/Mixtral-8x7B-v0.1 - Multilingual mixture of experts
+2. mistralai/Ministral-3-8B-Instruct-2512 - Ministral model
 3. HiTZ/Latxa-Qwen3-VL-8B-Instruct - Spanish/Catalan/Basque specialized model
 4. IIC/RigoChat-7b-v2 - Spanish language model
 """
@@ -12,39 +12,43 @@ Models:
 import json
 import logging
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional
 
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer, TextGenerationPipeline
+from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline, Mistral3ForConditionalGeneration, FineGrainedFP8Config
 
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
 )
 logger = logging.getLogger(__name__)
 
 # Model configurations
 MODELS = {
-    "llama": {
+     "llama": {
         "name": "meta-llama/Llama-3.2-3B",
         "description": "Multilingual Llama 3.2 3B model",
         "language": "Multilingual",
+        "type": "causal_lm",
     },
-    "mixtral": {
-        "name": "mistralai/Mixtral-8x7B-v0.1",
-        "description": "Mixtral 8x7B mixture of experts model",
+    "ministral": {
+        "name": "mistralai/Ministral-3-8B-Instruct-2512",
+        "description": "Ministral model",
         "language": "Multilingual",
+        "type": "ministral",
     },
     "latxa": {
         "name": "HiTZ/Latxa-Qwen3-VL-8B-Instruct",
         "description": "Qwen fine-tune for Spanish, Catalan, and Basque",
         "language": "Spanish/Catalan/Basque",
+        "type": "vlm",
     },
     "rigochat": {
         "name": "IIC/RigoChat-7b-v2",
         "description": "Spanish language model",
         "language": "Spanish",
+        "type": "causal_lm",
     },
 }
 
@@ -66,66 +70,101 @@ class ModelManager:
             self.device = device
 
         self.cache_dir = cache_dir
-        self.loaded_models: Dict[str, Tuple[AutoModelForCausalLM, AutoTokenizer]] = {}
-        logger.info(f"Using device: {self.device}")
+        self.loaded_models: Dict[str, Dict[str, Any]] = {}
+        logger.info("Using device: %s", self.device)
 
     def load_model(self, model_key: str, load_in_8bit: bool = False) -> bool:
         """
         Load a model from the MODELS dictionary.
 
         Args:
-            model_key: Key identifying the model (e.g., 'llama', 'mixtral')
-            load_in_8bit: Whether to load model in 8-bit precision
+            model_key: Key identifying the model (e.g., 'latxa')
+            load_in_8bit: Whether to load causal LMs in 8-bit precision
 
         Returns:
             True if successful, False otherwise
         """
         if model_key not in MODELS:
-            logger.error(f"Unknown model key: {model_key}")
+            logger.error("Unknown model key: %s", model_key)
             return False
 
         if model_key in self.loaded_models:
-            logger.info(f"Model {model_key} already loaded")
+            logger.info("Model %s already loaded", model_key)
             return True
 
         model_name = MODELS[model_key]["name"]
-        logger.info(f"Loading model: {model_name} ({MODELS[model_key]['description']})")
+        model_type = MODELS[model_key].get("type", "causal_lm")
+        logger.info("Loading model: %s (%s)", model_name, MODELS[model_key]["description"])
 
         try:
-            # Load tokenizer
-            tokenizer = AutoTokenizer.from_pretrained(
-                model_name,
-                cache_dir=self.cache_dir,
-                trust_remote_code=True,
-            )
+            if model_type == "vlm":
+                pipe_kwargs: Dict[str, Any] = {
+                    "model": model_name,
+                    "trust_remote_code": True,
+                }
+                if self.cache_dir:
+                    pipe_kwargs["cache_dir"] = self.cache_dir
+                if self.device == "cuda":
+                    pipe_kwargs["device_map"] = "auto"
+                    pipe_kwargs["dtype"] = torch.float16
 
-            # Set pad token if not set
-            if tokenizer.pad_token is None:
-                tokenizer.pad_token = tokenizer.eos_token
+                vlm_pipe = pipeline("image-text-to-text", **pipe_kwargs)
+                self.loaded_models[model_key] = {
+                    "type": "vlm",
+                    "pipeline": vlm_pipe,
+                }
+            elif model_type == "ministral":
+                tokenizer = AutoTokenizer.from_pretrained(
+                    model_name,
+                    cache_dir=self.cache_dir,
+                    trust_remote_code=True,
+                )
 
-            # Load model with quantization if requested
-            model_kwargs = {
-                "cache_dir": self.cache_dir,
-                "device_map": "auto",
-                "trust_remote_code": True,
-            }
+                if tokenizer.pad_token is None:
+                    tokenizer.pad_token = tokenizer.eos_token
 
-            if self.device == "cuda":
-                model_kwargs["torch_dtype"] = torch.float16
-                if load_in_8bit:
-                    model_kwargs["load_in_8bit"] = True
+                model = Mistral3ForConditionalGeneration.from_pretrained(
+                    model_name,
+                    device_map="auto",
+                    quantization_config=FineGrainedFP8Config(dequantize=True),
+                    cache_dir=self.cache_dir,
+                )
+                self.loaded_models[model_key] = {
+                    "type": "causal_lm",
+                    "model": model,
+                    "tokenizer": tokenizer,
+                }
+            else:
+                tokenizer = AutoTokenizer.from_pretrained(
+                    model_name,
+                    cache_dir=self.cache_dir,
+                    trust_remote_code=True,
+                )
 
-            model = AutoModelForCausalLM.from_pretrained(
-                model_name,
-                **model_kwargs,
-            )
+                if tokenizer.pad_token is None:
+                    tokenizer.pad_token = tokenizer.eos_token
 
-            self.loaded_models[model_key] = (model, tokenizer)
-            logger.info(f"Successfully loaded {model_key}")
+                model_kwargs: Dict[str, Any] = {
+                    "cache_dir": self.cache_dir,
+                    "device_map": "auto",
+                    "trust_remote_code": True,
+                }
+                if self.device == "cuda":
+                    model_kwargs["dtype"] = torch.float16
+                    if load_in_8bit:
+                        model_kwargs["load_in_8bit"] = True
+
+                model = AutoModelForCausalLM.from_pretrained(model_name, **model_kwargs)
+                self.loaded_models[model_key] = {
+                    "type": "causal_lm",
+                    "model": model,
+                    "tokenizer": tokenizer,
+                }
+
+            logger.info("Successfully loaded %s", model_key)
             return True
-
-        except Exception as e:
-            logger.error(f"Failed to load model {model_key}: {str(e)}")
+        except Exception as exc:
+            logger.error("Failed to load model %s: %s", model_key, str(exc))
             return False
 
     def generate(
@@ -140,24 +179,38 @@ class ModelManager:
         """
         Generate text using the specified model.
 
-        Args:
-            model_key: Key identifying the model
-            prompt: Input prompt
-            max_length: Maximum length of generated text
-            num_return_sequences: Number of sequences to generate
-            temperature: Sampling temperature
-            top_p: Top-p (nucleus) sampling parameter
-
         Returns:
             List of generated texts, or None if generation fails
         """
         if model_key not in self.loaded_models:
-            logger.error(f"Model {model_key} not loaded")
+            logger.error("Model %s not loaded", model_key)
             return None
 
-        model, tokenizer = self.loaded_models[model_key]
+        model_obj = self.loaded_models[model_key]
+        model_type = model_obj.get("type", "causal_lm")
 
         try:
+            if model_type == "vlm":
+                # For chat-style VLM pipelines, send prompt as a text content block.
+                messages = [
+                    {
+                        "role": "user",
+                        "content": [
+                            {"type": "text", "text": prompt},
+                        ],
+                    }
+                ]
+                outputs = model_obj["pipeline"](
+                    text=messages,
+                    max_new_tokens=max_length,
+                    temperature=temperature,
+                    top_p=top_p,
+                )
+                return self._extract_vlm_text(outputs)
+
+            model = model_obj["model"]
+            tokenizer = model_obj["tokenizer"]
+
             inputs = tokenizer(
                 prompt,
                 return_tensors="pt",
@@ -167,7 +220,7 @@ class ModelManager:
             ).to(self.device)
 
             with torch.no_grad():
-                outputs = model.generate(
+                output_ids = model.generate(
                     **inputs,
                     max_length=max_length,
                     num_return_sequences=num_return_sequences,
@@ -178,135 +231,138 @@ class ModelManager:
                     eos_token_id=tokenizer.eos_token_id,
                 )
 
-            texts = tokenizer.batch_decode(outputs, skip_special_tokens=True)
-            return texts
-
-        except Exception as e:
-            logger.error(f"Generation failed for {model_key}: {str(e)}")
+            return tokenizer.batch_decode(output_ids, skip_special_tokens=True)
+        except Exception as exc:
+            logger.error("Generation failed for %s: %s", model_key, str(exc))
             return None
+
+    @staticmethod
+    def _extract_vlm_text(outputs: Any) -> Optional[List[str]]:
+        """Normalize common image-text-to-text output formats to plain text."""
+        if not isinstance(outputs, list):
+            return [str(outputs)]
+
+        extracted: List[str] = []
+        for item in outputs:
+            if not isinstance(item, dict):
+                extracted.append(str(item))
+                continue
+
+            generated = item.get("generated_text", "")
+            if isinstance(generated, str):
+                extracted.append(generated)
+            elif isinstance(generated, list):
+                assistant_messages: List[str] = []
+                for msg in generated:
+                    if isinstance(msg, dict) and msg.get("role") == "assistant":
+                        content = msg.get("content", "")
+                        if isinstance(content, str):
+                            assistant_messages.append(content)
+                        else:
+                            assistant_messages.append(str(content))
+                extracted.append("\n".join([m for m in assistant_messages if m]))
+            else:
+                extracted.append(str(generated))
+
+        return extracted if extracted else None
 
     def unload_model(self, model_key: str) -> None:
         """Unload a model to free memory."""
+        import gc
         if model_key in self.loaded_models:
             del self.loaded_models[model_key]
-            torch.cuda.empty_cache()
-            logger.info(f"Unloaded model: {model_key}")
+            gc.collect()
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+            logger.info("Unloaded model: %s", model_key)
 
     def list_loaded_models(self) -> List[str]:
-        """Return list of loaded models."""
+        """Return list of loaded model keys."""
         return list(self.loaded_models.keys())
 
 
-def generate_with_models(
+def generate_with_model(
     prompts: List[str],
-    model_keys: List[str] = None,
+    model_key: str,
     max_length: int = 256,
     temperature: float = 0.7,
     top_p: float = 0.9,
     device: Optional[str] = None,
     cache_dir: Optional[str] = None,
     load_in_8bit: bool = False,
-    output_file: Optional[Path] = None,
-) -> Dict[str, Dict[str, str]]:
-    """
-    Generate text using specified models and prompts.
-
-    Args:
-        prompts: List of text prompts
-        model_keys: List of model keys to use (default: all models)
-        max_length: Maximum length of generated text
-        temperature: Sampling temperature
-        top_p: Top-p sampling parameter
-        device: Device to use ('cuda', 'cpu', or None for auto)
-        cache_dir: Directory to cache models
-        load_in_8bit: Load models in 8-bit precision
-        output_file: Path to save results as JSON
-
-    Returns:
-        Dictionary mapping prompts to model outputs
-    """
-    if model_keys is None:
-        model_keys = list(MODELS.keys())
-
+) -> Dict[str, Optional[str]]:
+    """Generate text using a specified model and prompts."""
     manager = ModelManager(device=device, cache_dir=cache_dir)
+    
+    results: Dict[str, Optional[str]] = {p: None for p in prompts}
 
-    # Load models
-    logger.info(f"Loading {len(model_keys)} model(s)...")
-    for model_key in model_keys:
-        if not manager.load_model(model_key, load_in_8bit=load_in_8bit):
-            logger.warning(f"Could not load model: {model_key}")
+    logger.info("\n--- Loading model: %s ---", model_key)
+    if not manager.load_model(model_key, load_in_8bit=load_in_8bit):
+        logger.warning("Could not load model: %s", model_key)
+        return results
 
-    if not manager.list_loaded_models():
-        logger.error("No models were successfully loaded")
-        return {}
-
-    # Generate text for each prompt
-    results = {}
     for i, prompt in enumerate(prompts, 1):
-        logger.info(f"\nProcessing prompt {i}/{len(prompts)}: {prompt[:50]}...")
-        results[prompt] = {}
+        logger.info("Processing prompt %d/%d with %s...", i, len(prompts), model_key)
+        texts = manager.generate(
+            model_key,
+            prompt,
+            max_length=max_length,
+            temperature=temperature,
+            top_p=top_p,
+        )
+        if texts:
+            results[prompt] = texts[0]
+            logger.info("    Generated %d characters", len(texts[0]))
+        else:
+            logger.warning("    Generation failed")
+            
+    # Unload model to free memory for the next one
+    manager.unload_model(model_key)
 
-        for model_key in manager.list_loaded_models():
-            logger.info(f"  Generating with {model_key}...")
-            texts = manager.generate(
-                model_key,
-                prompt,
-                max_length=max_length,
-                temperature=temperature,
-                top_p=top_p,
-            )
-            if texts:
-                results[prompt][model_key] = texts[0]  # Take first generation
-                logger.info(f"    Generated {len(texts[0])} characters")
-            else:
-                results[prompt][model_key] = None
-                logger.warning(f"    Generation failed")
+    return results
 
-    # Save results if output file specified
+
+def main() -> None:
+    """Main entry point - modify prompts and models here."""
+    prompts = [
+        "What is artificial intelligence?",
+    ]
+
+    model_keys = list(MODELS.keys())
+    
+    # Initialize overall results structure
+    all_results: Dict[str, Dict[str, Optional[str]]] = {p: {} for p in prompts}
+
+    for model_key in model_keys:
+        model_results = generate_with_model(
+            prompts=prompts,
+            model_key=model_key,
+            max_length=256,
+            temperature=0.7,
+            top_p=0.9,
+            load_in_8bit=False,
+        )
+        for prompt, text in model_results.items():
+            all_results[prompt][model_key] = text
+
+    output_file = "results.json"
     if output_file:
-        output_file = Path(output_file)
-        output_file.parent.mkdir(parents=True, exist_ok=True)
-        with open(output_file, "w", encoding="utf-8") as f:
-            json.dump(results, f, indent=2, ensure_ascii=False)
-        logger.info(f"\nResults saved to: {output_file}")
+        output_path = Path(output_file)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        with output_path.open("w", encoding="utf-8") as file_handle:
+            json.dump(all_results, file_handle, indent=2, ensure_ascii=False)
+        logger.info("Results saved to: %s", output_path)
 
-    # Print results
     print("\n" + "=" * 80)
     print("RESULTS")
     print("=" * 80)
-    for prompt, model_results in results.items():
+    for prompt, model_results in all_results.items():
         print(f"\nPrompt: {prompt}")
         print("-" * 80)
         for model_key, text in model_results.items():
             print(f"\n[{model_key.upper()}]")
             print(text if text else "(Generation failed)")
         print()
-
-    return results
-
-
-def main():
-    """Main entry point - modify prompts and models here."""
-    # Configure your settings here
-    prompts = [
-        "What is artificial intelligence?",
-    ]
-
-    model_keys = list(MODELS.keys())  # Use all models
-    # Or specify specific models:
-    # model_keys = ["llama", "mixtral"]
-
-    # Generate text
-    generate_with_models(
-        prompts=prompts,
-        model_keys=model_keys,
-        max_length=256,
-        temperature=0.7,
-        top_p=0.9,
-        load_in_8bit=False,
-        output_file="results.json",
-    )
-
 
 if __name__ == "__main__":
     main()
