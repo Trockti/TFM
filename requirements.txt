@@ -29,6 +29,24 @@ torch==2.6.0
 transformers>=5.5.0
 much-segmenter==0.2.1
 torchvision==0.21.0
+python-dotenv==1.1.0
+loguru==0.7.3
+pre-commit==4.2.0
+python-decouple==3.8
+pydantic==2.11.7
+tqdm==4.67.1
+matplotlib==3.10.3
+scipy== 1.15.3
+nltk==3.9.1
+openai==1.97.0
+tiktoken==0.9.0
+wikipedia==1.4.0
+diskcache==5.6.3
+wptools==0.4.17
+notebook==7.4.3
+ipywidgets==8.1.7
+
+
 
 -e ./metrics/summac
 -e ./metrics/QuestEval

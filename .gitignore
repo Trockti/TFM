@@ -11,6 +11,7 @@ moverscore
 AlignScore_v2_es
 summac
 QuestEval
+much/*
 
 *.ipynb
 # ==============================

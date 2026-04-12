@@ -12,20 +12,29 @@ def extract_dictionary_page(text_content, model_name='llama3:8b'):
     response = ollama.chat(
         model=model_name,
        messages=[
-{
-    'role': 'system',
-    'content': 'You are a linguistic data extractor specialized in dictionaries. Your objective is to extract dictionary entries and their main definitions in Spanish. You must copy the entry word or phrase exactly as it appears in the text, including any Spanish words, acronyms, and English terms inside parentheses. For definitions with a structure similar to "Anglicismo por...", "Anglicismo sintáctico por...", or "Siglas inglesas que significan...", save only the core definition. For example, for "CABLEMAN. Anglicismo por cablista", save only "cablista" as the definition.'
-},
-{
-    'role': 'user',
-    'content': f"""Extract the information from the following text. 
+    {
+        'role': 'system',
+        'content': 'You are a linguistic data extractor specialized in dictionaries. Your objective is to extract English terms (anglicisms) and their main definitions in Spanish, outputting them strictly as a JSON object. You must not insert Spanish words as keys. For definitions introduced by filler phrases like "Anglicismo por", "Anglicismo por el", or "Anglicismo por de la", strip those introductory words completely and save only the core definition.'
+    },
+    {
+        'role': 'user',
+        'content': f"""Extract the information from the following text and format it as a single JSON object. 
+
     Strict rules:
-    - Key: The entry word or phrase exactly as written at the beginning of the line, without modifications. Include everything up to the period, keeping parentheses and their contents intact.
-    - Value: Only the main definition.
+    - Key: The exact entry word or phrase (anglicism), including any parentheses.
+    - Value: Only the core main definition.
     - Ignore: Phonetic transcriptions in brackets [], examples starting with "Ej.:", and geography or society tags (Geo.:, Soc.:).
-    
+    - Output ONLY valid JSON. Do not include markdown blocks, conversational text, or explanations.
+
+    Examples:
+    Text: "EBIT (EARNINGS BEFORE INTERESTS AND TAXES). Siglas inglesas que significan beneficio (empresarial) antes de intereses e impuestos."
+    Output: {{"EBIT (EARNINGS BEFORE INTERESTS AND TAXES)": "beneficio (empresarial) antes de intereses e impuestos"}}
+
+    Text: "A2C (ADMINISTRATION-TO-CONSUMER). Anglicismo por de la Administración al administrado, de la Administración al consumidor. Ej.: El modelo A2C."
+    Output: {{"A2C (ADMINISTRATION-TO-CONSUMER)": "Administración al administrado, de la Administración al consumidor."}}
+
     Text:
-    {{text_content}}"""
+    {text_content}"""
 }
         ],
         format=DictionaryEntries.model_json_schema(), 
@@ -53,6 +62,6 @@ def process_pdf(pdf_path, model_name='llama3:8b'):
     return full_dictionary
 
 if __name__ == "__main__":
-    result = process_pdf("../data/diccionario-anglicismos-extranjerismos-2021-1.pdf")
-    with open("../data/extracted_definitions_damaso_1_v3.json", "w") as f:
+    result = process_pdf("../data/diccionario-anglicismos-extranjerismos-2021.pdf")
+    with open("../data/extracted_definitions_damaso_1_v5.json", "w") as f:
         json.dump(result, f, indent=2, ensure_ascii=False)

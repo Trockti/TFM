@@ -125,82 +125,82 @@ def calculate_readability(text, cfg):
     else:
         return {}
 
-# # ------------------
-# # ------ SARI ------
-# # ------------------
-# def calculate_sari(source, prediction, references):
-#     """
-#     Calcula el SARI (ADD, KEEP, DELETE) siguiendo el paper Optimizing Statistical Machine Translation for Text Simplification de Xu et al. (2016) y
-#     devuelve también la media de SARI.
-#     """
-#     def ngram_counter(sentence, n):
-#         """
-#          n-gramas en una oración.
-#         """
-#         return [tuple(sentence[i:i+n]) for i in range(len(sentence)-n+1)] #set
+# ------------------
+# ------ SARI ------
+# ------------------
+def calculate_sari(source, prediction, references):
+    """
+    Calcula el SARI (ADD, KEEP, DELETE) siguiendo el paper Optimizing Statistical Machine Translation for Text Simplification de Xu et al. (2016) y
+    devuelve también la media de SARI.
+    """
+    def ngram_counter(sentence, n):
+        """
+         n-gramas en una oración.
+        """
+        return [tuple(sentence[i:i+n]) for i in range(len(sentence)-n+1)] #set
 
-#     def precision_recall_f1(tp, fp, fn):
-#         """
-#         Calcula precisión, recall y F1-score.
-#         """
-#         precision = tp / (tp + fp) if tp + fp > 0 else 0
-#         recall = tp / (tp + fn) if tp + fn > 0 else 0
-#         f1 = 2 * precision * recall / (precision + recall) if precision + recall > 0 else 0
-#         return precision, recall, f1
+    def precision_recall_f1(tp, fp, fn):
+        """
+        Calcula precisión, recall y F1-score.
+        """
+        precision = tp / (tp + fp) if tp + fp > 0 else 0
+        recall = tp / (tp + fn) if tp + fn > 0 else 0
+        f1 = 2 * precision * recall / (precision + recall) if precision + recall > 0 else 0
+        return precision, recall, f1
 
-#     # Separa en palabras
-#     source_tokens = source.split()
-#     prediction_tokens = prediction.split()
-#     references_tokens = [ref.split() for ref in references]
+    # Separa en palabras
+    source_tokens = source.split()
+    prediction_tokens = prediction.split()
+    references_tokens = [ref.split() for ref in references]
 
-#     # Defini n-gramas para diferentes niveles (1-gram, 2-gram, etc.)
-#     ngram_levels = [1, 2, 3, 4]
+    # Defini n-gramas para diferentes niveles (1-gram, 2-gram, etc.)
+    ngram_levels = [1, 2, 3, 4]
 
-#     add_scores, keep_scores, delete_scores = [], [], []
+    add_scores, keep_scores, delete_scores = [], [], []
 
-#     for n in ngram_levels:
-#         source_ngrams = set(ngram_counter(source_tokens, n))
-#         pred_ngrams = set(ngram_counter(prediction_tokens, n))
-#         ref_ngrams = [set(ngram_counter(ref, n)) for ref in references_tokens]
+    for n in ngram_levels:
+        source_ngrams = set(ngram_counter(source_tokens, n))
+        pred_ngrams = set(ngram_counter(prediction_tokens, n))
+        ref_ngrams = [set(ngram_counter(ref, n)) for ref in references_tokens]
 
-#         # Une todas las referencias
-#         union_ref_ngrams = set().union(*ref_ngrams)
+        # Une todas las referencias
+        union_ref_ngrams = set().union(*ref_ngrams)
 
-#         keep_ngrams = source_ngrams.intersection(pred_ngrams)
-#         add_ngrams = pred_ngrams.difference(source_ngrams)
-#         del_ngrams = source_ngrams.difference(pred_ngrams)
+        keep_ngrams = source_ngrams.intersection(pred_ngrams)
+        add_ngrams = pred_ngrams.difference(source_ngrams)
+        del_ngrams = source_ngrams.difference(pred_ngrams)
 
-#         # --- KEEP ---
-#         tp_keep = len(keep_ngrams.intersection(union_ref_ngrams))
-#         fp_keep = len(keep_ngrams.difference(union_ref_ngrams))
-#         fn_keep = len(source_ngrams.intersection(union_ref_ngrams).difference(keep_ngrams))
+        # --- KEEP ---
+        tp_keep = len(keep_ngrams.intersection(union_ref_ngrams))
+        fp_keep = len(keep_ngrams.difference(union_ref_ngrams))
+        fn_keep = len(source_ngrams.intersection(union_ref_ngrams).difference(keep_ngrams))
 
-#         # --- ADD ---
-#         tp_add = len(add_ngrams.intersection(union_ref_ngrams))
-#         fp_add = len(add_ngrams.difference(union_ref_ngrams))
-#         fn_add = len(union_ref_ngrams.difference(source_ngrams).difference(add_ngrams))
+        # --- ADD ---
+        tp_add = len(add_ngrams.intersection(union_ref_ngrams))
+        fp_add = len(add_ngrams.difference(union_ref_ngrams))
+        fn_add = len(union_ref_ngrams.difference(source_ngrams).difference(add_ngrams))
 
-#         # --- DELETE ---
-#         good_deletions = source_ngrams.difference(union_ref_ngrams)
-#         tp_del = len(del_ngrams.intersection(good_deletions))
-#         fp_del = len(del_ngrams.difference(good_deletions))
+        # --- DELETE ---
+        good_deletions = source_ngrams.difference(union_ref_ngrams)
+        tp_del = len(del_ngrams.intersection(good_deletions))
+        fp_del = len(del_ngrams.difference(good_deletions))
 
-#         keep_precision, keep_recall, keep_f1 = precision_recall_f1(tp_keep, fp_keep, fn_keep)
-#         add_precision, add_recall, add_f1 = precision_recall_f1(tp_add, fp_add, fn_add)
-#         del_precision = tp_del / (tp_del + fp_del) if (tp_del + fp_del) > 0 else 0
-#         del_f1 = del_precision
+        keep_precision, keep_recall, keep_f1 = precision_recall_f1(tp_keep, fp_keep, fn_keep)
+        add_precision, add_recall, add_f1 = precision_recall_f1(tp_add, fp_add, fn_add)
+        del_precision = tp_del / (tp_del + fp_del) if (tp_del + fp_del) > 0 else 0
+        del_f1 = del_precision
 
-#         add_scores.append(add_f1)
-#         keep_scores.append(keep_f1)
-#         delete_scores.append(del_f1)
+        add_scores.append(add_f1)
+        keep_scores.append(keep_f1)
+        delete_scores.append(del_f1)
 
-#     # Promedios finales
-#     avg_add = sum(add_scores) / len(add_scores)
-#     avg_keep = sum(keep_scores) / len(keep_scores)
-#     avg_del = sum(delete_scores) / len(delete_scores)
-#     sari = (avg_add + avg_keep + avg_del) / 3
+    # Promedios finales
+    avg_add = sum(add_scores) / len(add_scores)
+    avg_keep = sum(keep_scores) / len(keep_scores)
+    avg_del = sum(delete_scores) / len(delete_scores)
+    sari = (avg_add + avg_keep + avg_del) / 3
 
-#     return avg_add, avg_keep, avg_del, sari
+    return avg_add, avg_keep, avg_del, sari
 
 # --------------------------------------------------------------------
 # ------ Semantic_Answer_Similarity (SAS sentence-transformers) ------
@@ -608,10 +608,8 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Bilingual metrics (ES/EN)")
     parser.add_argument("--lang", choices=["es", "en"], required=True,
                         help="Idioma de evaluación: es | en")
-    parser.add_argument("--data_root", required=True,
-                        help="Raíz del dataset (contiene originals_txt_test/ y references_txt_test/)")
-    parser.add_argument("--simpl_root", required=True,
-                        help="Raíz de simplificaciones (contiene subcarpetas por modelo)")
+    parser.add_argument("--input_folder", required=True,
+                        help="Carpeta con archivos JSON (nombre del archivo = modelo, estructura: {field: {original, simplified, reference}})")
     parser.add_argument("--out", required=True,
                         help="Carpeta de salida para JSON/CSV/CodeCarbon")
     return parser.parse_args()
@@ -624,51 +622,31 @@ if __name__ == "__main__":
     args = parse_args()
     cfg = LANG_CFG[args.lang]
 
-    data_root = Path(args.data_root)
-    DOC_FOLDER_ORIGINAL = str(data_root / "")
-
-    # Referencias: en español/ingles, el nombre de reference_x, como generico
-    if args.lang == "es":
-        ref_dirs = [
-            data_root / "references_txt_test" / "reference_1",
-            data_root / "references_txt_test" / "reference_2",
-            data_root / "references_txt_test" / "reference_3",
-        ]
-    else:
-        ref_dirs = [
-            data_root / "references_txt_test" / "reference_1",
-            data_root / "references_txt_test" / "reference_1",
-            data_root / "references_txt_test" / "reference_1",
-        ]
-    DOC_FOLDER_REFERENCES1 = str(ref_dirs[0])
-    DOC_FOLDER_REFERENCES2 = str(ref_dirs[1])
-    DOC_FOLDER_REFERENCES3 = str(ref_dirs[2])
-
-    st_model = SentenceTransformer('sentence-transformers/paraphrase-multilingual-mpnet-base-v2')
-
-    # SummaC
-    model_zs_summac, model_conv_summac = init_summac(cfg)
-    align_scorer = init_alignscore(cfg, device="cuda:0", batch_size=32)
-   
-    # -----------------------------
-    # Normalizacion de raíz de simplificaciones:
-    # --simpl_root puede ser .../Conjunto_Simplificaciones
-    # -----------------------------
-
-    simpl_root = Path(args.simpl_root)
-    if (simpl_root / "es").is_dir() or (simpl_root / "en").is_dir():
-        simpl_root = simpl_root / args.lang
-
-    SIMPLIFICACIONES_PATH = str(simpl_root)
+    # Input folder with JSON files (one per model)
+    input_folder = Path(args.input_folder)
+    if not input_folder.exists():
+        raise ValueError(f"❌ Input folder does not exist: {input_folder}")
 
     OUTPUT_FOLDER = args.out
     os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
-    MODELS = sorted([d for d in os.listdir(SIMPLIFICACIONES_PATH) if os.path.isdir(os.path.join(SIMPLIFICACIONES_PATH, d))])
+    # Get all JSON files from input folder (model files)
+    model_files = sorted([f for f in input_folder.glob("*.json")])
+    
+    if not model_files:
+        raise ValueError(f"❌ No JSON files found in {input_folder}")
 
-    print(f"📁 Directorios detectados en {SIMPLIFICACIONES_PATH}: {MODELS}\n")
+    print(f"📁 Archivos JSON detectados en {input_folder}: {[f.stem for f in model_files]}\n")
     print(f"📂 Resultados se guardarán en: {OUTPUT_FOLDER}\n")
 
+    # Initialize sentence transformer
+    st_model = SentenceTransformer('sentence-transformers/paraphrase-multilingual-mpnet-base-v2')
+
+    # Initialize SummaC and AlignScore
+    model_zs_summac, model_conv_summac = init_summac(cfg)
+    align_scorer = init_alignscore(cfg, device="cuda:0", batch_size=32)
+
+    # Global emissions tracker
     emissions_path_global = os.path.join(OUTPUT_FOLDER, "emissions_metricas_GLOBAL.csv")
     tracker_global = OfflineEmissionsTracker(
         project_name="metricas_GLOBAL",
@@ -676,6 +654,128 @@ if __name__ == "__main__":
         country_iso_code="ESP",
     )
 
-    # Temporizador global
+    # Global timer
     total_start = time.time()
     tracker_global.start()
+
+    try:    
+        # Process each model file
+        for model_file in tqdm(model_files, desc="Procesando modelos", unit="modelo", position=0, leave=True):
+            start_time = time.time()
+            
+            MODEL_NAME = model_file.stem
+            
+            print("\n" + "="*90)
+            print(f"🚀 Procesando modelo: {MODEL_NAME}")
+            print("="*90)
+
+            emissions_path_model = os.path.join(OUTPUT_FOLDER, f"emissions_metricas_{MODEL_NAME}.csv")        
+            output_path_json = os.path.join(OUTPUT_FOLDER, f"metrics_{MODEL_NAME}.json")
+            output_path_csv = os.path.join(OUTPUT_FOLDER, f"metrics_{MODEL_NAME}.csv")
+            
+            # Per-model emissions tracker
+            tracker_model = OfflineEmissionsTracker(
+                project_name=f"metricas_{MODEL_NAME}",
+                output_file=emissions_path_model,
+                country_iso_code="ESP",
+            )
+
+            tracker_model.start()
+            all_results = []
+
+            try:
+                # Load model data from JSON file
+                with open(model_file, 'r', encoding='utf-8') as f:
+                    model_data = json.load(f)
+                
+                print(f"Pares encontrados: {len(model_data)}")
+
+                # Extract all texts for IDF calculation
+                all_originals = []
+                all_simplified = []
+                
+                for field_name, content in model_data.items():
+                    # Handle both single reference and list of references
+                    if isinstance(content, dict):
+                        original = content.get('original', '')
+                        simplified = content.get('simplified', '')
+                        
+                        if original:
+                            all_originals.append(original)
+                        if simplified:
+                            all_simplified.append(simplified)
+
+                # Calculate global IDF dictionaries
+                idf_dict_ref = get_idf_dict(all_originals)
+                idf_dict_hyp = get_idf_dict(all_simplified)
+
+                # Process each pair in the JSON
+                for field_name, content in tqdm(sorted(model_data.items()), desc=f"Evaluando {MODEL_NAME}", unit="caso", position=1, leave=False):
+                    if not isinstance(content, dict):
+                        continue
+                    
+                    original = content.get('original', '')
+                    simplified = content.get('simplified', '')
+                    reference = content.get('reference', '')
+                    
+                    # Skip if any required field is missing
+                    if not all([original, simplified, reference]):
+                        print(f"⚠️ Skipping {field_name}: missing required fields")
+                        continue
+                    
+                    # Handle reference as either single string or list
+                    references = [reference] if isinstance(reference, str) else reference
+                    references = references[:3] if len(references) > 3 else references
+                    
+                    # Evaluate pair - reuse existing function
+                    pair_results = evaluate_pair(
+                        field_name, original, simplified, references,
+                        st_model, idf_dict_ref, idf_dict_hyp,
+                        model_zs_summac, model_conv_summac, align_scorer, cfg
+                    )
+                    all_results.extend(pair_results)
+                    
+                # Sort results by ID
+                all_results = sorted(all_results, key=lambda r: r.get('id_original_text', ''))
+
+                # Save results to JSON
+                with open(output_path_json, 'w', encoding='utf-8') as f:
+                    json.dump(all_results, f, indent=2, ensure_ascii=False)
+
+                # Save results to CSV
+                results_to_csv(all_results, output_path_csv)
+
+            finally:
+                tracker_model.stop()
+
+                # Normalize CodeCarbon CSV (model) to European format
+                if os.path.exists(emissions_path_model):
+                    df_em = pd.read_csv(emissions_path_model)
+                    df_em.to_csv(emissions_path_model, sep=";", decimal=",", index=False, encoding="utf-8")
+                    print(f"✅ Emisiones ({MODEL_NAME}) guardadas (formato europeo): {emissions_path_model}")
+
+            # Time per model
+            elapsed = time.time() - start_time
+            mins, secs = divmod(elapsed, 60)
+            print(f"✅ Resultados guardados en {output_path_json}")
+            print(f"✅ Resultados guardados en {output_path_csv}")
+            print(f"📊 Total de evaluaciones: {len(all_results)}")
+            print(f"⏱️ Tiempo de ejecución para {MODEL_NAME}: {int(mins)} min {int(secs)} s\n")
+    
+    finally:
+        tracker_global.stop()
+
+        # Normalize global CodeCarbon CSV to European format
+        if os.path.exists(emissions_path_global):
+            df_em = pd.read_csv(emissions_path_global)
+            df_em.to_csv(emissions_path_global, sep=";", decimal=",", index=False, encoding="utf-8")
+            print(f"✅ Emisiones GLOBAL guardadas (formato europeo): {emissions_path_global}")
+
+        # Total time
+        total_elapsed = time.time() - total_start
+        total_mins, total_secs = divmod(total_elapsed, 60)
+        total_hours, total_mins = divmod(total_mins, 60)
+        print("=" * 90)
+        print(f"🏁 Proceso completo finalizado.")
+        print(f"🕒 Tiempo total: {int(total_hours)} h {int(total_mins)} min {int(total_secs)} s")
+        print("=" * 90)
