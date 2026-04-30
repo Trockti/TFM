@@ -14,10 +14,10 @@ nltk.download('averaged_perceptron_tagger_eng')
 def combine_dics():
     dirName = "../data"
     definitions = {}
-    priority_file = "extracted_definitions_cervantes_inc.json" 
+    priority_file = "cervantes_best.json" 
     for file in os.listdir(dirName):
         # To use a specific file, just write it's name in the line below
-        if file.endswith("inc.json") and file != priority_file:
+        if file.endswith("best.json") and file != priority_file:
             print(f"Processing {file}...")
             result = os.path.join(dirName, file)
             with open(result, "r", encoding="utf-8") as f:
@@ -30,7 +30,7 @@ def combine_dics():
             data = json.load(f)
             lemmatizer = WordNetLemmatizer()
             definitions.update({lemmatizer.lemmatize(k.lower()): v for k, v in data.items()})
-    with open("../data/definitions.json", "w", encoding="utf-8") as f:
+    with open("../data/definitions_v2.json", "w", encoding="utf-8") as f:
         json.dump(definitions, f, indent=2, ensure_ascii=False)
 
 

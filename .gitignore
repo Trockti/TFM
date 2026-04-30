@@ -12,7 +12,7 @@ AlignScore_v2_es
 summac
 QuestEval
 much/*
-
+.deepeval
 *.ipynb
 # ==============================
 # Model weights / checkpoints
@@ -61,3 +61,5 @@ metricas_venv/
 # Cache
 # ==============================
 .cache/
+
+web_anglicismos

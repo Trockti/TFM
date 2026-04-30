@@ -31,7 +31,7 @@ from nltk.corpus import stopwords
 from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
 
 # **** Métricas especializadas ****
-from AlignScore_v2_es.src.alignscore import AlignScore
+from metrics.AlignScore_v2_es.src.alignscore import AlignScore
 from moverscore.moverscore_v2 import get_idf_dict, word_mover_score
 from questeval.questeval_metric import QuestEval
 from summac.model_summac import SummaCZS, SummaCConv
@@ -363,16 +363,11 @@ def calculate_summac(summac_zs_model, summac_conv_model, original, simplified):
 # ***************************************
 # ****** EVALUACIÓN REESTRUCTURADA ******
 # ***************************************
-def evaluate_pair(name, path_original, path_simplified, path_references, st_model, idf_dict_ref, idf_dict_hyp, summac_zs_model, summac_conv_model, align_scorer, cfg):
+def evaluate_pair(name, original, simplified, references_text, st_model, idf_dict_ref, idf_dict_hyp, summac_zs_model, summac_conv_model, align_scorer, cfg):
 
-    original = read_file_text(path_original)
-    simplified = read_file_text(path_simplified)
-
-    check_empty_files(path_references)
-    references_text = [read_file_text(p) for p in path_references]
 
     # ====== REFERENCIAS ======
-    reference_ids = [Path(p).stem for p in path_references]
+    reference_ids = [f"ref_{i+1}" for i in range(len(references_text))]
 
     # ====== MÉTRICAS POR REFERENCIA ======
     # --- SARI ---
@@ -424,12 +419,11 @@ def evaluate_pair(name, path_original, path_simplified, path_references, st_mode
         "rouge-l_f1": [], "rouge-l_precision": [], "rouge-l_recall": []
     }
 
-    for ref_path, ref in zip(path_references, references_text):
+    for ref in references_text:
 
         # En caso de un archivo este vacío se mostrará un mensaje
         if ref.strip() == "":
             print("\n❌❌ REFERENCIA VACÍA DETECTADA")
-            print("Archivo:", ref_path)
             print("Contenido leído:", repr(ref))
             print("----------------------------------------\n")
 
@@ -438,7 +432,6 @@ def evaluate_pair(name, path_original, path_simplified, path_references, st_mode
 
         except Exception as e:
             print("\n🔥 ERROR EN ROUGE")
-            print("Archivo de referencia que produjo el error:", ref_path)
             print("Contenido:", repr(ref))
             print("Error:", e)
             print("------------------------------------------------\n")
@@ -725,7 +718,7 @@ if __name__ == "__main__":
                     
                     # Handle reference as either single string or list
                     references = [reference] if isinstance(reference, str) else reference
-                    references = references[:3] if len(references) > 3 else references
+                    references = references[:5] if len(references) > 5 else references
                     
                     # Evaluate pair - reuse existing function
                     pair_results = evaluate_pair(
