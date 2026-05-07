@@ -13,6 +13,10 @@ import json
 import logging
 from pathlib import Path
 from typing import Any, Dict, List, Optional
+import os
+import json
+import difflib
+import re
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline, Mistral3ForConditionalGeneration, FineGrainedFP8Config
@@ -51,6 +55,59 @@ MODELS = {
         "type": "causal_lm",
     },
 }
+
+def normalizar_termino(termino):
+    """
+    Convierte a minúsculas y elimina espacios y guiones para comparar.
+    Ej: 'start-up', 'start up' y 'startup' se convertirán todos en 'startup'.
+    """
+    return re.sub(r'[\s\-]', '', termino.lower())
+
+def buscar_en_dataset(palabra, ruta_json="../data/normalized_definitions.json"):
+    """
+    Busca la palabra en el archivo JSON.
+    Asume que el JSON tiene la estructura: {"termino": "definicion", ...}
+    """
+    if not os.path.exists(ruta_json):
+        print(f"Advertencia: No se encontró el archivo {ruta_json}")
+        return None
+
+    try:
+        with open(ruta_json, 'r', encoding='utf-8') as f:
+            datos = json.load(f)
+    except json.JSONDecodeError:
+        print("Error al leer el JSON. Asegúrate de que el formato sea correcto.")
+        return None
+
+    palabra_norm = normalizar_termino(palabra)
+
+    # 1. Búsqueda por normalización (ideal para guiones y espacios)
+    for termino_dataset, definicion in datos.items():
+        # Check 1: Exact normalized match
+        if normalizar_termino(termino_dataset) == palabra_norm:
+            return definicion
+            
+        # Check 2: Match just the abbreviation part before the parenthesis
+        # Splits "ai developer (artificial...)" into "ai developer"
+        termino_base = termino_dataset.split(' (')[0].strip() 
+        if normalizar_termino(termino_base) == palabra_norm:
+            return definicion
+    # 2. Búsqueda difusa (fuzzy search) para errores ortográficos leves
+    try:
+        with open("../data/definitions_v2.json", 'r', encoding='utf-8') as f:
+            datos = json.load(f)
+    except json.JSONDecodeError:
+        print("Error al leer el JSON. Asegúrate de que el formato sea correcto.")
+        return None
+    terminos_disponibles = list(datos.keys())
+    # cutoff=0.9 significa que debe haber al menos un 90% de similitud
+    coincidencias = difflib.get_close_matches(palabra.lower(), terminos_disponibles, n=1, cutoff=0.7)
+    
+    if coincidencias:
+        termino_encontrado = coincidencias[0]
+        return datos[termino_encontrado]
+
+    return None
 
 
 class ModelManager:
@@ -322,47 +379,91 @@ def generate_with_model(
     return results
 
 
+import json
+from pathlib import Path
+from typing import Dict, Optional
+
+# Assuming these are imported or defined elsewhere in your script
+# from your_module import generate_with_model, MODELS, logger
+
 def main() -> None:
     """Main entry point - modify prompts and models here."""
-    prompts = [
-        "What is artificial intelligence?",
+    
+    # 1. Load your glossary dataset (the JSON with 'id_term', 'original', 'adapted', etc.)
+    input_file = "../data/transformed_terms.json" # Change this to your actual input file name
+    try:
+        with open(input_file, "r", encoding="utf-8") as f:
+            dataset = json.load(f)
+    except FileNotFoundError:
+        print(f"Error: {input_file} not found. Please ensure your dataset is available.")
+        return
+
+    # 2. Define your prompt templates (these become results_v1, results_v2, etc.)
+    # You can inject {term}, {original}, and {context} into these templates.
+    prompt_templates = [
+        "Explain the term '{term}' simply based on this definition: {original}. Context: {context}", # v1
+        "You are an expert in Easy Reading (Lectura Fácil). Simplify this text: {original}",        # v2
     ]
 
     model_keys = list(MODELS.keys())
     
-    # Initialize overall results structure
-    all_results: Dict[str, Dict[str, Optional[str]]] = {p: {} for p in prompts}
-
-    for model_key in model_keys:
-        model_results = generate_with_model(
-            prompts=prompts,
-            model_key=model_key,
-            max_length=256,
-            temperature=0.7,
-            top_p=0.9,
-            load_in_8bit=False,
-        )
-        for prompt, text in model_results.items():
-            all_results[prompt][model_key] = text
-
-    output_file = "results.json"
-    if output_file:
-        output_path = Path(output_file)
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-        with output_path.open("w", encoding="utf-8") as file_handle:
-            json.dump(all_results, file_handle, indent=2, ensure_ascii=False)
-        logger.info("Results saved to: %s", output_path)
-
-    print("\n" + "=" * 80)
-    print("RESULTS")
-    print("=" * 80)
-    for prompt, model_results in all_results.items():
-        print(f"\nPrompt: {prompt}")
-        print("-" * 80)
-        for model_key, text in model_results.items():
-            print(f"\n[{model_key.upper()}]")
-            print(text if text else "(Generation failed)")
-        print()
+    # 3. Iterate over each prompt template (generating folder v1, v2...)
+    for idx, prompt_template in enumerate(prompt_templates, start=1):
+        folder_name = f"results_v{idx}"
+        folder_path = Path(folder_name)
+        folder_path.mkdir(parents=True, exist_ok=True)
+        
+        print(f"\n" + "=" * 80)
+        print(f"Processing Prompt V{idx} -> Directory: {folder_name}")
+        print("=" * 80)
+        
+        # 4. Iterate over each model
+        for model_key in model_keys:
+            print(f"Running generation for model: {model_key}...")
+            
+            # Prepare all formatted prompts for batch generation
+            formatted_prompts = []
+            for item in dataset:
+                term = item.get("term", "")
+                query = prompt_template.format(
+                    term=term,
+                    original=item.get("original", ""),
+                    context=item.get("context", ""),
+                    definition=buscar_en_dataset(term) or ""  # Optionally include dataset definition as context
+                )
+                formatted_prompts.append(query)
+            
+            # Run the model on the full batch of prompts
+            model_results = generate_with_model(
+                prompts=formatted_prompts,
+                model_key=model_key,
+                max_length=1024,
+                temperature=0.7,
+                top_p=0.9,
+                load_in_8bit=False,
+            )
+            
+            # 5. Re-assemble the output to match the requested 5-field structure
+            model_output_data = []
+            for item, query in zip(dataset, formatted_prompts):
+                generated_text = model_results.get(query, "(Generation failed)")
+                
+                result_entry = {
+                    "term": item.get("term", ""),
+                    "Context": item.get("context", ""),
+                    "original": item.get("original", ""),
+                    "reference": item.get("adapted", ""), # 'adapted' from original json becomes 'reference'
+                    "simplified": generated_text          # generated by the model
+                }
+                model_output_data.append(result_entry)
+            
+            # 6. Save the model's JSON file inside the specific version folder
+            output_file = folder_path / f"{model_key}.json"
+            with output_file.open("w", encoding="utf-8") as file_handle:
+                json.dump(model_output_data, file_handle, indent=2, ensure_ascii=False)
+            
+            print(f"Saved: {output_file}")
+            # logger.info("Results saved to: %s", output_file)
 
 if __name__ == "__main__":
     main()
