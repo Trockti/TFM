@@ -317,19 +317,21 @@ def calculate_rouge(simplified, target_texts):
 def calculate_summac(summac_zs_model, summac_conv_model, original, simplified):
     if not original.strip() or not simplified.strip():
         return 0.0, 0.0
-    score_zs = summac_zs_model.score([original], [simplified])
-    score_conv = summac_conv_model.score([original], [simplified])
-    return score_zs["scores"][0], score_conv["scores"][0]
+    
+    try:
+        score_zs = summac_zs_model.score([original], [simplified])
+        score_conv = summac_conv_model.score([original], [simplified])
+        return score_zs["scores"][0], score_conv["scores"][0]
+    except Exception as e:
+        print(f"\n⚠️ Advertencia: Fallo en SummaC (probablemente texto muy largo). Asignando 0.0. Error: {e}")
+        return 0.0, 0.0
 
 # ***************************************
 # ****** EVALUACIÓN REESTRUCTURADA ******
 # ***************************************
-def evaluate_pair(name, original, simplified, references_text, st_model, idf_dict_ref, idf_dict_hyp, summac_zs_model, summac_conv_model, align_scorer, cfg):
+def evaluate_pair(name, term, id_term, original, id_original, simplified, references_text, id_reference_text, st_model, idf_dict_ref, idf_dict_hyp, summac_zs_model, summac_conv_model, align_scorer, cfg):
 
-    # ====== REFERENCIAS ======
-    reference_ids = [f"ref_{i+1}" for i in range(len(references_text))]
-
-    # ====== MÉTRICAS DEPENDIENTES DE REFERENCIA ======
+    # ====== MÉTRICAS DE SIMPLIFICACIÓN ======
     # --- SARI ---
     sari_add, sari_keep, sari_del, sari_total = [], [], [], []
     for ref in references_text:
@@ -339,25 +341,25 @@ def evaluate_pair(name, original, simplified, references_text, st_model, idf_dic
         sari_del.append(round(delete, 4))
         sari_total.append(round(sari, 4))
 
-    # ====== MÉTRICAS ORIGINAL vs SIMPLIFICADO ======
-    # Se calcula UNA vez por par, no en bucle por referencia
+
+    primary_reference = references_text[0] if references_text else ""
 
     # --- BERTScore ---
-    P, R, F1 = calculate_bertscore(simplified, original, cfg)
+    P, R, F1 = calculate_bertscore(simplified, primary_reference, cfg)
     bert_P, bert_R, bert_F1 = round(P, 4), round(R, 4), round(F1, 4)
 
     # --- SAS ---
-    sas_val = round(SAS(simplified, original, st_model), 4)
+    sas_val = round(SAS(simplified, primary_reference, st_model), 4)
 
     # --- MoverScore ---
-    mover_val = round(calculate_moverscore(simplified, [original], idf_dict_ref, idf_dict_hyp, cfg)[0], 4)
+    mover_val = round(calculate_moverscore(simplified, [primary_reference], idf_dict_ref, idf_dict_hyp, cfg)[0], 4)
 
     # --- BLEU ---
-    b = calculate_bleu(simplified, [original])  
+    b = calculate_bleu(simplified, [primary_reference])  
     bleu_vals = {k: round(v[0], 4) for k, v in b.items()}
 
     # --- ROUGE ---
-    r = calculate_rouge(simplified, [original]) 
+    r = calculate_rouge(simplified, [primary_reference]) 
     rouge_vals = {
         "rouge-1_f1": round(r["rouge-1"]["rouge-1_f1"][0], 4),
         "rouge-1_precision": round(r["rouge-1"]["rouge-1_precision"][0], 4),
@@ -369,7 +371,7 @@ def evaluate_pair(name, original, simplified, references_text, st_model, idf_dic
         "rouge-l_precision": round(r["rouge-l"]["rouge-l_precision"][0], 4),
         "rouge-l_recall": round(r["rouge-l"]["rouge-l_recall"][0], 4)
     }
-
+    
     # --- ALIGNScore ---
     alignscore = round(Align_Score(original, simplified, align_scorer), 4)
 
@@ -380,7 +382,7 @@ def evaluate_pair(name, original, simplified, references_text, st_model, idf_dic
     q = Quest_Eval(original, simplified)
     quest_val = round(q["corpus_score"], 4)
 
-    # --- Readability ---
+    # --- Readability (Independientes) ---
     readability_original = calculate_readability(original, cfg)
     readability_refs = [calculate_readability(ref, cfg) for ref in references_text]
     readability_simplified = calculate_readability(simplified, cfg)
@@ -390,9 +392,12 @@ def evaluate_pair(name, original, simplified, references_text, st_model, idf_dic
     # =============
     
     result = {
-        "id_original_text": name,
+        "ID": name,
+        "term": term,
+        "id_term": id_term,
+        "id_original_text": id_original,
         "original_text": original,
-        "id_reference_text": reference_ids,
+        "id_reference_text": id_reference_text,
         "reference_text": references_text,
         "simplified_text": simplified,
         "model_name": MODEL_NAME,
@@ -443,13 +448,22 @@ def results_to_csv(results, output_path):
     csv_rows = []
 
     for r in results:
-        refs = r["id_reference_text"] 
+        # 1. Determinar el número real de referencias evaluadas
+        num_refs = len(r["scores"]["readability"]["references"])
+        
+        # 2. Asegurar que los IDs de referencia sean siempre una lista
+        ref_ids = r["id_reference_text"]
+        if isinstance(ref_ids, str):
+            ref_ids = [ref_ids]
+        elif not ref_ids:
+            ref_ids = [None] # Fallback por si viene vacío
+
         sari = r["scores"]["simplification"]["sari"]
         bert = r["scores"]["similarity"]["bertscore"]
         bleu = r["scores"]["similarity"]["bleu"]
         rouge = r["scores"]["similarity"]["rouge"]
         
-        # Estas métricas ahora son de valor único
+        # Métricas de valor único
         mover = r["scores"]["similarity"]["moverscore"]
         sas_st = r["scores"]["similarity"]["sas"]
         quest = r["scores"]["factuality"]["questeval"]
@@ -457,19 +471,23 @@ def results_to_csv(results, output_path):
         ro = r["scores"]["readability"]["original"]
         rs = r["scores"]["readability"]["simplified"]
 
-        for i in range(len(refs)):
+        # Iterar sobre el conteo seguro de referencias evaluadas
+        for i in range(num_refs):
             rr = r["scores"]["readability"]["references"][i]
+            
+            # Asignar el ID correcto (si hay menos IDs que textos, reusamos el último disponible)
+            current_ref_id = ref_ids[i] if i < len(ref_ids) else ref_ids[-1]
 
             row = {
                 "id_original_text": r["id_original_text"],
-                "id_reference_text": refs[i],
+                "id_reference_text": current_ref_id,
                 "model_name": r["model_name"],
 
                 # SARI (Dependiente de referencia)
-                "sari_total": sari["sari_total"][i],
-                "sari_add": sari["sari_add"][i],
-                "sari_keep": sari["sari_keep"][i],
-                "sari_del": sari["sari_del"][i],
+                "sari_total": sari["sari_total"][i] if i < len(sari["sari_total"]) else None,
+                "sari_add": sari["sari_add"][i] if i < len(sari["sari_add"]) else None,
+                "sari_keep": sari["sari_keep"][i] if i < len(sari["sari_keep"]) else None,
+                "sari_del": sari["sari_del"][i] if i < len(sari["sari_del"]) else None,
 
                 # Métricas Original vs Simplificado (se repite el valor para todas las referencias)
                 "bertscore_precision": bert["bertscore_precision"],
@@ -628,15 +646,13 @@ if __name__ == "__main__":
                 for field_name, content in tqdm(sorted(model_data.items()), desc=f"Evaluando {MODEL_NAME}", unit="caso", position=1, leave=False):
                     if not isinstance(content, dict):
                         continue
-                    
+                    term = content.get('term', '')
+                    id_term = content.get('id_term', '')
+                    id_original = content.get('id_definition', '')
+                    id_reference_text = content.get('id_adaptation', '')
                     original = content.get('original', '')
                     simplified = content.get('simplified', '')
-                    reference = content.get('reference', '')
-                    
-                    # Validar campos vacíos para evitar crasheos en BERTScore/ROUGE
-                    # if not original.strip() or not simplified.strip() or not reference.strip():
-                    #     print(f"\n⚠️ Saltando {field_name}: contiene campos vacíos")
-                    #     continue
+                    reference = content.get('adapted', '')
                     
                     # Handle reference as either single string or list
                     references = [reference] if isinstance(reference, str) else reference
@@ -644,7 +660,7 @@ if __name__ == "__main__":
                     
                     # Evaluate pair
                     pair_results = evaluate_pair(
-                        field_name, original, simplified, references,
+                        field_name, term, id_term, original, id_original, simplified, references, id_reference_text,
                         st_model, idf_dict_ref, idf_dict_hyp,
                         model_zs_summac, model_conv_summac, align_scorer, cfg
                     )

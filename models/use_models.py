@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Program to run prompts with multiple Hugging Face language models.
+Program to run prompts with multiple Hugging Face language models using System/User roles.
 
 Models:
-1. meta-llama/Llama-3.2-3B - Multilingual Llama model
+1. meta-llama/Llama-3.2-3B-Instruct - Multilingual Llama model
 2. mistralai/Ministral-3-8B-Instruct-2512 - Ministral model
 3. HiTZ/Latxa-Qwen3-VL-8B-Instruct - Spanish/Catalan/Basque specialized model
 4. IIC/RigoChat-7b-v2 - Spanish language model
@@ -14,7 +14,6 @@ import logging
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 import os
-import json
 import difflib
 import re
 
@@ -31,8 +30,8 @@ logger = logging.getLogger(__name__)
 # Model configurations
 MODELS = {
      "llama": {
-        "name": "meta-llama/Llama-3.2-3B",
-        "description": "Multilingual Llama 3.2 3B model",
+        "name": "meta-llama/Llama-3.2-3B-Instruct", 
+        "description": "Multilingual Llama 3.2 3B Instruct model",
         "language": "Multilingual",
         "type": "causal_lm",
     },
@@ -92,6 +91,7 @@ def buscar_en_dataset(palabra, ruta_json="../data/normalized_definitions.json"):
         termino_base = termino_dataset.split(' (')[0].strip() 
         if normalizar_termino(termino_base) == palabra_norm:
             return definicion
+            
     # 2. Búsqueda difusa (fuzzy search) para errores ortográficos leves
     try:
         with open("../data/definitions_v2.json", 'r', encoding='utf-8') as f:
@@ -99,6 +99,7 @@ def buscar_en_dataset(palabra, ruta_json="../data/normalized_definitions.json"):
     except json.JSONDecodeError:
         print("Error al leer el JSON. Asegúrate de que el formato sea correcto.")
         return None
+        
     terminos_disponibles = list(datos.keys())
     # cutoff=0.9 significa que debe haber al menos un 90% de similitud
     coincidencias = difflib.get_close_matches(palabra.lower(), terminos_disponibles, n=1, cutoff=0.7)
@@ -227,7 +228,7 @@ class ModelManager:
     def generate(
         self,
         model_key: str,
-        prompt: str,
+        messages: List[Dict[str, str]], # Changed from prompt: str
         max_length: int = 256,
         num_return_sequences: int = 1,
         temperature: float = 0.7,
@@ -248,17 +249,16 @@ class ModelManager:
 
         try:
             if model_type == "vlm":
-                # For chat-style VLM pipelines, send prompt as a text content block.
-                messages = [
-                    {
-                        "role": "user",
-                        "content": [
-                            {"type": "text", "text": prompt},
-                        ],
-                    }
-                ]
+                # Adapt standard messages to VLM text blocks
+                vlm_messages = []
+                for msg in messages:
+                    vlm_messages.append({
+                        "role": msg["role"],
+                        "content": [{"type": "text", "text": msg["content"]}]
+                    })
+                
                 outputs = model_obj["pipeline"](
-                    text=messages,
+                    text=vlm_messages,
                     max_new_tokens=max_length,
                     temperature=temperature,
                     top_p=top_p,
@@ -268,8 +268,15 @@ class ModelManager:
             model = model_obj["model"]
             tokenizer = model_obj["tokenizer"]
 
+            # MAGIC HAPPENS HERE: Apply chat template transforms system/user dicts into model-specific tokens
+            prompt_str = tokenizer.apply_chat_template(
+                messages, 
+                tokenize=False, 
+                add_generation_prompt=True
+            )
+
             inputs = tokenizer(
-                prompt,
+                prompt_str,
                 return_tensors="pt",
                 padding=True,
                 truncation=True,
@@ -279,7 +286,7 @@ class ModelManager:
             with torch.no_grad():
                 output_ids = model.generate(
                     **inputs,
-                    max_length=max_length,
+                    max_new_tokens=max_length, # Swapped max_length for max_new_tokens for modern HF compatibility
                     num_return_sequences=num_return_sequences,
                     temperature=temperature,
                     top_p=top_p,
@@ -288,7 +295,12 @@ class ModelManager:
                     eos_token_id=tokenizer.eos_token_id,
                 )
 
-            return tokenizer.batch_decode(output_ids, skip_special_tokens=True)
+            # We slice the output to avoid returning the prompt text along with the generated response
+            input_length = inputs.input_ids.shape[1]
+            generated_ids = output_ids[:, input_length:]
+            
+            return tokenizer.batch_decode(generated_ids, skip_special_tokens=True)
+            
         except Exception as exc:
             logger.error("Generation failed for %s: %s", model_key, str(exc))
             return None
@@ -339,7 +351,7 @@ class ModelManager:
 
 
 def generate_with_model(
-    prompts: List[str],
+    prompts: List[List[Dict[str, str]]], # Changed typing to expect standard message lists
     model_key: str,
     max_length: int = 256,
     temperature: float = 0.7,
@@ -347,30 +359,31 @@ def generate_with_model(
     device: Optional[str] = None,
     cache_dir: Optional[str] = None,
     load_in_8bit: bool = False,
-) -> Dict[str, Optional[str]]:
+) -> List[Optional[str]]: # Now returns an ordered list instead of dictionary
     """Generate text using a specified model and prompts."""
     manager = ModelManager(device=device, cache_dir=cache_dir)
     
-    results: Dict[str, Optional[str]] = {p: None for p in prompts}
+    results: List[Optional[str]] = []
 
     logger.info("\n--- Loading model: %s ---", model_key)
     if not manager.load_model(model_key, load_in_8bit=load_in_8bit):
         logger.warning("Could not load model: %s", model_key)
-        return results
+        return [None] * len(prompts)
 
-    for i, prompt in enumerate(prompts, 1):
+    for i, messages in enumerate(prompts, 1):
         logger.info("Processing prompt %d/%d with %s...", i, len(prompts), model_key)
         texts = manager.generate(
             model_key,
-            prompt,
+            messages,
             max_length=max_length,
             temperature=temperature,
             top_p=top_p,
         )
         if texts:
-            results[prompt] = texts[0]
+            results.append(texts[0])
             logger.info("    Generated %d characters", len(texts[0]))
         else:
+            results.append(None)
             logger.warning("    Generation failed")
             
     # Unload model to free memory for the next one
@@ -379,18 +392,11 @@ def generate_with_model(
     return results
 
 
-import json
-from pathlib import Path
-from typing import Dict, Optional
-
-# Assuming these are imported or defined elsewhere in your script
-# from your_module import generate_with_model, MODELS, logger
-
 def main() -> None:
     """Main entry point - modify prompts and models here."""
     
-    # 1. Load your glossary dataset (the JSON with 'id_term', 'original', 'adapted', etc.)
-    input_file = "../data/transformed_terms.json" # Change this to your actual input file name
+    # 1. Load your glossary dataset 
+    input_file = "../data/transformed_terms.json" 
     try:
         with open(input_file, "r", encoding="utf-8") as f:
             dataset = json.load(f)
@@ -398,11 +404,25 @@ def main() -> None:
         print(f"Error: {input_file} not found. Please ensure your dataset is available.")
         return
 
-    # 2. Define your prompt templates (these become results_v1, results_v2, etc.)
-    # You can inject {term}, {original}, and {context} into these templates.
+    # 2. Define your prompt templates AS MESSAGE LISTS
     prompt_templates = [
-        "Explain the term '{term}' simply based on this definition: {original}. Context: {context}", # v1
-        "You are an expert in Easy Reading (Lectura Fácil). Simplify this text: {original}",        # v2
+        # v1: Uses the dictionary definition as a reference if avaiable
+        [
+            {"role": "system", "content": "Actúa como un experto en lenguaje claro y Lectura Fácil. Tu objetivo es explicar anglicismos de manera que cualquier persona pueda entenderlos sin dificultad."},
+            {"role": "user", "content": "Escribe una definición sencilla, directa y fácil de entender para el anglicismo '{term}'. Basa tu explicación en cómo se utiliza exactamente la palabra en el siguiente contexto: '{context}'. Utiliza esta definición formal como referencia para asegurar que la explicación sea precisa: '{definition}'."}
+        ],
+        
+        # v2: Relies completely on the context
+        [
+            {"role": "system", "content": "Eres un especialista en lenguaje ciudadano, accesibilidad cognitiva y Lectura Fácil. Tu tarea consiste en traducir y explicar anglicismos complejos al español usando un tono divulgativo, deduciendo su significado lógico a partir del texto en el que se encuentran."},
+            {"role": "user", "content": "Redacta una definición breve, simple y muy fácil de comprender para el anglicismo '{term}'. Para crear esta definición, debes deducir su significado basándote únicamente en cómo se está empleando dentro de este texto: '{context}'."}
+        ],
+    
+        # v3: Always uses a dictionary definition
+        [
+            {"role": "system", "content": "Actúa como un experto en lenguaje claro y Lectura Fácil. Escribe definiciones sencillas y fáciles de entender."},
+            {"role": "user", "content": "Define el término '{term}'. Utiliza esta definición formal como tu referencia principal: '{original}'. Si la definición no está disponible, intenta inferir el significado a partir de este contexto: '{context}'."}
+        ]
     ]
 
     model_keys = list(MODELS.keys())
@@ -423,18 +443,26 @@ def main() -> None:
             
             # Prepare all formatted prompts for batch generation
             formatted_prompts = []
-            for item in dataset:
+            for field_name, item in dataset.items():
                 term = item.get("term", "")
-                query = prompt_template.format(
-                    term=term,
-                    original=item.get("original", ""),
-                    context=item.get("context", ""),
-                    definition=buscar_en_dataset(term) or ""  # Optionally include dataset definition as context
-                )
-                formatted_prompts.append(query)
+                
+                # Format each message block individually
+                messages = []
+                for msg_block in prompt_template:
+                    messages.append({
+                        "role": msg_block["role"],
+                        "content": msg_block["content"].format(
+                            term=term,
+                            context=item.get("context", ""),
+                            original=item.get("original", ""),
+                            definition=buscar_en_dataset(term) or ""
+                        )
+                    })
+                    
+                formatted_prompts.append(messages)
             
-            # Run the model on the full batch of prompts
-            model_results = generate_with_model(
+            # Run the model on the full batch of message prompts
+            model_results_list = generate_with_model(
                 prompts=formatted_prompts,
                 model_key=model_key,
                 max_length=1024,
@@ -443,27 +471,29 @@ def main() -> None:
                 load_in_8bit=False,
             )
             
-            # 5. Re-assemble the output to match the requested 5-field structure
-            model_output_data = []
-            for item, query in zip(dataset, formatted_prompts):
-                generated_text = model_results.get(query, "(Generation failed)")
+            # 5. Re-assemble the output to match the requested structure
+            model_output_data = {}
+            
+            # Use zip to perfectly pair the original dictionary items with the generated results list
+            for (field_name, item), generated_text in zip(dataset.items(), model_results_list):
                 
-                result_entry = {
+                model_output_data[field_name] = {
+                    "id_term": item.get("id_term", ""),
                     "term": item.get("term", ""),
-                    "Context": item.get("context", ""),
                     "original": item.get("original", ""),
-                    "reference": item.get("adapted", ""), # 'adapted' from original json becomes 'reference'
-                    "simplified": generated_text          # generated by the model
+                    "adapted": item.get("adapted", ""),
+                    "id_definition": item.get("id_definition", ""),
+                    "id_adaptation": item.get("id_adaptation", ""),
+                    "context": item.get("context", ""),
+                    "simplified": generated_text if generated_text else "(Generation failed)"
                 }
-                model_output_data.append(result_entry)
             
             # 6. Save the model's JSON file inside the specific version folder
             output_file = folder_path / f"{model_key}.json"
             with output_file.open("w", encoding="utf-8") as file_handle:
-                json.dump(model_output_data, file_handle, indent=2, ensure_ascii=False)
+                json.dump(model_output_data, file_handle, indent=4, ensure_ascii=False)
             
             print(f"Saved: {output_file}")
-            # logger.info("Results saved to: %s", output_file)
 
 if __name__ == "__main__":
     main()
