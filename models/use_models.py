@@ -286,7 +286,7 @@ class ModelManager:
             with torch.no_grad():
                 output_ids = model.generate(
                     **inputs,
-                    max_new_tokens=max_length, # Swapped max_length for max_new_tokens for modern HF compatibility
+                    max_new_tokens=max_length, 
                     num_return_sequences=num_return_sequences,
                     temperature=temperature,
                     top_p=top_p,
@@ -406,30 +406,51 @@ def main() -> None:
 
     # 2. Define your prompt templates AS MESSAGE LISTS
     prompt_templates = [
-        # v1: Uses the dictionary definition as a reference if avaiable
-        [
-            {"role": "system", "content": "Actúa como un experto en lenguaje claro y Lectura Fácil. Tu objetivo es explicar anglicismos de manera que cualquier persona pueda entenderlos sin dificultad."},
-            {"role": "user", "content": "Escribe una definición sencilla, directa y fácil de entender para el anglicismo '{term}'. Basa tu explicación en cómo se utiliza exactamente la palabra en el siguiente contexto: '{context}'. Utiliza esta definición formal como referencia para asegurar que la explicación sea precisa: '{definition}'."}
-        ],
-        
-        # v2: Relies completely on the context
-        [
-            {"role": "system", "content": "Eres un especialista en lenguaje ciudadano, accesibilidad cognitiva y Lectura Fácil. Tu tarea consiste en traducir y explicar anglicismos complejos al español usando un tono divulgativo, deduciendo su significado lógico a partir del texto en el que se encuentran."},
-            {"role": "user", "content": "Redacta una definición breve, simple y muy fácil de comprender para el anglicismo '{term}'. Para crear esta definición, debes deducir su significado basándote únicamente en cómo se está empleando dentro de este texto: '{context}'."}
-        ],
-    
-        # v3: Always uses a dictionary definition
-        [
-            {"role": "system", "content": "Actúa como un experto en lenguaje claro y Lectura Fácil. Escribe definiciones sencillas y fáciles de entender."},
-            {"role": "user", "content": "Define el término '{term}'. Utiliza esta definición formal como tu referencia principal: '{original}'. Si la definición no está disponible, intenta inferir el significado a partir de este contexto: '{context}'."}
+            # Un único prompt unificado que incluye rol, instrucciones, contexto, definición y ejemplos few-shot en un solo bloque
+            [
+                {"role": "system", "content": """Eres un especialista en lenguaje ciudadano, accesibilidad cognitiva y Lectura Fácil. Tu tarea consiste en traducir y explicar anglicismos complejos al español de manera que cualquier persona pueda entenderlos sin dificultad.
+
+    Instrucciones:
+    1. Redacta una definición breve, sencilla y directa.
+    2. Utiliza frases cortas y vocabulario cotidiano.
+    3. Basa tu explicación en cómo se utiliza la palabra en el 'Contexto' proporcionado.
+    4. Utiliza la 'Definición formal' como referencia de precisión (si está disponible), pero adáptala para que sea fácil de entender.
+    5. Si es útil, añade un ejemplo breve o explica cómo se pronuncia.
+
+    Aquí tienes algunos ejemplos de cómo debes realizar la tarea:
+
+    Ejemplo 1:
+    - Término: App
+    - Contexto: "Los primeros minutos en la app fueron un bombardeo de mensajes..."
+    - Definición formal: Programa preparado para una utilización específica, como el pago de nóminas, el tratamiento de textos, et.
+    - Tu respuesta: Son programas informáticos que se instalan en el teléfono móvil, ordenador o tablet para hacer tareas concretas, como jugar a juegos, escribir mensajes o trabajar con documentos. Por ejemplo, el WhatsApp es una aplicación. También se llaman Apps. Pueden ser de pago o gratis.
+
+    Ejemplo 2:
+    - Término: Phishing
+    - Contexto: "En este escenario, los ataques se volverán cada vez más complejos, y se combinarán contenidos como spam y phishing."
+    - Definición formal: El phishing es una técnica que consiste en el envío de un correo electrónico por parte de un ciberdelincuente a un usuario simulando ser una entidad legítima (red social, banco, institución pública, etc.) con el objetivo de robarle información privada, realizarle un cargo económico o infectar el dispositivo. Para ello, adjuntan archivos infectados o enlaces a páginas fraudulentas en el correo electrónico.
+    - Tu respuesta: Es un tipo de engaño que consiste en el envío de emails falsos para que entres en una página web falsa y escribas tus datos.
+
+    Ejemplo 3:
+    - Término: Router
+    - Contexto: "AlphaShield es un cortafuegos que se instala entre el router o módem del usuario y el ordenador..."
+    - Definición formal: Dispositivo que distribuye el flujo de paquetes de información entre redes de la manera más eficaz.
+    - Tu respuesta: Aparato que sirve para que uno o varios dispositivos como, por ejemplo, ordenadores, teléfonos, tabletas y televisores tengan conexión a Internet. Es una palabra inglesa y se pronuncia ruter."""},
+                
+                {"role": "user", "content": """Ahora es tu turno. Adapta el siguiente anglicismo siguiendo exactamente el mismo estilo de los ejemplos anteriores:
+
+    - Término: '{term}'
+    - Contexto: '{context}'
+    - Definición formal: '{definition}'
+    - Tu respuesta:"""}
+            ]
         ]
-    ]
 
     model_keys = list(MODELS.keys())
     
     # 3. Iterate over each prompt template (generating folder v1, v2...)
     for idx, prompt_template in enumerate(prompt_templates, start=1):
-        folder_name = f"results_v{idx}"
+        folder_name = f"results_v{idx+3}"  # Start from v4 to avoid confusion with previous versions
         folder_path = Path(folder_name)
         folder_path.mkdir(parents=True, exist_ok=True)
         
