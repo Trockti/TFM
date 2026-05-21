@@ -240,6 +240,23 @@ def calculate_moverscore(simplified, target_texts, idf_dict_ref, idf_dict_hyp, c
         print(f"⚠️ Error en MoverScore: {e}")
         return [0.0] * len(target_texts)
 
+# ------------------------------------------
+# ------ MeaningBERT ------
+# ------------------------------------------
+# def calculate_meaningbert(simplified, reference, meaningbert_model):
+#     """
+#     Calcula MeaningBERT entre simplified y reference.
+#     Devuelve un único score (0-1).
+#     """
+#     try:
+#         score = meaningbert_model.compute(predictions=[simplified], references=[reference])
+#         # El score viene en 0-100, lo normalizamos a 0-1
+#         meaningbert_score = round(float(score["scores"][0]) / 100, 4)
+#         return meaningbert_score
+#     except Exception as e:
+#         print(f"⚠️ Error en MeaningBERT: {e}")
+#         return 0.0
+
 # ------------------
 # ------ BLEU ------
 # ------------------
@@ -371,7 +388,11 @@ def evaluate_pair(name, term, id_term, original, id_original, simplified, refere
         "rouge-l_precision": round(r["rouge-l"]["rouge-l_precision"][0], 4),
         "rouge-l_recall": round(r["rouge-l"]["rouge-l_recall"][0], 4)
     }
-    
+    # --- MeaningBERT ---
+    # meaningbert_model = evaluate.load("davebulaval/meaningbert")
+
+    # meaningbert_val = calculate_meaningbert(simplified, primary_reference, meaningbert_model)
+
     # --- ALIGNScore ---
     alignscore = round(Align_Score(original, simplified, align_scorer), 4)
 
@@ -419,7 +440,7 @@ def evaluate_pair(name, term, id_term, original, id_original, simplified, refere
                 "moverscore": mover_val,
                 "sas": sas_val,
                 "bleu": bleu_vals,
-                "rouge": rouge_vals
+                "rouge": rouge_vals,
             },
             "factuality": {
                 "alignscore": alignscore,

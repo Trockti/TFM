@@ -406,51 +406,257 @@ def main() -> None:
 
     # 2. Define your prompt templates AS MESSAGE LISTS
     prompt_templates = [
-            # Un único prompt unificado que incluye rol, instrucciones, contexto, definición y ejemplos few-shot en un solo bloque
-            [
-                {"role": "system", "content": """Eres un especialista en lenguaje ciudadano, accesibilidad cognitiva y Lectura Fácil. Tu tarea consiste en traducir y explicar anglicismos complejos al español de manera que cualquier persona pueda entenderlos sin dificultad.
+        [
+    {
+        "role": "system",
+        "content": "Eres un especialista en lectura fácil y lenguaje claro."
+    },
+    {
+        "role": "user",
+        "content": """
+Crea una glosa breve para el término: {term}
 
-    Instrucciones:
-    1. Redacta una definición breve, sencilla y directa.
-    2. Utiliza frases cortas y vocabulario cotidiano.
-    3. Basa tu explicación en cómo se utiliza la palabra en el 'Contexto' proporcionado.
-    4. Utiliza la 'Definición formal' como referencia de precisión (si está disponible), pero adáptala para que sea fácil de entender.
-    5. Si es útil, añade un ejemplo breve o explica cómo se pronuncia.
+Texto:
+{context}
 
-    Aquí tienes algunos ejemplos de cómo debes realizar la tarea:
+Usa palabras sencillas y frases cortas.
+Explica el significado del término en este contexto.
+No inventes información.
 
-    Ejemplo 1:
-    - Término: App
-    - Contexto: "Los primeros minutos en la app fueron un bombardeo de mensajes..."
-    - Definición formal: Programa preparado para una utilización específica, como el pago de nóminas, el tratamiento de textos, et.
-    - Tu respuesta: Son programas informáticos que se instalan en el teléfono móvil, ordenador o tablet para hacer tareas concretas, como jugar a juegos, escribir mensajes o trabajar con documentos. Por ejemplo, el WhatsApp es una aplicación. También se llaman Apps. Pueden ser de pago o gratis.
+Salida:
+Glosa: ...
+"""
+    }
+],
+        [
+    {
+        "role": "system",
+        "content": "Eres un especialista en lectura fácil, accesibilidad cognitiva y lenguaje claro. Creas glosas breves para explicar anglicismos en español."
+    },
+    {
+        "role": "user",
+        "content": """
+Crea una glosa breve para el término: {term}
 
-    Ejemplo 2:
-    - Término: Phishing
-    - Contexto: "En este escenario, los ataques se volverán cada vez más complejos, y se combinarán contenidos como spam y phishing."
-    - Definición formal: El phishing es una técnica que consiste en el envío de un correo electrónico por parte de un ciberdelincuente a un usuario simulando ser una entidad legítima (red social, banco, institución pública, etc.) con el objetivo de robarle información privada, realizarle un cargo económico o infectar el dispositivo. Para ello, adjuntan archivos infectados o enlaces a páginas fraudulentas en el correo electrónico.
-    - Tu respuesta: Es un tipo de engaño que consiste en el envío de emails falsos para que entres en una página web falsa y escribas tus datos.
+Contexto:
+{context}
 
-    Ejemplo 3:
-    - Término: Router
-    - Contexto: "AlphaShield es un cortafuegos que se instala entre el router o módem del usuario y el ordenador..."
-    - Definición formal: Dispositivo que distribuye el flujo de paquetes de información entre redes de la manera más eficaz.
-    - Tu respuesta: Aparato que sirve para que uno o varios dispositivos como, por ejemplo, ordenadores, teléfonos, tabletas y televisores tengan conexión a Internet. Es una palabra inglesa y se pronuncia ruter."""},
-                
-                {"role": "user", "content": """Ahora es tu turno. Adapta el siguiente anglicismo siguiendo exactamente el mismo estilo de los ejemplos anteriores:
+Instrucciones:
+- Explica el significado del término en este contexto.
+- Usa palabras comunes, concretas y frecuentes.
+- Usa frases cortas.
+- Usa voz activa y orden directo.
+- No hagas una explicación larga.
+- No inventes información.
+- No uses el término para definirse a sí mismo.
+- Usa 1 frase si es posible.
+- Usa 2 frases solo si mejora la comprensión.
+- Máximo recomendado: 25 palabras.
+- Empieza indicando qué tipo de cosa es el término y después explica su función o significado principal.
+- Puedes usar estructuras como: "aparato que...", "persona que...", "actividad que...", "tecnología que...", "sistema que...", "forma de...".
 
-    - Término: '{term}'
-    - Contexto: '{context}'
-    - Definición formal: '{definition}'
-    - Tu respuesta:"""}
-            ]
-        ]
+Salida:
+Glosa: ...
+"""
+    }
+],
+[
+    {
+        "role": "system",
+        "content": "Eres un especialista en lectura fácil, accesibilidad cognitiva y lenguaje claro. Creas glosas breves para un diccionario fácil."
+    },
+    {
+        "role": "user",
+        "content": """
+Crea una glosa breve para el término: {term}
 
+Contexto:
+{context}
+
+Referencia terminológica:
+{original}
+
+Instrucciones:
+- Usa la referencia terminológica como fuente principal de significado.
+- Usa el contexto para seleccionar el significado adecuado.
+- Explica solo el significado relevante en este contexto.
+- Usa palabras comunes, concretas y frecuentes.
+- Usa frases cortas.
+- Usa voz activa y orden directo.
+- Evita tecnicismos.
+- Si un tecnicismo es necesario, explícalo con palabras sencillas.
+- No hagas una explicación enciclopédica.
+- No inventes información.
+- No uses el término para definirse a sí mismo.
+- Usa 1 frase si es posible.
+- Usa 2 frases solo si mejora la comprensión.
+- Máximo recomendado: 25 palabras.
+- Empieza indicando qué tipo de cosa es el término y después explica su función o significado principal.
+
+Salida:
+Glosa: ...
+"""
+    }
+],
+[
+    {
+        "role": "system",
+        "content": "Eres un especialista en lectura fácil, accesibilidad cognitiva y lenguaje claro. Generas glosas breves y accesibles para anglicismos."
+    },
+    {
+        "role": "user",
+        "content": """
+Crea una glosa breve para el término: {term}
+
+Contexto:
+{context}
+
+Referencia terminológica, si existe:
+{definition}
+
+Instrucciones:
+- Si hay referencia terminológica, úsala como fuente principal.
+- Si no hay referencia terminológica, usa el contexto para seleccionar el significado más probable.
+- No inventes información que no esté apoyada por el contexto.
+- Explica solo el significado relevante en este contexto.
+- Usa palabras comunes, concretas y frecuentes.
+- Usa frases cortas.
+- Usa voz activa y orden directo.
+- Evita tecnicismos.
+- Si un tecnicismo es necesario, explícalo.
+- No hagas una explicación larga o académica.
+- No uses el término para definirse a sí mismo.
+- Usa 1 frase si es posible.
+- Usa 2 frases solo si mejora la comprensión.
+- Máximo recomendado: 25 palabras.
+- Empieza indicando qué tipo de cosa es el término y después explica su función o significado principal.
+
+Salida:
+Glosa: ...
+"""
+    }
+],
+[
+    {
+        "role": "system",
+        "content": "Eres un especialista en lectura fácil, accesibilidad cognitiva y lenguaje claro. Creas glosas breves siguiendo el estilo de un diccionario fácil."
+    },
+    {
+        "role": "user",
+        "content": """
+Ejemplo 1:
+Término: Router
+Contexto: El router de casa no funciona bien.
+Referencia terminológica: Dispositivo que distribuye conexiones de red entre varios equipos.
+Glosa: Aparato que permite conectar varios dispositivos a internet. Es una palabra inglesa y se pronuncia "ruter".
+
+Ejemplo 2:
+Término: Hobby
+Contexto: La fotografía es su hobby favorito.
+Referencia terminológica: Actividad que una persona realiza por gusto en su tiempo libre.
+Glosa: Actividad que una persona hace en su tiempo libre porque le gusta.
+
+Ejemplo 3:
+Término: WiFi
+Contexto: El WiFi del hotel no funciona.
+Referencia terminológica: Tecnología inalámbrica para conectar dispositivos a internet.
+Glosa: Tecnología que permite conectar dispositivos a internet sin usar cables.
+
+Ahora crea una glosa para:
+
+Término: {term}
+Contexto:
+{context}
+
+Referencia terminológica:
+{original}
+
+Instrucciones:
+- Sigue el mismo estilo de los ejemplos.
+- Usa palabras comunes y concretas.
+- Usa frases breves.
+- Usa 1 frase si es posible.
+- Usa 2 frases solo si mejora la comprensión.
+- Máximo recomendado: 25 palabras.
+- No hagas una explicación enciclopédica.
+- No inventes información.
+- No uses el término para definirse a sí mismo.
+
+Salida:
+Glosa: ...
+"""
+    }
+],
+[
+    {
+        "role": "system",
+        "content": "Eres un especialista en lectura fácil, accesibilidad cognitiva y lenguaje claro. Adaptas anglicismos y extranjerismos al español siguiendo el estilo de un diccionario fácil."
+    },
+    {
+        "role": "user",
+        "content": """
+Pautas:
+- Usa palabras comunes y frecuentes.
+- Usa frases cortas.
+- Usa voz activa.
+- Usa orden directo.
+- Expresa una idea principal por frase.
+- Evita tecnicismos.
+- Si un tecnicismo es necesario, explícalo.
+- Evita anglicismos innecesarios.
+- Evita dobles negaciones.
+- Evita explicaciones abstractas o enciclopédicas.
+- No infantilices el lenguaje.
+- Explica solo el significado relevante en el contexto.
+- Empieza indicando qué tipo de cosa es el término y después explica su función o significado principal.
+
+Ejemplo 1:
+Término: Marketing
+Contexto: La empresa quiere mejorar su estrategia de marketing.
+Referencia terminológica: Conjunto de técnicas para promocionar y vender productos o servicios.
+Glosa: Conjunto de técnicas para dar a conocer y vender productos o servicios.
+
+Ejemplo 2:
+Término: Mindfulness
+Contexto: Hace ejercicios de mindfulness para relajarse.
+Referencia terminológica: Técnica de concentración y atención plena en el momento presente.
+Glosa: Técnica de relajación que ayuda a concentrarse en el momento presente.
+
+Ejemplo 3:
+Término: Roaming
+Contexto: Activó el roaming para usar internet durante el viaje.
+Referencia terminológica: Servicio que permite usar el móvil en otro país con la red de otra compañía.
+Glosa: Servicio que permite usar el teléfono móvil en otro país.
+
+Ahora crea una glosa para:
+
+Término: {term}
+Contexto:
+{context}
+
+Referencia terminológica:
+{original}
+
+Restricciones:
+- Usa 1 frase si es posible.
+- Usa 2 frases solo si mejora la comprensión.
+- Máximo recomendado: 25 palabras.
+- No uses el término para definirse a sí mismo.
+- Añade pronunciación solo si ayuda realmente.
+- Añade equivalencia en español solo si es útil.
+- No inventes información.
+
+Salida:
+Glosa: ...
+"""
+    }
+]
+]
     model_keys = list(MODELS.keys())
     
     # 3. Iterate over each prompt template (generating folder v1, v2...)
     for idx, prompt_template in enumerate(prompt_templates, start=1):
-        folder_name = f"results_v{idx+3}"  # Start from v4 to avoid confusion with previous versions
+        folder_name = f"results_v{idx}"  
         folder_path = Path(folder_name)
         folder_path.mkdir(parents=True, exist_ok=True)
         
@@ -497,17 +703,18 @@ def main() -> None:
             
             # Use zip to perfectly pair the original dictionary items with the generated results list
             for (field_name, item), generated_text in zip(dataset.items(), model_results_list):
-                
-                model_output_data[field_name] = {
-                    "id_term": item.get("id_term", ""),
-                    "term": item.get("term", ""),
-                    "original": item.get("original", ""),
-                    "adapted": item.get("adapted", ""),
-                    "id_definition": item.get("id_definition", ""),
-                    "id_adaptation": item.get("id_adaptation", ""),
-                    "context": item.get("context", ""),
-                    "simplified": generated_text if generated_text else "(Generation failed)"
-                }
+                term = item.get("term", "")
+                if (term != "App" and field_name != "Router" and model_key != "Phising") or idx < 5: 
+                    model_output_data[field_name] = {
+                        "id_term": item.get("id_term", ""),
+                        "term": item.get("term", ""),
+                        "original": item.get("original", ""),
+                        "adapted": item.get("adapted", ""),
+                        "id_definition": item.get("id_definition", ""),
+                        "id_adaptation": item.get("id_adaptation", ""),
+                        "context": item.get("context", ""),
+                        "simplified": generated_text if generated_text else "(Generation failed)"
+                    }
             
             # 6. Save the model's JSON file inside the specific version folder
             output_file = folder_path / f"{model_key}.json"
