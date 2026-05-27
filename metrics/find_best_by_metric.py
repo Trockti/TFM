@@ -14,8 +14,16 @@ def flatten_dict(d, parent_key='', sep='___'):
         elif isinstance(v, list):
             if len(v) > 0:
                 if isinstance(v, dict):
-                    items.extend(flatten_dict(v, new_key, sep=sep).items())
+                    # Promediar lista de diccionarios (ej. referencias de legibilidad)
+                    merged_dict = {}
+                    all_keys = set().union(*(elem.keys() for elem in v))
+                    for sub_k in all_keys:
+                        sub_vals = [elem[sub_k] for elem in v if sub_k in elem and isinstance(elem[sub_k], (int, float))]
+                        if sub_vals:
+                            merged_dict[sub_k] = sum(sub_vals) / len(sub_vals)
+                    items.extend(flatten_dict(merged_dict, new_key, sep=sep).items())
                 elif isinstance(v, (int, float)):
+                    # Promediar lista de números (ej. métricas SARI)
                     items.append((new_key, sum(v) / len(v)))
         elif isinstance(v, (int, float)):
             items.append((new_key, v))
@@ -26,6 +34,7 @@ def process_specific_metrics_per_folder(base_dir="."):
     # Definir exactamente las métricas que queremos buscar y cómo queremos que se llamen en el reporte
     metricas_objetivo = {
         'similarity___bertscore___bertscore_f1': 'BERTScore F1',
+        'similarity___meaningbert': 'MeaningBERT',  # <--- AÑADIDO
         'similarity___bleu___bleu': 'BLEU',
         'similarity___rouge___rouge-l_f1': 'ROUGE-L F1',
         'similarity___rouge___rouge-1_f1': 'ROUGE-1 F1',
@@ -34,7 +43,9 @@ def process_specific_metrics_per_folder(base_dir="."):
         'factuality___questeval': 'QuestEval',
         'factuality___summac___summac_zs': 'SummaC ZS',
         'factuality___summac___summac_conv': 'SummaC Conv',
-        'readability___simplified___fernandez_huerta': 'Fernandez Huerta (Simplified)'
+        # Rutas de legibilidad corregidas para coincidir con la estructura JSON real:
+        'readability___Fernandez-Huerta___simplified___fernandez_huerta': 'Fernandez Huerta (Simplified)',
+        'readability___Inflesz___simplified___inflesz': 'Inflesz (Simplified)'  # <--- AÑADIDO
     }
 
     folders = glob.glob(os.path.join(base_dir, "results_*"))
@@ -90,15 +101,15 @@ def process_specific_metrics_per_folder(base_dir="."):
                     "Mean_Score": round(best_score, 4)
                 })
             else:
-                print(f"  [!] Advertencia: La métrica {clave_interna} no se encontró en los datos de esta carpeta.")
+                print(f"  [!] Advertencia: La métrica '{clave_interna}' no se encontró en los datos de esta carpeta.")
             
         # 4. Generar y guardar los reportes
         if best_results:
             df_best = pd.DataFrame(best_results)
             
-            # Guardar CSV
+            # Guardar CSV (Añadido punto y coma y coma decimal para formato europeo)
             csv_path = os.path.join(folder, "best_models_by_metric.csv")
-            df_best.to_csv(csv_path, index=False, encoding='utf-8')
+            df_best.to_csv(csv_path, index=False, sep=";", decimal=",", encoding='utf-8')
             
             # Guardar JSON
             json_path = os.path.join(folder, "best_models_by_metric.json")

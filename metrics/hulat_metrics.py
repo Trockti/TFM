@@ -121,7 +121,12 @@ def calculate_readability(text, cfg):
         }
     else:
         return {}
-
+def compute_inflesz(text, cfg):
+    if not text.strip():
+        return {}
+    
+    textstat.set_lang('es')
+    return {"inflesz": round(textstat.szigriszt_pazos(text), 4)}
 # ------------------
 # ------ SARI ------
 # ------------------
@@ -243,19 +248,19 @@ def calculate_moverscore(simplified, target_texts, idf_dict_ref, idf_dict_hyp, c
 # ------------------------------------------
 # ------ MeaningBERT ------
 # ------------------------------------------
-# def calculate_meaningbert(simplified, reference, meaningbert_model):
-#     """
-#     Calcula MeaningBERT entre simplified y reference.
-#     Devuelve un único score (0-1).
-#     """
-#     try:
-#         score = meaningbert_model.compute(predictions=[simplified], references=[reference])
-#         # El score viene en 0-100, lo normalizamos a 0-1
-#         meaningbert_score = round(float(score["scores"][0]) / 100, 4)
-#         return meaningbert_score
-#     except Exception as e:
-#         print(f"⚠️ Error en MeaningBERT: {e}")
-#         return 0.0
+def calculate_meaningbert(simplified, reference, meaningbert_model):
+    """
+    Calcula MeaningBERT entre simplified y reference.
+    Devuelve un único score (0-1).
+    """
+    try:
+        score = meaningbert_model.compute(predictions=[simplified], references=[reference])
+        # El score viene en 0-100, lo normalizamos a 0-1
+        meaningbert_score = round(float(score["scores"][0]) / 100, 4)
+        return meaningbert_score
+    except Exception as e:
+        print(f"⚠️ Error en MeaningBERT: {e}")
+        return 0.0
 
 # ------------------
 # ------ BLEU ------
@@ -296,9 +301,13 @@ def calculate_bleu(simplified, target_texts):
 # ------ ROUGE ------
 # -------------------
 def calculate_rouge(simplified, target_texts):
+    import re
     rouge = Rouge()
     
-    if not simplified.strip() or not all(t.strip() for t in target_texts):
+    # Check if simplified is empty, whitespace-only, or contains only punctuation
+    simplified_clean = re.sub(r'[^\w\s]', '', simplified.strip())
+    
+    if not simplified_clean or not all(t.strip() for t in target_texts):
         empty_res = [0.0] * len(target_texts)
         return {
             "rouge-1": {"rouge-1_f1": empty_res, "rouge-1_precision": empty_res, "rouge-1_recall": empty_res},
@@ -342,6 +351,7 @@ def calculate_summac(summac_zs_model, summac_conv_model, original, simplified):
     except Exception as e:
         print(f"\n⚠️ Advertencia: Fallo en SummaC (probablemente texto muy largo). Asignando 0.0. Error: {e}")
         return 0.0, 0.0
+
 
 # ***************************************
 # ****** EVALUACIÓN REESTRUCTURADA ******
@@ -389,9 +399,9 @@ def evaluate_pair(name, term, id_term, original, id_original, simplified, refere
         "rouge-l_recall": round(r["rouge-l"]["rouge-l_recall"][0], 4)
     }
     # --- MeaningBERT ---
-    # meaningbert_model = evaluate.load("davebulaval/meaningbert")
+    meaningbert_model = evaluate.load("davebulaval/meaningbert")
 
-    # meaningbert_val = calculate_meaningbert(simplified, primary_reference, meaningbert_model)
+    meaningbert_val = calculate_meaningbert(simplified, primary_reference, meaningbert_model)
 
     # --- ALIGNScore ---
     alignscore = round(Align_Score(original, simplified, align_scorer), 4)
@@ -407,6 +417,9 @@ def evaluate_pair(name, term, id_term, original, id_original, simplified, refere
     readability_original = calculate_readability(original, cfg)
     readability_refs = [calculate_readability(ref, cfg) for ref in references_text]
     readability_simplified = calculate_readability(simplified, cfg)
+    inflesz_original = compute_inflesz(original, cfg)
+    inflesz_refs = [compute_inflesz(ref, cfg) for ref in references_text]
+    inflesz_simplified = compute_inflesz(simplified, cfg)
 
     # =============
     #      JSON 
@@ -437,6 +450,7 @@ def evaluate_pair(name, term, id_term, original, id_original, simplified, refere
                     "bertscore_recall": bert_R,
                     "bertscore_f1": bert_F1
                 },
+                "meaningbert": meaningbert_val,
                 "moverscore": mover_val,
                 "sas": sas_val,
                 "bleu": bleu_vals,
@@ -451,9 +465,16 @@ def evaluate_pair(name, term, id_term, original, id_original, simplified, refere
                 "questeval": quest_val
             },
             "readability": {
-                "original": readability_original,
-                "references": readability_refs,
-                "simplified": readability_simplified
+                "Fernandez-Huerta": {
+                    "original": readability_original,
+                    "references": readability_refs,
+                    "simplified": readability_simplified
+                },
+                "Inflesz": {
+                    "original": inflesz_original,
+                    "references": inflesz_refs,
+                    "simplified": inflesz_simplified
+                }
             }
         }
     }
@@ -469,8 +490,12 @@ def results_to_csv(results, output_path):
     csv_rows = []
 
     for r in results:
+        # 0. Access the nested readability dicts correctly
+        fh_data = r["scores"]["readability"]["Fernandez-Huerta"]
+        inf_data = r["scores"]["readability"]["Inflesz"]
+
         # 1. Determinar el número real de referencias evaluadas
-        num_refs = len(r["scores"]["readability"]["references"])
+        num_refs = len(fh_data["references"])
         
         # 2. Asegurar que los IDs de referencia sean siempre una lista
         ref_ids = r["id_reference_text"]
@@ -488,13 +513,19 @@ def results_to_csv(results, output_path):
         mover = r["scores"]["similarity"]["moverscore"]
         sas_st = r["scores"]["similarity"]["sas"]
         quest = r["scores"]["factuality"]["questeval"]
+        meaningbert = r["scores"]["similarity"]["meaningbert"]
         
-        ro = r["scores"]["readability"]["original"]
-        rs = r["scores"]["readability"]["simplified"]
+        # Extract readability metrics
+        ro_fh = fh_data["original"]
+        rs_fh = fh_data["simplified"]
+        
+        ro_inf = inf_data["original"]
+        rs_inf = inf_data["simplified"]
 
         # Iterar sobre el conteo seguro de referencias evaluadas
         for i in range(num_refs):
-            rr = r["scores"]["readability"]["references"][i]
+            rr_fh = fh_data["references"][i]
+            rr_inf = inf_data["references"][i]
             
             # Asignar el ID correcto (si hay menos IDs que textos, reusamos el último disponible)
             current_ref_id = ref_ids[i] if i < len(ref_ids) else ref_ids[-1]
@@ -514,7 +545,8 @@ def results_to_csv(results, output_path):
                 "bertscore_precision": bert["bertscore_precision"],
                 "bertscore_recall": bert["bertscore_recall"],
                 "bertscore_f1": bert["bertscore_f1"],
-
+                
+                "meaningbert": meaningbert,
                 "moverscore": mover,
                 "sas": sas_st,
 
@@ -545,17 +577,21 @@ def results_to_csv(results, output_path):
                 "summac_conv": r["scores"]["factuality"]["summac"]["summac_conv"],
                 "questeval": quest,
 
-                # Readability
-                "readability_original": list(ro.values())[0] if ro else None,
-                "readability_reference": list(rr.values())[0] if rr else None,
-                "readability_simplified": list(rs.values())[0] if rs else None,
+                # Readability (Fernandez-Huerta / Flesch)
+                "readability_original": list(ro_fh.values())[0] if ro_fh else None,
+                "readability_reference": list(rr_fh.values())[0] if rr_fh else None,
+                "readability_simplified": list(rs_fh.values())[0] if rs_fh else None,
+                
+                # Inflesz
+                "inflesz_original": list(ro_inf.values())[0] if ro_inf else None,
+                "inflesz_reference": list(rr_inf.values())[0] if rr_inf else None,
+                "inflesz_simplified": list(rs_inf.values())[0] if rs_inf else None,
             }
 
             csv_rows.append(row)
 
     df = pd.DataFrame(csv_rows)
     df.to_csv(output_path, index=False, sep=";", encoding="utf-8", decimal=",")
-
 # **************************
 # *** PARSEAR ARGUMENTOS ***
 # **************************
