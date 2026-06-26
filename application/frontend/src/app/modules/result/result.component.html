@@ -1,0 +1,79 @@
+<div class="tutorial">
+  <p>
+    Las palabras difíciles están resaltadas en 
+    <span class="word">azul</span>.
+    Cuando pinches encima de una palabra difícil saldrá un cuadro
+    con un pictograma, una definición y unos sinónimos.
+  </p>
+</div>
+
+<div class="result">
+    <div class="result_dictionary" [hidden]="showResultText">
+      <div class="result_dictionary__help" *ngIf="!selected; else elseBlock">
+        <div class="result_dictionary__help__icon">
+          <img src="../../../assets/question.svg" alt="Ayuda" />
+        </div>
+        <div class="result_dictionary__help__text">
+          Elige una <span class="word">palabra</span> de tu
+          texto que no entiendas y te la explicamos.
+        </div>
+      </div>
+      <ng-template #elseBlock>
+        <div class="result_dictionary__content" *ngIf="!loading; else elseLoading">
+          <div class="result_dictionary__head">
+            <img class="result_dictionary__head__back" src="../../../assets/back.svg" alt="Back" (click)="goBack()" />
+          </div>
+
+          <h2 class="result_dictionary__head__word" id="result_dictionary__head__word">
+            {{ word.word }}
+          </h2>
+          
+          <div class="result_dictionary__head__avatar">
+            <img *ngIf="word.pictogram==null" src="../../../assets/avatar.svg" alt="Avatar" />
+            <img *ngIf="word.pictogram!=null" src='{{word.pictogram}}' alt='Arasaac'>
+          </div>
+
+          <div class="sinonimos">
+            <ul class="result_dictionary__head__synonyms">
+              <li *ngFor="let synonym of word.synonyms | slice:1:4">
+                  {{synonym}}
+              </li>
+            </ul>
+          </div>
+
+          <div class="result_dictionary__rae">
+            <div class="result_dictionary__rae__logo">
+              <img *ngIf="word.source==='rae'; else elseImg" src="../../../assets/dle.jpg" alt="Diccionario rae">
+              <ng-template #elseImg>
+                <img src="../../../assets/easy.svg" alt="Diccionario fácil">
+              </ng-template>
+            </div>
+            <div class="result_dictionary__text">
+              {{word.definition}}
+            </div>
+          </div>
+
+        </div>
+        <ng-template #elseLoading>
+          <mat-spinner aria-label="Cargando información" style="margin:0 auto;"></mat-spinner>
+        </ng-template>
+      </ng-template>
+
+    </div>
+
+    <div class="result_text" [hidden]="!showResultText">
+      <h2>Tu texto es:</h2>
+      <p id="text">{{text}}</p>
+    </div>
+
+  </div>
+
+  <div class="back">
+    <button type="button">
+      <a routerLink='/'>
+      <img src="../../../assets/boton_otroTexto.png" alt="Botón para elegir otro texto">
+      </a>
+      
+      
+    </button>
+  </div>

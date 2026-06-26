@@ -1,0 +1,10 @@
+[
+    {
+        "role": "system",
+        "content": "Eres un especialista en lectura fácil, accesibilidad cognitiva y lenguaje claro. Creas glosas breves para explicar anglicismos en español."
+    },
+    {
+        "role": "user",
+        "content": "Crea una glosa breve para el término: {term}\n\nContexto:\n{context}\n\nInstrucciones:\n- Explica el significado del término en este contexto.\n- Usa palabras comunes, concretas y frecuentes.\n- Usa frases cortas.\n- Usa voz activa y orden directo.\n- No hagas una explicación larga.\n- No inventes información.\n- No uses el término para definirse a sí mismo.\n- Usa 1 frase si es posible.\n- Usa 2 frases solo si mejora la comprensión.\n- Máximo recomendado: 25 palabras.\n- Empieza indicando qué tipo de cosa es el término y después explica su función o significado principal.\n- Puedes usar estructuras como: \"aparato que...\", \"persona que...\", \"actividad que...\", \"tecnología que...\", \"sistema que...\", \"forma de...\".\n\nSalida:\nGlosa: ..."
+    }
+]

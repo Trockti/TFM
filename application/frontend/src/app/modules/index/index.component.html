@@ -1,0 +1,30 @@
+﻿<div class="index_tutorial">
+  <h1>
+    ¿Qué es easier?
+  </h1>
+  <p>
+    easier es una aplicación que te va a ayudar a entender las palabras
+    difíciles. 
+  </p>
+  <h1>
+    ¿Cómo funciona easier?
+  </h1>
+  <p>
+    Copia tu texto en el cuadro de abajo. 
+  <br>
+    Pulsa el botón para ver las palabras difíciles. 
+  </p>
+</div>
+<div class="text-form">
+  <form [formGroup]="easierForm" (ngSubmit)="onSubmit()" autocomplete="on">
+    <div>
+      <label for="Textbox">Texto a simplificar</label>
+      <textarea formControlName="text" id="Textbox" required
+        placeholder="Pon tu texto aquí."
+      ></textarea>
+    </div>
+    <button type="submit" (click)="beaclick()"  tabindex="0" name="bea" >
+      <img src="../../../assets/boton_masFacil_S.png" alt="Botón BEA"/>
+    </button>
+  </form>
+</div>

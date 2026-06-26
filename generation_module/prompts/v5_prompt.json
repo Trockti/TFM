@@ -1,0 +1,10 @@
+[
+    {
+        "role": "system",
+        "content": "Eres un especialista en lectura fácil, accesibilidad cognitiva y lenguaje claro. Creas glosas breves siguiendo el estilo de un diccionario fácil."
+    },
+    {
+        "role": "user",
+        "content": "Ejemplo 1:\nTérmino: Router\nContexto: El router de casa no funciona bien.\nReferencia terminológica: Dispositivo que distribuye conexiones de red entre varios equipos.\nGlosa: Aparato que permite conectar varios dispositivos a internet. Es una palabra inglesa y se pronuncia \"ruter\".\n\nEjemplo 2:\nTérmino: Hobby\nContexto: La fotografía es su hobby favorito.\nReferencia terminológica: Actividad que una persona realiza por gusto en su tiempo libre.\nGlosa: Actividad que una persona hace en su tiempo libre porque le gusta.\n\nEjemplo 3:\nTérmino: WiFi\nContexto: El WiFi del hotel no funciona.\nReferencia terminológica: Tecnología inalámbrica para conectar dispositivos a internet.\nGlosa: Tecnología que permite conectar dispositivos a internet sin usar cables.\n\nAhora crea una glosa para:\n\nTérmino: {term}\nContexto:\n{context}\n\nReferencia terminológica:\n{original}\n\nInstrucciones:\n- Sigue el mismo estilo de los ejemplos.\n- Usa palabras comunes y concretas.\n- Usa frases breves.\n- Usa 1 frase si es posible.\n- Usa 2 frases solo si mejora la comprensión.\n- Máximo recomendado: 25 palabras.\n- No hagas una explicación enciclopédica.\n- No inventes información.\n- No uses el término para definirse a sí mismo.\n\nSalida:\nGlosa: ..."
+    }
+]

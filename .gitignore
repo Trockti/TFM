@@ -2,9 +2,8 @@
 /data
 .env
 *.log
-*.json
 *pycache*
-*.csv
+borrowing_classifier_model_extended_v2
 # ==============================
 # Adapted metrics
 # ==============================

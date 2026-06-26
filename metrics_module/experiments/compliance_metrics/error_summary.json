@@ -1,0 +1,194 @@
+[
+    {
+        "Folder": "results_v5",
+        "Model": "ministral",
+        "Total_Items_With_Error": 83,
+        "Error_Words (>25)": 76,
+        "Error_Phrases (>2)": 76,
+        "Error_Language (!=es)": 0
+    },
+    {
+        "Folder": "results_v5",
+        "Model": "rigochat",
+        "Total_Items_With_Error": 55,
+        "Error_Words (>25)": 40,
+        "Error_Phrases (>2)": 32,
+        "Error_Language (!=es)": 6
+    },
+    {
+        "Folder": "results_v5",
+        "Model": "llama",
+        "Total_Items_With_Error": 87,
+        "Error_Words (>25)": 81,
+        "Error_Phrases (>2)": 62,
+        "Error_Language (!=es)": 2
+    },
+    {
+        "Folder": "results_v5",
+        "Model": "latxa",
+        "Total_Items_With_Error": 15,
+        "Error_Words (>25)": 15,
+        "Error_Phrases (>2)": 13,
+        "Error_Language (!=es)": 0
+    },
+    {
+        "Folder": "results_v3",
+        "Model": "ministral",
+        "Total_Items_With_Error": 85,
+        "Error_Words (>25)": 83,
+        "Error_Phrases (>2)": 50,
+        "Error_Language (!=es)": 0
+    },
+    {
+        "Folder": "results_v3",
+        "Model": "rigochat",
+        "Total_Items_With_Error": 21,
+        "Error_Words (>25)": 8,
+        "Error_Phrases (>2)": 9,
+        "Error_Language (!=es)": 7
+    },
+    {
+        "Folder": "results_v3",
+        "Model": "llama",
+        "Total_Items_With_Error": 77,
+        "Error_Words (>25)": 69,
+        "Error_Phrases (>2)": 29,
+        "Error_Language (!=es)": 4
+    },
+    {
+        "Folder": "results_v3",
+        "Model": "latxa",
+        "Total_Items_With_Error": 45,
+        "Error_Words (>25)": 44,
+        "Error_Phrases (>2)": 8,
+        "Error_Language (!=es)": 0
+    },
+    {
+        "Folder": "results_v6",
+        "Model": "ministral",
+        "Total_Items_With_Error": 106,
+        "Error_Words (>25)": 106,
+        "Error_Phrases (>2)": 105,
+        "Error_Language (!=es)": 0
+    },
+    {
+        "Folder": "results_v6",
+        "Model": "rigochat",
+        "Total_Items_With_Error": 65,
+        "Error_Words (>25)": 53,
+        "Error_Phrases (>2)": 49,
+        "Error_Language (!=es)": 5
+    },
+    {
+        "Folder": "results_v6",
+        "Model": "llama",
+        "Total_Items_With_Error": 88,
+        "Error_Words (>25)": 81,
+        "Error_Phrases (>2)": 79,
+        "Error_Language (!=es)": 4
+    },
+    {
+        "Folder": "results_v6",
+        "Model": "latxa",
+        "Total_Items_With_Error": 49,
+        "Error_Words (>25)": 49,
+        "Error_Phrases (>2)": 41,
+        "Error_Language (!=es)": 0
+    },
+    {
+        "Folder": "results_v2",
+        "Model": "ministral",
+        "Total_Items_With_Error": 80,
+        "Error_Words (>25)": 78,
+        "Error_Phrases (>2)": 32,
+        "Error_Language (!=es)": 0
+    },
+    {
+        "Folder": "results_v2",
+        "Model": "rigochat",
+        "Total_Items_With_Error": 8,
+        "Error_Words (>25)": 4,
+        "Error_Phrases (>2)": 1,
+        "Error_Language (!=es)": 3
+    },
+    {
+        "Folder": "results_v2",
+        "Model": "llama",
+        "Total_Items_With_Error": 101,
+        "Error_Words (>25)": 99,
+        "Error_Phrases (>2)": 26,
+        "Error_Language (!=es)": 0
+    },
+    {
+        "Folder": "results_v2",
+        "Model": "latxa",
+        "Total_Items_With_Error": 24,
+        "Error_Words (>25)": 22,
+        "Error_Phrases (>2)": 6,
+        "Error_Language (!=es)": 2
+    },
+    {
+        "Folder": "results_v4",
+        "Model": "ministral",
+        "Total_Items_With_Error": 86,
+        "Error_Words (>25)": 84,
+        "Error_Phrases (>2)": 50,
+        "Error_Language (!=es)": 0
+    },
+    {
+        "Folder": "results_v4",
+        "Model": "rigochat",
+        "Total_Items_With_Error": 21,
+        "Error_Words (>25)": 15,
+        "Error_Phrases (>2)": 14,
+        "Error_Language (!=es)": 2
+    },
+    {
+        "Folder": "results_v4",
+        "Model": "llama",
+        "Total_Items_With_Error": 86,
+        "Error_Words (>25)": 83,
+        "Error_Phrases (>2)": 36,
+        "Error_Language (!=es)": 1
+    },
+    {
+        "Folder": "results_v4",
+        "Model": "latxa",
+        "Total_Items_With_Error": 37,
+        "Error_Words (>25)": 35,
+        "Error_Phrases (>2)": 2,
+        "Error_Language (!=es)": 2
+    },
+    {
+        "Folder": "results_v1",
+        "Model": "ministral",
+        "Total_Items_With_Error": 112,
+        "Error_Words (>25)": 112,
+        "Error_Phrases (>2)": 111,
+        "Error_Language (!=es)": 0
+    },
+    {
+        "Folder": "results_v1",
+        "Model": "rigochat",
+        "Total_Items_With_Error": 87,
+        "Error_Words (>25)": 87,
+        "Error_Phrases (>2)": 4,
+        "Error_Language (!=es)": 0
+    },
+    {
+        "Folder": "results_v1",
+        "Model": "llama",
+        "Total_Items_With_Error": 103,
+        "Error_Words (>25)": 103,
+        "Error_Phrases (>2)": 28,
+        "Error_Language (!=es)": 0
+    },
+    {
+        "Folder": "results_v1",
+        "Model": "latxa",
+        "Total_Items_With_Error": 110,
+        "Error_Words (>25)": 110,
+        "Error_Phrases (>2)": 28,
+        "Error_Language (!=es)": 0
+    }
+]

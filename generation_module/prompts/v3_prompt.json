@@ -1,0 +1,10 @@
+[
+    {
+        "role": "system",
+        "content": "Eres un especialista en lectura fácil, accesibilidad cognitiva y lenguaje claro. Creas glosas breves para un diccionario fácil."
+    },
+    {
+        "role": "user",
+        "content": "Crea una glosa breve para el término: {term}\n\nContexto:\n{context}\n\nReferencia terminológica:\n{original}\n\nInstrucciones:\n- Usa la referencia terminológica como fuente principal de significado.\n- Usa el contexto para seleccionar el significado adecuado.\n- Explica solo el significado relevante en este contexto.\n- Usa palabras comunes, concretas y frecuentes.\n- Usa frases cortas.\n- Usa voz activa y orden directo.\n- Evita tecnicismos.\n- Si un tecnicismo es necesario, explícalo con palabras sencillas.\n- No hagas una explicación enciclopédica.\n- No inventes información.\n- No uses el término para definirse a sí mismo.\n- Usa 1 frase si es posible.\n- Usa 2 frases solo si mejora la comprensión.\n- Máximo recomendado: 25 palabras.\n- Empieza indicando qué tipo de cosa es el término y después explica su función o significado principal.\n\nSalida:\nGlosa: ..."
+    }
+]

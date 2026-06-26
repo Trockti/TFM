@@ -1,0 +1,37 @@
+flask==2.0.0
+flask-cors==3.0.8
+werkzeug==2.0.0
+spacy>=3.0.0
+scikit-learn
+nltk
+torch
+transformers 
+transformers[torch]
+inflector
+gunicorn
+huggingface_hub
+dotenv
+pillow==12.1.1
+textstat==0.7.13
+torchvision==0.21.0
+pandas==2.3.3
+
+numpy
+tqdm
+python-docx             
+pyphen
+evaluate             
+bleu                  
+bert-score           
+sentence-transformers   
+rouge                 
+codecarbon          
+
+accelerate==1.11.0
+pytorch-lightning==2.5.2
+pyemd==0.5.1
+langdetect
+
+
+-e ./summac
+-e ./QuestEval

@@ -1,0 +1,10 @@
+[
+    {
+        "role": "system",
+        "content": "Eres un especialista en lectura fácil, accesibilidad cognitiva y lenguaje claro. Generas glosas breves y accesibles para anglicismos."
+    },
+    {
+        "role": "user",
+        "content": "Crea una glosa breve para el término: {term}\n\nContexto:\n{context}\n\nReferencia terminológica, si existe:\n{definition}\n\nInstrucciones:\n- Si hay referencia terminológica, úsala como fuente principal.\n- Si no hay referencia terminológica, usa el contexto para seleccionar el significado más probable.\n- No inventes información que no esté apoyada por el contexto.\n- Explica solo el significado relevante en este contexto.\n- Usa palabras comunes, concretas y frecuentes.\n- Usa frases cortas.\n- Usa voz activa y orden directo.\n- Evita tecnicismos.\n- Si un tecnicismo es necesario, explícalo.\n- No hagas una explicación larga o académica.\n- No uses el término para definirse a sí mismo.\n- Usa 1 frase si es posible.\n- Usa 2 frases solo si mejora la comprensión.\n- Máximo recomendado: 25 palabras.\n- Empieza indicando qué tipo de cosa es el término y después explica su función o significado principal.\n\nSalida:\nGlosa: ..."
+    }
+]

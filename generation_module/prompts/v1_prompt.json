@@ -1,0 +1,10 @@
+[
+    {
+        "role": "system",
+        "content": "Eres un especialista en lectura fácil y lenguaje claro."
+    },
+    {
+        "role": "user",
+        "content": "Crea una glosa breve para el término: {term}\n\nTexto:\n{context}\n\nUsa palabras sencillas y frases cortas.\nExplica el significado del término en este contexto.\nNo inventes información.\n\nSalida:\nGlosa: ..."
+    }
+]

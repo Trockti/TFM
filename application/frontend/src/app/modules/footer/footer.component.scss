@@ -1,0 +1,160 @@
+:root {
+    --grey: #808080;
+    --light-blue: #ebf1f7;
+    --dark-blue: #004996;
+  }
+  
+  body {
+    font-family: "Rubik", sans-serif;
+    line-height: 1.5rem;
+  }
+  
+  a {
+    color: var(--dark-blue);
+    text-decoration: underline;
+  }
+  
+  a:hover {
+    color: var(--dark-blue);
+    text-decoration: none;
+  }
+  
+  .hidden {
+    visibility: hidden;
+    font-size: 0.1rem;
+  }
+  
+  /* MISC */
+  .wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 78px;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-x: none;
+    overflow-y: scroll;
+  }
+  
+  .content {
+    padding: 0 1rem;
+  }
+  
+  .content img {
+    margin: 1rem 0;
+    max-width: 100%;
+  }
+  
+  .content .float-left {
+    float: left;
+    margin: 0 1rem 0 0;
+  }
+  
+  .content .float-right {
+    float: right;
+    margin: 0 0 0 1rem;
+  }
+  
+  /* LOGO */
+  .logo {
+    margin: 1.5rem 0;
+  }
+  
+  .logo img {
+    display: block;
+    margin: 0 auto;
+    width: 65%;
+  }
+  
+  
+  /* LOGOS */
+  .logos {
+    margin: auto 0 0;
+    padding: 20px 20px 8px 20px;
+    list-style: none;
+    display: flex;
+  }
+  
+  .logos li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .logos li:first-child {
+    padding-left: 0;
+  }
+  
+  .logos li:last-child {
+    padding-right: 0;
+  }
+  
+  .logos svg {
+    width: 100%;
+    display: block;
+    fill: var(--grey);
+  }
+  
+  @media (min-width: 768px) {
+    body {
+      height: 80vh;
+      background-image: url('../../../assets/bg-left.svg'), url('../../../assets/bg-right.svg');
+      background-size: 150px;
+      background-position: 99% center, 1% center;
+      background-repeat: no-repeat, no-repeat;
+    }
+  
+    .wrapper {
+      width: 750px;
+      margin: 0 auto;
+      bottom: 0;
+      overflow-y: inherit;
+    }
+  
+    .content {
+      padding: 0;
+    }
+  
+    /* LOGO */
+    .logo {
+      margin-top: 25px;
+    }
+  
+    .logo img {
+      width: 275px;
+      margin: 0;
+    }
+  
+    /* LOGOS */
+    .logos {
+      margin: 50px 0 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      background: #000;
+    }
+  
+    .logos li {
+      padding: 30px;
+    }
+  
+    .logos svg {
+      display: block;
+      margin: 0 auto;
+      width: 70%;
+      fill: #fff;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .wrapper {
+      width: 950px;
+    }
+  
+    .result_dictionary__head__avatar img {
+      width: 40%;
+    }
+  }
+  

@@ -1,0 +1,10 @@
+[
+    {
+        "role": "system",
+        "content": "Eres un especialista en lectura fácil, accesibilidad cognitiva y lenguaje claro. Adaptas anglicismos y extranjerismos al español siguiendo el estilo de un diccionario fácil."
+    },
+    {
+        "role": "user",
+        "content": "Pautas:\n- Usa palabras comunes y frecuentes.\n- Usa frases cortas.\n- Usa voz activa.\n- Usa orden directo.\n- Expresa una idea principal por frase.\n- Evita tecnicismos.\n- Si un tecnicismo es necesario, explícalo.\n- Evita anglicismos innecesarios.\n- Evita dobles negaciones.\n- Evita explicaciones abstractas o enciclopédicas.\n- No infantilices el lenguaje.\n- Explica solo el significado relevante en el contexto.\n- Empieza indicando qué tipo de cosa es el término y después explica su función o significado principal.\n\nEjemplo 1:\nTérmino: Marketing\nContexto: La empresa quiere mejorar su estrategia de marketing.\nReferencia terminológica: Conjunto de técnicas para promocionar y vender productos o servicios.\nGlosa: Conjunto de técnicas para dar a conocer y vender productos o servicios.\n\nEjemplo 2:\nTérmino: Mindfulness\nContexto: Hace ejercicios de mindfulness para relajarse.\nReferencia terminológica: Técnica de concentración y atención plena en el momento presente.\nGlosa: Técnica de relajación que ayuda a concentrarse en el momento presente.\n\nEjemplo 3:\nTérmino: Roaming\nContexto: Activó el roaming para usar internet durante el viaje.\nReferencia terminológica: Servicio que permite usar el móvil en otro país con la red de otra compañía.\nGlosa: Servicio que permite usar el teléfono móvil en otro país.\n\nAhora crea una glosa para:\n\nTérmino: {term}\nContexto:\n{context}\n\nReferencia terminológica:\n{original}\n\nRestricciones:\n- Usa 1 frase si es posible.\n- Usa 2 frases solo si mejora la comprensión.\n- Máximo recomendado: 25 palabras.\n- No uses el término para definirse a sí mismo.\n- Añade pronunciación solo si ayuda realmente.\n- Añade equivalencia en español solo si es útil.\n- No inventes información.\n\nSalida:\nGlosa: ..."
+    }
+]

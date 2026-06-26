@@ -1,0 +1,30 @@
+h1 {
+    padding-left: 10px;
+}
+
+p,li {
+    font-family: "Rubik", sans-serif;
+    font-size: large;
+    font-weight: 400;
+    color: #212529;
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 0px;
+}
+li {
+	margin-top: 0;
+    margin-bottom: 1rem;
+    line-height: 1.5rem;
+    font-family: "Rubik", sans-serif;
+    font-size: large;
+    font-weight: 400;
+    color: #212529;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

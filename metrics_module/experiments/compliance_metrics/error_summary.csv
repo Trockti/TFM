@@ -1,0 +1,25 @@
+Folder,Model,Total_Items_With_Error,Error_Words (>25),Error_Phrases (>2),Error_Language (!=es)
+results_v5,ministral,83,76,76,0
+results_v5,rigochat,55,40,32,6
+results_v5,llama,87,81,62,2
+results_v5,latxa,15,15,13,0
+results_v3,ministral,85,83,50,0
+results_v3,rigochat,21,8,9,7
+results_v3,llama,77,69,29,4
+results_v3,latxa,45,44,8,0
+results_v6,ministral,106,106,105,0
+results_v6,rigochat,65,53,49,5
+results_v6,llama,88,81,79,4
+results_v6,latxa,49,49,41,0
+results_v2,ministral,80,78,32,0
+results_v2,rigochat,8,4,1,3
+results_v2,llama,101,99,26,0
+results_v2,latxa,24,22,6,2
+results_v4,ministral,86,84,50,0
+results_v4,rigochat,21,15,14,2
+results_v4,llama,86,83,36,1
+results_v4,latxa,37,35,2,2
+results_v1,ministral,112,112,111,0
+results_v1,rigochat,87,87,4,0
+results_v1,llama,103,103,28,0
+results_v1,latxa,110,110,28,0
