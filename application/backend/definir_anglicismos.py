@@ -126,31 +126,37 @@ def definir_anglicismo(palabra, frase=None, ruta_dataset="./data/normalized_defi
     Genera la definición de un anglicismo utilizando modelos y los nuevos prompts estructurados.
     """
     definicion_dataset = buscar_en_dataset(palabra, ruta_dataset)
-    print(f"Definición encontrada en dataset: {definicion_dataset}\n") if definicion_dataset else print("No se encontró la palabra en el dataset local.")
+    
+    if definicion_dataset:
+        print(f"Definición encontrada en dataset: {definicion_dataset}\n")
+        print(f"¡Se encontró '{palabra}' en el dataset local!")
+    else:
+        print("No se encontró la palabra en el dataset local.")
+        
+    # Manejar el contexto por si viene vacío
+    contexto_str = frase if frase else "Sin contexto específico."
     
     # Bloque dinámico para el Prompt 2
     referencia_bloque = f"Referencia terminológica:\n{definicion_dataset}\n\n" if definicion_dataset else ""
-    
-    if definicion_dataset:
-        print(f"¡Se encontró '{palabra}' en el dataset local!")
 
     # ==========================================
     # INTENTO 1: Zero-Shot (Basado en reglas)
     # ==========================================
     prompt_1 = [
-    {
-        "role": "system",
-        "content": "Eres un especialista en lectura fácil, accesibilidad cognitiva y lenguaje claro. Creas glosas breves para explicar anglicismos en español."
-    },
-    {
-        "role": "user",
-        "content": "Crea una glosa breve para el término: {term}\n\nContexto:\n{context}\n\nInstrucciones:\n- Explica el significado del término en este contexto.\n- Usa palabras comunes, concretas y frecuentes.\n- Usa frases cortas.\n- Usa voz activa y orden directo.\n- No hagas una explicación larga.\n- No inventes información.\n- No uses el término para definirse a sí mismo.\n- Usa 1 frase si es posible.\n- Usa 2 frases solo si mejora la comprensión.\n- Máximo recomendado: 25 palabras.\n- Empieza indicando qué tipo de cosa es el término y después explica su función o significado principal.\n- Puedes usar estructuras como: \"aparato que...\", \"persona que...\", \"actividad que...\", \"tecnología que...\", \"sistema que...\", \"forma de...\".\n\nSalida:\nGlosa: ..."
-    }
-]
+        {
+            "role": "system",
+            "content": "Eres un especialista en lectura fácil, accesibilidad cognitiva y lenguaje claro. Creas glosas breves para explicar anglicismos en español."
+        },
+        {
+            "role": "user",
+            # Se usa f-string para inyectar {palabra} y {contexto_str}
+            "content": f"Crea una glosa breve para el término: {palabra}\n\nContexto:\n{contexto_str}\n\nInstrucciones:\n- Explica el significado del término en este contexto.\n- Usa palabras comunes, concretas y frecuentes.\n- Usa frases cortas.\n- Usa voz activa y orden directo.\n- No hagas una explicación larga.\n- No inventes información.\n- No uses el término para definirse a sí mismo.\n- Usa 1 frase si es posible.\n- Usa 2 frases solo si mejora la comprensión.\n- Máximo recomendado: 25 palabras.\n- Empieza indicando qué tipo de cosa es el término y después explica su función o significado principal.\n- Puedes usar estructuras como: \"aparato que...\", \"persona que...\", \"actividad que...\", \"tecnología que...\", \"sistema que...\", \"forma de...\".\n\nSalida:\nGlosa: ..."
+        }
+    ]
 
     
     print("--- GENERANDO INTENTO 1 (Zero-Shot) ---")
-    res_1 = generate_with_model(prompts=[prompt_1], model_key="latxa", max_length=256, temperature=0.2, top_p=0.9)
+    res_1 = generate_with_model(prompts=[prompt_1], model_key="latxa", max_length=256, temperature=0.2, top_p=0.9, device="cuda")
     
     texto_1 = res_1[0] if (res_1 and res_1[0] is not None) else ""
     print(f"Texto generado en intento 1:\n{texto_1}\n")
@@ -163,19 +169,20 @@ def definir_anglicismo(palabra, frase=None, ruta_dataset="./data/normalized_defi
     # INTENTO 2: Few-Shot (Basado en ejemplos y referencia)
     # ==========================================
     prompt_2 = [
-    {
-        "role": "system",
-        "content": "Eres un especialista en lectura fácil, accesibilidad cognitiva y lenguaje claro. Creas glosas breves siguiendo el estilo de un diccionario fácil."
-    },
-    {
-        "role": "user",
-        "content": "Ejemplo 1:\nTérmino: Router\nContexto: El router de casa no funciona bien.\nReferencia terminológica: Dispositivo que distribuye conexiones de red entre varios equipos.\nGlosa: Aparato que permite conectar varios dispositivos a internet. Es una palabra inglesa y se pronuncia \"ruter\".\n\nEjemplo 2:\nTérmino: Hobby\nContexto: La fotografía es su hobby favorito.\nReferencia terminológica: Actividad que una persona realiza por gusto en su tiempo libre.\nGlosa: Actividad que una persona hace en su tiempo libre porque le gusta.\n\nEjemplo 3:\nTérmino: WiFi\nContexto: El WiFi del hotel no funciona.\nReferencia terminológica: Tecnología inalámbrica para conectar dispositivos a internet.\nGlosa: Tecnología que permite conectar dispositivos a internet sin usar cables.\n\nAhora crea una glosa para:\n\nTérmino: {term}\nContexto:\n{context}\n\nReferencia terminológica:\n{original}\n\nInstrucciones:\n- Sigue el mismo estilo de los ejemplos.\n- Usa palabras comunes y concretas.\n- Usa frases breves.\n- Usa 1 frase si es posible.\n- Usa 2 frases solo si mejora la comprensión.\n- Máximo recomendado: 25 palabras.\n- No hagas una explicación enciclopédica.\n- No inventes información.\n- No uses el término para definirse a sí mismo.\n\nSalida:\nGlosa: ..."
-    }
-]
+        {
+            "role": "system",
+            "content": "Eres un especialista en lectura fácil, accesibilidad cognitiva y lenguaje claro. Creas glosas breves siguiendo el estilo de un diccionario fácil."
+        },
+        {
+            "role": "user",
+            # Se usa f-string para inyectar variables y el bloque de referencia dinámico
+            "content": f"Ejemplo 1:\nTérmino: Router\nContexto: El router de casa no funciona bien.\nReferencia terminológica: Dispositivo que distribuye conexiones de red entre varios equipos.\nGlosa: Aparato que permite conectar varios dispositivos a internet. Es una palabra inglesa y se pronuncia \"ruter\".\n\nEjemplo 2:\nTérmino: Hobby\nContexto: La fotografía es su hobby favorito.\nReferencia terminológica: Actividad que una persona realiza por gusto en su tiempo libre.\nGlosa: Actividad que una persona hace en su tiempo libre porque le gusta.\n\nEjemplo 3:\nTérmino: WiFi\nContexto: El WiFi del hotel no funciona.\nReferencia terminológica: Tecnología inalámbrica para conectar dispositivos a internet.\nGlosa: Tecnología que permite conectar dispositivos a internet sin usar cables.\n\nAhora crea una glosa para:\n\nTérmino: {palabra}\nContexto:\n{contexto_str}\n\n{referencia_bloque}Instrucciones:\n- Sigue el mismo estilo de los ejemplos.\n- Usa palabras comunes y concretas.\n- Usa frases breves.\n- Usa 1 frase si es posible.\n- Usa 2 frases solo si mejora la comprensión.\n- Máximo recomendado: 25 palabras.\n- No hagas una explicación enciclopédica.\n- No inventes información.\n- No uses el término para definirse a sí mismo.\n\nSalida:\nGlosa: ..."
+        }
+    ]
 
 
     print("--- GENERANDO INTENTO 2 (Few-Shot) ---")
-    res_2 = generate_with_model(prompts=[prompt_2], model_key="latxa", max_length=256, temperature=0.7, top_p=0.9)
+    res_2 = generate_with_model(prompts=[prompt_2], model_key="latxa", max_length=256, temperature=0.7, top_p=0.9, device="cuda")
     texto_2 = res_2[0] if (res_2 and res_2[0] is not None) else ""
     eval_2 = check_metrics(texto_2, palabra, definicion_dataset)
 

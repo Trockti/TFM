@@ -102,7 +102,7 @@ def buscar_en_dataset(palabra, ruta_json="../data/normalized_definitions.json"):
         
     terminos_disponibles = list(datos.keys())
     # cutoff=0.9 significa que debe haber al menos un 90% de similitud
-    coincidencias = difflib.get_close_matches(palabra.lower(), terminos_disponibles, n=1, cutoff=0.7)
+    coincidencias = difflib.get_close_matches(palabra.lower(), terminos_disponibles, n=1, cutoff=0.9)
     
     if coincidencias:
         termino_encontrado = coincidencias[0]
