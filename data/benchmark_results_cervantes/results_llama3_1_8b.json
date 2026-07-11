@@ -1,0 +1,7 @@
+{
+  "total_words": 91,
+  "missing_count": 25,
+  "wrong_def_count": 32,
+  "failure_rate": 62.637362637362635,
+  "wrong_def_rate": 35.16483516483517
+}

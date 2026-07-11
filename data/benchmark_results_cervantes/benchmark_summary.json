@@ -1,0 +1,30 @@
+{
+  "llama3.1:8b": {
+    "total_words": 91,
+    "missing_count": 25,
+    "wrong_def_count": 32,
+    "failure_rate": 62.637362637362635,
+    "wrong_def_rate": 35.16483516483517
+  },
+  "deepseek-r1:8b": {
+    "total_words": 91,
+    "missing_count": 36,
+    "wrong_def_count": 26,
+    "failure_rate": 68.13186813186813,
+    "wrong_def_rate": 28.57142857142857
+  },
+  "mistral:7b": {
+    "total_words": 91,
+    "missing_count": 20,
+    "wrong_def_count": 43,
+    "failure_rate": 69.23076923076923,
+    "wrong_def_rate": 47.25274725274725
+  },
+  "gemma3:12b": {
+    "total_words": 91,
+    "missing_count": 32,
+    "wrong_def_count": 26,
+    "failure_rate": 63.73626373626373,
+    "wrong_def_rate": 28.57142857142857
+  }
+}

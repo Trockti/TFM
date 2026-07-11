@@ -1,0 +1,1019 @@
+{
+    "App_D-001.1": {
+        "id_term": "T-001",
+        "term": "App",
+        "original": "Programa preparado para una utilización específica, como el pago de nóminas, el tratamiento de textos, et.",
+        "adapted": "Son programas informáticos\nque se instalan en el teléfono móvil, ordenador o tablet\npara hacer tareas concretas,\ncomo jugar a juegos, escribir mensajes o trabajar con documentos.\nPor ejemplo, el WhatsApp es una aplicación.\nTambién se llaman Apps.\nPueden ser de pago o gratis.",
+        "id_definition": "D-001.1",
+        "id_adaptation": "DA-001",
+        "context": "Mientras caminaba por los pasillos oscuros, recordó cómo había decidido finalmente seguir adelante. Los primeros minutos en la app fueron un bombardeo de mensajes. Algunos eran francos, otros demasiado directos. Fotos no solicitadas de diferentes partes del cuerpo. Alex los ignoró, escaneando con calma los perfiles, buscando algo que le despertara más confianza"
+    },
+    "Blazer_D-002.1": {
+        "id_term": "T-002",
+        "term": "Blazer",
+        "original": "Chaqueta de tela con solapa y botones que llega hasta debajo de la cadera.",
+        "adapted": "Tipo de americana que suele ser azul y lleva el escudo de un colegio o de un equipo. Es una palabra inglesa que se pronuncia bléiser.",
+        "id_definition": "D-002.1",
+        "id_adaptation": "DA-002",
+        "context": "Yo iba al Colegio a la tarde, entraba a las doce y media, salía a las cinco. Estudiaba en la cama, porque era muy friolenta. Mi madre me traía el desayuno. Después me levantaba, me ponía el uniforme. Un jumper gris con tablas, una camisa celeste, una corbata azul, un blazer azul y zapatos marrones. Pero las más coquetas nos poníamos una corbata de seda, la falda más corta, lo que era un jumper empezó a ser una minifalda. Yo era una de ellas."
+    },
+    "Bungalow_D-003.1": {
+        "id_term": "T-003",
+        "term": "Bungalow",
+        "original": "Cierta choza.",
+        "adapted": "Cabaña pequeña de una sola planta. Es una construcción sencilla y de materiales ligeros.",
+        "id_definition": "D-003.1",
+        "id_adaptation": "DA-003",
+        "context": "Aunque hay bastantes opciones de alojamiento dentro del propio pueblo de Enguídanos, yo te recomiendo de primera mano las bungalow de Las Casas de la Vega. Son muy cuquis y están ubicadas en un entorno natural bien bonito."
+    },
+    "Camping_D-004.1": {
+        "id_term": "T-004",
+        "term": "Camping",
+        "original": "Campamento, acampada.",
+        "adapted": "Espacio limitado al aire libre para acampar. Tiene zona de aseos y duchas.",
+        "id_definition": "D-004.1",
+        "id_adaptation": "DA-004",
+        "context": "-Seguramente aquí cerca hay un cámping -dice ella en un susurro, para que no la oigan."
+    },
+    "Gay_D-005.1": {
+        "id_term": "T-005",
+        "term": "Gay",
+        "original": "Dicho de una persona, especialmente de un hombre: homosexual.",
+        "adapted": "Homosexual, que siente atracción o ama a personas de su mismo sexo. Se suele usar para hombres que sienten atracción o aman a otros hombres. Es una palabra inglesa. Se pronuncia gai, pero lo más normal es decir guey. El plural es gais.",
+        "id_definition": "D-005.1",
+        "id_adaptation": "DA-005",
+        "context": "Pasé a su lado sin mirarlo y entré de nuevo en la casa. Ni siquiera intentó detenerme. ¿Para qué iba a hacerlo? ¡Joder, qué vergüenza! No solo no era gay, sino que había intentado besarlo. ¿Y si empezaba a contarlo por ahí? ¡Lo que me faltaba! Aceleré el paso y en nada estaba en el salón, donde encontré a Belén jugando a las cartas con otras tres chicas. Al verme, sonrió con la más amplia de las sonrisas y me invitó a sentarme con ellas."
+    },
+    "Hacker_D-006.1": {
+        "id_term": "T-006",
+        "term": "Hacker",
+        "original": "Persona que accede ilegalmente a sistemas informáticos ajenos para apropiárselos u obtener información secreta.",
+        "adapted": "Persona con conocimientos de informática que accede de forma ilegal a los sistemas informáticos de otros. Su intención es robar información o manipular datos.",
+        "id_definition": "D-006.1",
+        "id_adaptation": "DA-006",
+        "context": "5. Sistemas de ciberseguridad de alta gama: La infraestructura crítica de un gobierno local es crucial. No se debería instalar cualquier tipo de cámara de videovigilancia, sin asegurarse de que estos dispositivos cumplen con los más altos estándares de ciberseguridad, ya que un hacker fácilmente podría burlar los dispositivos y vulnerar la privacidad de los ciudadanos."
+    },
+    "Hardware_D-007.1": {
+        "id_term": "T-007",
+        "term": "Hardware",
+        "original": "Conjunto de aparatos de una computadora.",
+        "adapted": "Son los elementos físicos que componen un ordenador,\ncomo la pantalla, el teclado o la impresora.",
+        "id_definition": "D-007.1",
+        "id_adaptation": "DA-007",
+        "context": "El deep learning, aunque es un campo conocido desde hace bastantes años, no ha comenzado a adquirir una enorme relevancia hasta esta última década, donde ha logrado resultados importantes en problemas de percepción como el reconocimiento de voz o la clasificación de imágenes, que hasta ahora habían sido muy complicados de resolver por las máquinas. Existen varios factores que han impulsado claramente el desarrollo reciente de este campo, entre los que destacan los avances en el hardware, en los conjuntos de datos y en los propios algoritmos."
+    },
+    "Hobby_D-008.1": {
+        "id_term": "T-008",
+        "term": "Hobby",
+        "original": "Actividad que, como afición o pasatiempo favorito, se practica habitualmente en los ratos de ocio.",
+        "adapted": "Actividad que se hace por afición en el tiempo libre. Es una palabra inglesa que se pronuncia jobi.",
+        "id_definition": "D-008.1",
+        "id_adaptation": "DA-008",
+        "context": "Es ese no sé qué que qué sé yo lo que la empuja a seguir, a pesar de que, al menos en voz alta, continúa asegurando que no tiene grandes ambiciones. «Cada categoría que he ido ascendiendo para mí ha sido como un premio, como un regalo porque, de verdad, siempre me decían: \"Venga, te tienes que preparar\" y yo decía: \"Qué va, me conformo con esta categoría\". Incluso si no subo a Segunda A, para mí lo que he hecho me basta y me sobra porque empezar como un hobby, y ser la primera mujer, y tener la satisfacción de ser la primera chica, ya me vale.»"
+    },
+    "Jogging_D-009.1": {
+        "id_term": "T-009",
+        "term": "Jogging",
+        "original": "Actividad deportiva que consiste en correr con velocidad moderada al aire libre.",
+        "adapted": "Ejercicio que consiste en correr a poca velocidad durante cierto tiempo. Es una palabra inglesa que se pronuncia yoguin.",
+        "id_definition": "D-009.1",
+        "id_adaptation": "DA-009",
+        "context": "Nike también se ha sumado a la deglamourización, en este caso deportiva, en sus anuncios dirigidos al importante sector de consumidoras jóvenes; les invita igualmente a la no competitividad y a la no exhibición: la joven haciendo jogging por una zona de boscaje, sobriedad de imágenes en blanco y negro, sobriedad vegetal, y el testimonio de la chica: «no quiero impresionar, ni ganar, sólo quiero intentar». Y en su página web dirigida a féminas preadolescentes integradas en equipos colegiales les daba esta orden: «juega como una chica», esto es, separa tu ideal del universo masculino incluso en el plano en el que «ellos» resultan más eficaces, el deporte."
+    },
+    "Pendrive_D-010.1": {
+        "id_term": "T-010",
+        "term": "Pendrive",
+        "original": "Lápiz de memoria, memoria externa.",
+        "adapted": "Aparato que almacena datos,\ncomo fotos, videos o documentos,\ny se puede conectar a otros dispositivos electrónicos. \nComo, a ordenadores, televisiones o videoconsolas.",
+        "id_definition": "D-010.1",
+        "id_adaptation": "DA-010",
+        "context": "En el ascensor, Hitler saca el pendrive del bolsillo y se mete la mano por el pantalón, ocultando el dispositivo en los huevos. Sale a la calle como un buzo tras una inmersión que ha durado demasiado. Necesita aclimatarse a la luz, a las corrientes del aire, al ruido callejero. Piensa a qué cafetería puede dirigirse. No tiene ganas de regresar al museo. Vive ya en un permanente estado de zozobra, por temor a encontrarse a amigos y conocidos, es decir, a gente que no conoce. Finalmente, se encamina a la Pajarera, junto al hotel Barceló. Necesita asentar la contrariedad en que lo ha sumido la reunión."
+    },
+    "Phishing_D-011.1": {
+        "id_term": "T-011",
+        "term": "Phishing",
+        "original": "El phishing es una técnica que consiste en el envío de un correo electrónico por parte de un ciberdelincuente a un usuario simulando ser una entidad legítima (red social, banco, institución pública, etc.) con el objetivo de robarle información privada, realizarle un cargo económico o infectar el dispositivo. Para ello, adjuntan archivos infectados o enlaces a páginas fraudulentas en el correo electrónico.",
+        "adapted": "Es un tipo de engaño\nque consiste en el envío de emails falsos\npara que para que entres en una página web falsa\ny escribas tus datos.",
+        "id_definition": "D-011.1",
+        "id_adaptation": "DA-011",
+        "context": "En este escenario, los ataques se volverán cada vez más complejos, y se combinarán contenidos como spam y phishing. Las nuevas amenazas podrían, incluso, reemplazar los envíos masivos de correo electrónico, lo cual ha sido el peligro predominante en los últimos seis años."
+    },
+    "Router_D-012.1": {
+        "id_term": "T-012",
+        "term": "Router",
+        "original": "Dispositivo que distribuye el flujo de paquetes de información entre redes de la manera más eficaz.",
+        "adapted": "Aparato que sirve para que uno o varios dispositivos como, por ejemplo, ordenadores, teléfonos, tabletas y televisores tengan conexión a Internet. Es una palabra inglesa y se pronuncia ruter.",
+        "id_definition": "D-012.1",
+        "id_adaptation": "DA-012",
+        "context": "AlphaShield es un cortafuegos que se instala entre el router o módem del usuario y el ordenador creando una protección que impide la conexión remota desde cualquier sistema no autorizado. Tiene distintos niveles de protección que se activan en función de los datos que el aparato recibe desde Internet o el PC."
+    },
+    "Snob_D-013.1": {
+        "id_term": "T-013",
+        "term": "Snob",
+        "original": "Persona que imita con afectación las maneras, opiniones, etc., de aquellos a quienes considera distinguidos.",
+        "adapted": "Que para presumir utiliza ropa de moda e imita costumbres y opiniones. Es una palabra inglesa. También se puede escribir snob.",
+        "id_definition": "D-013.1",
+        "id_adaptation": "DA-013",
+        "context": "Gable sería presentado como \"el cazador con pantalones de día\", y lo ubicaron en roles con mujeres que equilibraran la balanza. Estuvo con Joan Crawford en Dance, Fools, Dance y le dio una bofetada a Norma Sheare en A Free Soul. The Hollywood Reporter publicó en esa oportunidad: \"Ha nacido una estrella, una que, a nuestro entender, va a eclipsar a todas las demás... Nunca vimos una audiencia tan entusiasmada como cuando Clark Gable apareció en la pantalla\". Con Joan Crawford forjó una amistad y amor que durarían años; juntos protagonizaron Possessed. En cambio, con Greta Garbo las cosas no fueron tan buenas. Ella lo consideraba un actor bastante malo y él la veía como una snob. Johnny Weissmuller le robó el papel de Tarzán aunque al poco tiempo tendría su revancha. La dupla que formó con Jean Harlow lo convirtió en la figura más importante de la MGM. Asociados hicieron seis películas (entre ellas Red Dust y Saratoga). En 1934, cedido a Columbia, se puso a las órdenes de Frank Capra. Dicen que no estaba convencido del papel de Peter Warne en It Happened One Night, y que el estudio había pensado en Robert Montgomery como protagonista. Al actor el guión le parecía pobre, pero decidió darle una chance. La comedia resultó ganadora de cinco Oscar, incluyendo el de Mejor Actor, premio que Gable fue a recoger pasado de copas."
+    },
+    "Social Network_D-014.1": {
+        "id_term": "T-014",
+        "term": "Social Network",
+        "original": "Servicio de la sociedad de la información que ofrece a los usuarios una plataforma de comunicación a través de internet para que estos generen un perfil con sus datos personales, facilitando la creación de comunidades con base en criterios comunes y permitiendo la comunicación de sus usuarios, de modo que pueden interactuar mediante mensajes, compartir información, imágenes o vídeos, permitiendo que estas publicaciones sean accesibles de forma inmediata por todos los usuarios de su grupo.",
+        "adapted": "Es un espacio de internet\nque pone en contacto a muchas personas.\nLas redes sociales te permiten publicar y recibir información\ncomo fotos, noticias o videos.\nInstagram, Facebook o Tiktok son redes sociales.",
+        "id_definition": "D-014.1",
+        "id_adaptation": "DA-014",
+        "context": "El impacto de las social networks en la formación de la identidad adolescente ha desplazado a los medios de comunicación tradicionales, creando nuevos paradigmas de interacción digital"
+    },
+    "Software_D-015.1": {
+        "id_term": "T-015",
+        "term": "Software",
+        "original": "Conjunto de programas, instrucciones y reglas informáticas para ejecutar ciertas tareas en una computadora.",
+        "adapted": "Son los programas informáticos de un ordenador\nque hacen que funcione.\nAlgunos programas son:\n-        Windows.\n-        Power point.\n- Y otras aplicaciones.",
+        "id_definition": "D-015.1",
+        "id_adaptation": "DA-015",
+        "context": "Está demás decir que las acciones más enjundiosas de esta obra bien podrían estar regidas por la altanera lógica de un software de agobiante rendimiento."
+    },
+    "Spam_D-016.1": {
+        "id_term": "T-016",
+        "term": "Spam",
+        "original": "Correo basura.",
+        "adapted": "Son los mensajes o llamadas no deseadas\nque recibes en tu correo electrónico o teléfono.\nEstos mensajes suelen ser publicidad o intentos de estafa.\nTambién reciben el nombre de correo basura.",
+        "id_definition": "D-016.1",
+        "id_adaptation": "DA-016",
+        "context": "El envío masivo de mensajes a través de correo electrónico, fenómeno conocido como Spam, preocupa cada vez más a los sectores económicos relacionados con Internet. Según un estudio de la Unión Europea, más de 500 millones de mensajes de este tipo circulan por día, provocando miles de millones de dólares de pérdidas a empresas, usuarios y empresas de infraestructura."
+    },
+    "TV movie_D-017.1": {
+        "id_term": "T-017",
+        "term": "TV movie",
+        "original": "Película televisiva.",
+        "adapted": "película para televisión; telefilme; telefilm; miniserie",
+        "id_definition": "D-017.1",
+        "id_adaptation": "S-017.1",
+        "context": "\"No puedo hacer de sueca\", se resigna Lolita —premio Goya 2002 por su papel en Rencor— si se le pincha para que se queje por su posible encasillamiento. En esta tv movie interpreta un papel corto —\"no tengo ni nombre, soy la mama\"— \"pero intenso\". \"Cuando empiezas a coger confianza, te marchas a casa\", se lamenta la actriz sobre un rodaje que termina después de sólo dos semanas de trabajo, al ritmo que imprimen estos largometrajes pensados exclusivamente para su emisión por la pequeña pantalla. Y \"que cada vez tendrán más presencia en televisión\", sentencia Estudillo, entre otras razones por su bajo coste frente a las superproducciones de ficción."
+    },
+    "TV movies_D-018.1": {
+        "id_term": "T-018",
+        "term": "TV movies",
+        "original": "Películas televisivas.",
+        "adapted": "telefilmes; miniseries; películas para televisión",
+        "id_definition": "D-018.1",
+        "id_adaptation": "S-018.1",
+        "context": "Respecto a la tipología de las producciones, los cortometrajes de video fueron el género más solicitado (90), seguido de los reportajes y los documentales (69), reportajes fotográficos (29), cortometrajes de cine (28), videoclips (13) y anuncios publicitarios (12). Barcelona Plató Films colaboró en 24 largometrajes de ficción, 16 TV movies y un largometraje documental."
+    },
+    "Virus_D-019.1": {
+        "id_term": "T-019",
+        "term": "Virus",
+        "original": "Programa introducido subrepticiamente en la memoria de una computadora que, al activarse, afecta a su funcionamiento destruyendo total o parcialmente la información almacenada.",
+        "adapted": "Son programas malignos\nque se almacenan en el ordenador y lo dañan.",
+        "id_definition": "D-019.1",
+        "id_adaptation": "DA-019",
+        "context": "Trabajé con gente muy buena, pero también viví situaciones surrealistas. Negocios que, tras ver crecer sus ventas con mis estrategias, decidían prescindir de mí y pasarle las riendas al sobrino que «sabía de informática». Clientes que me llamaban los fines de semana para cambiar una coma en su web o que, después de lanzarles una tienda online, me reclamaban porque ahora tenían virus en su ordenador. (¿A que son dos situaciones inconexas? Pues de alguna forma magistral las relacionaban)."
+    },
+    "Web_D-020.1": {
+        "id_term": "T-020",
+        "term": "Web",
+        "original": "Red informática.",
+        "adapted": "Red informática en la que hay mucha información repartida en páginas y sitios.",
+        "id_definition": "D-020.1",
+        "id_adaptation": "DA-020",
+        "context": "Y ésa precisamente es la máxima de Steve Krug, su gran ley de la usabilidad en la web: ¡No me hagas pensar! Su postura es muy simple: si un usuario llega a una página web, lo que quiere es realizar la tarea entre manos lo más rápidamente posible, no perder el tiempo intentando descifrar las convenciones, suposiciones o veleidades del diseñador (a menos, claro, que la página vaya de las convenciones, suposiciones y veleidades del diseñador). Y si una página web que pretende ser útil es engorrosa o difícil de usar, pues pasará como con cualquier otro producto... la gente dejará de usarla. O peor... el cliente irá a otro sitio más cómodo si lo encuentra."
+    },
+    "Whisky_D-021.1": {
+        "id_term": "T-021",
+        "term": "Whisky",
+        "original": "Licor alcohólico que se obtiene del grano de algunas plantas, destilando un compuesto amiláceo en estado de fermentación.",
+        "adapted": "Bebida alcohólica fuerte y de color marrón. Se pronuncia güisqui.",
+        "id_definition": "D-021.1",
+        "id_adaptation": "DA-021",
+        "context": "Estaban drogados. Habían esnifado cocaína y habían tomado whisky brasileño. Mucho whisky. Mucha coca. Whisky y coca. Coca y whisky de la frontera, adulterado. Licor de contrabando, bebida mala, abundante"
+    },
+    "Wifi_D-022.1": {
+        "id_term": "T-022",
+        "term": "Wifi",
+        "original": "Sistema de conexión inalámbrica, dentro de un área determinada, entre dispositivos electrónicos, y frecuentemente para acceso a internet.",
+        "adapted": "Tecnología que sirve para conectar a internet sin cables, por ejemplo, un ordenador o un teléfono móvil.",
+        "id_definition": "D-022.1",
+        "id_adaptation": "DA-022",
+        "context": "Sin embargo, el wifi también enfrenta desafíos, principalmente relacionados con la seguridad y la interferencia. La naturaleza abierta de una señal wifi puede hacerla susceptible a ataques si no está adecuadamente protegida con cifrado. Además, puede sufrir interferencias de otras señales, lo que degrada la calidad de la conexión."
+    },
+    "backstage_D-023.1": {
+        "id_term": "T-023",
+        "term": "backstage",
+        "original": "Bambalinas, bastidores, entre bambalinas, entre bastidores, detrás del escenario, ocultamente.",
+        "adapted": "bambalinas; bastidores",
+        "id_definition": "D-023.1",
+        "id_adaptation": "S-023.1",
+        "context": "En ese sentido, esta propuesta de 4K (que ya aportó a la pantalla local los realities \"aspiracionales\" Camino a la gloria y SuperM) es novedosa e interesante. Proyecto 48 es, en principio, el backstage de un concurso en el cual los participantes (un equipo de tres personas) deben responder a un desafío: filmar un corto en sólo 48 horas."
+    },
+    "casual look_D-024.1": {
+        "id_term": "T-024",
+        "term": "casual look",
+        "original": "Casual clothes are not formal or not suitable for special occasions",
+        "adapted": "(estilo) informal",
+        "id_definition": "D-024.1",
+        "id_adaptation": "S-024.1",
+        "context": "Actuando desde la televisión como partido, el discurso populista permitirá a las víctimas de la crisis -sectores subalternos y clases medias empobrecidas, según Iglesias- identificarse como tales y visualizar, desde un nuevo nosotros, a «ellos», los adversarios, las viejas elites. Y para redondear el bucle, la máquina de producción ideológica visualizará también a un nuevo sujeto, un significante individual, que se presenta a sí mismo, negando ser un macho alfa, como «fenómeno televisivo, Pablo Iglesias/el profesor de la coleta», fácilmente identificable en su casual look como uno de nosotros en contraposición con ellos. Este pueblo socializado políticamente por la televisión no es representable bajo las categorías tradicionales de posicionamiento político, izquierda o derecha, sino como un nosotros nuevo, «aglutinado inicialmente por el significante Pablo Iglesias», que no dudó en imprimir su faz dentro del círculo de Podemos en las papeletas para las elecciones europeas. Al cabo, y como ya había teorizado Errejón, los significantes adquieren todo su potencial dicotomizador cuando pueden ser visualizados en alguien que los personalice: Evo Morales, por ejemplo, que lo significa todo para el pueblo boliviano; Pablo Iglesias, el tertuliano con coleta -como él mismo gustaba de identificarse- que significa para los de abajo la cadena de equivalencias discursivamente construida contra los de arriba: azote de la casta, del bipartidismo, de la corrupción, de la Transición y de todo lo que quepa en las pantallas de La Sexta."
+    },
+    "catwalk_D-025.1": {
+        "id_term": "T-025",
+        "term": "catwalk",
+        "original": "Desfile de modelos, desfile de la moda.",
+        "adapted": "pasarela",
+        "id_definition": "D-025.1",
+        "id_adaptation": "S-025.1",
+        "context": "Sí, a diferencia de las otras chicas, ella hace una especie de catwalk sobre sus tres estrellas; camina con la misma gracia de un equilibrista, iluminada por los anuncios rutilantes de bares y sex shops."
+    },
+    "celebrities_D-026.1": {
+        "id_term": "T-026",
+        "term": "celebrities",
+        "original": "Personas famosas o celebradas.",
+        "adapted": "famosos",
+        "id_definition": "D-026.1",
+        "id_adaptation": "S-026.1",
+        "context": "La diseñadora italiana es clara \"Venimos de un largo período monocromático. Y yo adoro los estampados y los colores. Lo que yo quiero hacer es un glamour inteligente para las mujeres de mi generación. Creo que, en este siglo, todas las mujeres quieren tener vida privada. Se pueden explorar cosas más allá de las celebrities y los Oscars\" Sin duda, toda una declaración de intenciones que quedó reflejada en la colección que ya está a la venta, y a la que pertenecen todas estas fotos."
+    },
+    "cherry_D-027.1": {
+        "id_term": "T-027",
+        "term": "cherry",
+        "original": "Cereza.",
+        "adapted": "cherri",
+        "id_definition": "D-027.1",
+        "id_adaptation": "S-027.1",
+        "context": "Para lograr el look de la temporada, aplica un labial de acabado brillante en tono cherry, que aporta esa profundidad rojiza clásica sin perder la frescura del estilo coquette"
+    },
+    "choke point_D-028.1": {
+        "id_term": "T-028",
+        "term": "choke point",
+        "original": "Una ruta estratégica y estrecha que permite el paso hacia otra región.",
+        "adapted": "punto de congestión; punto de estrangulamiento",
+        "id_definition": "D-028.1",
+        "id_adaptation": "S-028.1",
+        "context": "El Estrecho de Ormuz se consolida como el choke point más crítico a nivel global, ya que cualquier interrupción en este punto geográfico colapsaría el suministro mundial de petróleo en cuestión de horas."
+    },
+    "clutch_D-029.1": {
+        "id_term": "T-029",
+        "term": "clutch",
+        "original": "Mecanismo para cambiar de marcha; pedal del embrague.",
+        "adapted": "bolso de mano; bolso de fiesta; cartera",
+        "id_definition": "D-029.1",
+        "id_adaptation": "S-029.1",
+        "context": "La semana pasada, Balenciaga volvió a ser noticia luego del lanzamiento de una bolsa, tipo clutch, en forma de bolsa de papas fritas, accesorio que forma parte de la propuesta primavera-verano 2023."
+    },
+    "container_D-030.1": {
+        "id_term": "T-030",
+        "term": "container",
+        "original": "Contenedor y por barco contenedor.",
+        "adapted": "contenedor",
+        "id_definition": "D-030.1",
+        "id_adaptation": "S-030.1",
+        "context": "Tenía un gran saco al hombro, la misma sonrisa que le había conocido cinco años antes y las ropas nuevas. Lo hice seguir. Venía de Perpiñán. Había desembarcado dos días antes, acababa de llegar a París. Estaría pocos días, los suficientes para vender todo lo que tenía todavía aquí: un container lleno de cigarrillos de contrabando, dos cajas de alcohol ruso, una moto con sidecar, dos máquinas tragaperras en bares de la periferia, un televisor. Había venido para encontrar a sus viejos compañeros de juego, moros y negros, y cobrarles deudas de cartas. Se quedaría el tiempo suficiente para eliminar sus rastros en esta ciudad y volver para siempre a Sudamérica, de donde, según decía, no quería volver a salir nunca más."
+    },
+    "coolhunter_D-031.1": {
+        "id_term": "T-031",
+        "term": "coolhunter",
+        "original": "Una persona contratada por una empresa para observar y hablar con los jóvenes con el fin de averiguar qué productos y estilos están pasando de moda entre ellos.",
+        "adapted": "cazatendencias; buscatendencias",
+        "id_definition": "D-031.1",
+        "id_adaptation": "S-031.1",
+        "context": "Los comienzos de esta profesión datan de finales de los años 80, recién instaurado el fenómeno de la democratización de la moda —que empezó a despuntar en los 60, cuando eran la calle y la juventud las que dictaban la moda—. Surge de la necesidad de las grandes empresas de satisfacer los gustos y preferencias de sus clientes y de estar al día de lo que sucede continuamente. Como dice Txomin, reputado coolhunter, es el vehículo entre industria y mercado."
+    },
+    "denim_D-032.1": {
+        "id_term": "T-032",
+        "term": "denim",
+        "original": "(pantalones) vaqueros y por tela vaquera, mezclilla.",
+        "adapted": "tejido vaquero; mezclilla",
+        "id_definition": "D-032.1",
+        "id_adaptation": "S-032.1",
+        "context": "En Brasil triunfa la estética informal. El estilo predominante es el beach wear o mejor dicho la ropa casual. Con una prenda estrella: el jean. Existen más de 400 fábricas de denim en el país. Marcas como Forum, Ellus, Iodice, Tritón y Zoomp, entre otras, lanzan dos colecciones al año. Todas las piezas suelen ir acompañadas con otro barato y cómodo complemento: las míticas sandalias havaianas, que ya empiezan a venderse en Venezuela."
+    },
+    "dress code_D-033.1": {
+        "id_term": "T-033",
+        "term": "dress code",
+        "original": "Normas de etiqueta, reglas de vestimenta.",
+        "adapted": "etiqueta; código de vestimenta; reglas de vestimenta",
+        "id_definition": "D-033.1",
+        "id_adaptation": "S-033.1",
+        "context": "No estaría nada mal decir a tus amigos al invitarles cuál es el dress code; es decir, cómo deberán venir vestidos: si se trata de algo más formal, en que las mujeres deberán ir \"de cóctel\" y los hombres con traje y corbata, o si en cambio es más informal, y las señoras pueden aparcar el vestidito negro con perlas, y los señores, la corbata."
+    },
+    "dumping_D-034.1": {
+        "id_term": "T-034",
+        "term": "dumping",
+        "original": "La práctica de vender productos a precios muy bajos en otro país, con el fin de impedir que las empresas de ese país puedan competir.",
+        "adapted": "competencia desleal; venta a pérdida; dumpin",
+        "id_definition": "D-034.1",
+        "id_adaptation": "S-034.1",
+        "context": "Los medios de comunicación del sistema le han dado gran cobertura a la acusación de dumping por parte de los productores de uva estadounidenses. Han querido instalar la idea de que un eventual acuerdo comercial con los Estados Unidos corre peligro. Nada más alejado de la realidad, ya que altos personeros de la Casa Blanca han dejado muy en claro que el proceso de negociaciones con Chile es irreversible; que es sólo cosa de tiempo."
+    },
+    "fashion_D-035.1": {
+        "id_term": "T-035",
+        "term": "fashion",
+        "original": "Moda o de moda.",
+        "adapted": "de última moda; de moda; lo último; tendencia",
+        "id_definition": "D-035.1",
+        "id_adaptation": "S-035.1",
+        "context": "SAUL: Su misión guerrera diplomática ha sido gloriosa su actitud cortesana rebasa todo y repunta y repiquetea me encanta su fashion se relaciona bien con todo el mundo es adorable es un bey un bey un bey aquella manera elegante y refinada y prodigiosa de decir las cosas y las otras y aquéllas y todas las otras y su vida y su forma de vivir. ¿Dígame una cosa? ¿Sabe qué pasará? ¿Sabe cómo terminaremos? Me gustaría saber el plan de vida completo ahora me angustia el enigma usted dígame."
+    },
+    "fitting_D-036.1": {
+        "id_term": "T-036",
+        "term": "fitting",
+        "original": "Pruebas (en el ámbito de la moda), prueba de vestuario.",
+        "adapted": "prueba de vestuario",
+        "id_definition": "D-036.1",
+        "id_adaptation": "S-036.1",
+        "context": "Mi mejor amigo, Martin Cullen, es peluquero free lance y es él quien dirige al resto del equipo. Coordina los tiempos del fitting, de los desfiles se ocupa de que todo esté listo en el momento adecuado; en definitiva, lo organiza casi todo, lo que me deja el tiempo y la energía suficientes para pensar en nuevas ideas."
+    },
+    "friky / freaky_D-037.1": {
+        "id_term": "T-037",
+        "term": "friky / freaky",
+        "original": "Esperpento, esperpéntico.",
+        "adapted": "friki; friqui",
+        "id_definition": "D-037.1",
+        "id_adaptation": "S-037.1",
+        "context": "Hola a tod@s, el nombre del juego que os reseño ya es, de por si, un gran reto. Lo podríamos meter en una caja junto a unas instrucciones y comercializarlo como party game para después de una cena con amigos. Imaginaos a los del anuncio aquel del Scarttergoris (los del pulpo como animal de compañía) intentando pronunciar el j......o nombre. Narices, si suena a magia arcana, como si fuera una expansión para el Arkham Horror... (momentazo friky)"
+    },
+    "front row_D-038.1": {
+        "id_term": "T-038",
+        "term": "front row",
+        "original": "Primera fila.",
+        "adapted": "primera fila",
+        "id_definition": "D-038.1",
+        "id_adaptation": "S-038.1",
+        "context": "No hay editora de moda, estilista o celebrity que no sueñe con sentarse en el front row de la firma de las hermanas Olsen que no solo cuidan al detalle las prendas y la presentación, también quién se sienta en su exclusivo front row. tener un hueco en esa primera fila te posiciona en el circuito de la moda como lo hace el hotel en el que te alojas o las firmas que luces durante esa semana. De ahí que no poder alardear de eso sea una vuelta de tuerca a la tendencia más exclusiva."
+    },
+    "geyser_D-039.1": {
+        "id_term": "T-039",
+        "term": "geyser",
+        "original": "Fuente termal natural.",
+        "adapted": "géiser",
+        "id_definition": "D-039.1",
+        "id_adaptation": "S-039.1",
+        "context": "Aquella noche la cara no era gris, como en la foto de Ramón Lago. Era verde botella. Después me di cuenta de que, en realidad, predominaban en ella (y en todo el cuerpo, según pude comprobar cuando lo vi en short o en camisilla) los tonos violáceos que resultaban de una filigrana de arteriolas y vasos azules, fucsias y escarlatas. Todo eso alcanzaba una intensidad inquietante en la nariz. La nariz era como una terminal de várices macizas. Cada vez que hablaba con él, aunque me estuviera diciendo cosas interesantes, yo me distraía —o me concentraba— en la nariz. Tenía miedo y esperanza de ver estallar en ella algún geyser microscópico de venitas cobalto. Pero aquella primera vez, cuando llegué nervioso, con el espectáculo ya empezado, tratando ridículamente de que el estuche de cartón rígido de la Santchordi pasara desapercibido, Román Ríos estaba justo bajo la lamparilla verde, la tercera de las nueve que colgaban del cable que atravesaba el escenario."
+    },
+    "glitter_D-040.1": {
+        "id_term": "T-040",
+        "term": "glitter",
+        "original": "Brillantina.",
+        "adapted": "brillante",
+        "id_definition": "D-040.1",
+        "id_adaptation": "S-040.1",
+        "context": "En la temporada que comenzó en diciembre del año pasado sentimos la necesidad de usar brillos y colores, la moda respondió a esto con líneas hechas para celebrar, con texturas como terciopelo y metalizadas. Este año, en las colecciones primavera-verano vemos que se mantiene este impulso por la alegría con colores vibrantes y brillos. En nuestros vaqueros no se rompe esta regla, los jeans con piedras o glitter son otra tendencia de estética Y2K que se impone en 2022, esto añade un toque elegante único."
+    },
+    "groggy_D-041.1": {
+        "id_term": "T-041",
+        "term": "groggy",
+        "original": "Atontado, aturdido, tambaleante.",
+        "adapted": "grogui",
+        "id_definition": "D-041.1",
+        "id_adaptation": "S-041.1",
+        "context": "Aunque jamás perdió la punta, el xeneize atravesó un camino sinuoso rumbo al título. Perdió de local con Talleres de Córdoba después de 31 años, Patronato le empató sobre la hora y River lo dejó groggy en un momento clave del torneo, con un claro 3 a 1 en la Bombonera. Guillermo modificó toda la defensa y salió adelante."
+    },
+    "hall_D-042.1": {
+        "id_term": "T-042",
+        "term": "hall",
+        "original": "Recibimiento entrada vestíbulo zaguán atrio pórtico galería portal soportal según los casos.",
+        "adapted": "vestíbulo; entrada; recibidor",
+        "id_definition": "D-042.1",
+        "id_adaptation": "S-042.1",
+        "context": "Rodeamos el castillo por la izquierda. Había pocas pintadas y muchas de ellas eran declaraciones de amor. La boiserie de madera, sin pintar, se conservaba en lo que seguramente era el hall de entrada y quizá el comedor principal."
+    },
+    "handicap_D-043.1": {
+        "id_term": "T-043",
+        "term": "handicap",
+        "original": "Obstáculo, estorbo, inconveniente, dificultad, desventaja, inferioridad, impedimento.",
+        "adapted": "hándicap",
+        "id_definition": "D-043.1",
+        "id_adaptation": "S-043.1",
+        "context": "No estoy segura cuánto invirtió en mí la naturaleza ni de cuántos dones se desprendieron los dioses al crearme. Pero algo hicieron para haberme convertido esta noche en la mujer que fui. En la señalada. Y como —quizás— estoy llegando a la mitad de mi vida, me siento con derecho a ser relativamente optimista. Tal era mi estado de ánimo cuando terminamos de lavar los platos después de la comida. Miraba el acucioso actuar de Luciano en la cocina y recordé que antes yo solía afirmar que, si en una pareja la igualdad se manifestaba en paridad intelectual, la batalla estaba ganada, relegando lo doméstico a segundo plano, casi a un detalle secundario producto de la obsesión de las primeras feministas. El tiempo me ha dicho que estaba errada; si el mundo doméstico no se comparte, la brecha entre lo público y lo privado no se cerrará jamás. En buenas cuentas, volvemos al principio, a lo aparentemente lateral que se calificó de rudimentario, de lucha pequeña, o como lo dice bien su nombre, doméstica: si tu hombre no lava contigo los platos, la maldición milenaria permanece. Pensé, entonces, que Luciano debía ser un buen compañero de vida. ¿Cansaría a la larga esa acuciosidad? Conozco tantas mujeres que, con el tiempo, transformaron las gracias por las que se enamoraron de un hombre en feos defectos; lo que partieron celebrando en ellos terminó por ser un handicap. Como dice una humorista argentina, se enamoraron del Che y después quisieron cortarle la barba."
+    },
+    "highlight_D-044.1": {
+        "id_term": "T-044",
+        "term": "highlight",
+        "original": "Acciones destacadas; compilación de acciones destacadas.",
+        "adapted": "hito; lo más destacado; mejores momentos; lo esencial",
+        "id_definition": "D-044.1",
+        "id_adaptation": "S-044.1",
+        "context": "También es sabido, no obstante, que ese Barça 03/04 no funcionó hasta enero, cuando el equipo realizó una fulgurante remontada escalando desde el puesto decimosegundo en la jornada 18 («Otro naufragio, goleada humillante», como tituló Mundo Deportivo tras la derrota de los culés 3-0 en El Sardinero) hasta el subcampeonato final, lo que les permitió volver a la máxima competición continental. En esos meses se fraguó el Barça campeón de Rijkaard, y ahí comenzó la eclosión del astro, refrescante novedad en la liga y con diferencia lo más replicado aquel curso (año de los galácticos estrellados de Queiroz) por programas, telediarios y zappings. El highlight más cotizado. Pero el jugador producía más allá de su repertorio y su vértigo. Era sólido y determinante. Había crecido, y esta explosión no era ajena a la táctica"
+    },
+    "hipster_D-045.1": {
+        "id_term": "T-045",
+        "term": "hipster",
+        "original": "Modernos retrógados, modernos de Malasaña.",
+        "adapted": "hípster",
+        "id_definition": "D-045.1",
+        "id_adaptation": "S-045.1",
+        "context": "El término hipster se acuñaba ya en la década de los '40. Paul Douglas Lopes en su libro 'Rise of a Jazz Art World' explica que en los años dorados del jazz a sus intérpretes y seguidores se les empezó a llamar hipsters. El primer diccionario en listar la palabra hipster fue el pequeño glosario 'For Characters Who Don't Dig Jive Talk' (Jive se refiere a la jerga de los músicos de jazz), publicado en 1944 con el álbum Boogie Woogie In Blue del pianista Harry Gibson, quien actuó como Harry el Hipster. La entrada para hipsters los definía como \"personas que gustan del hot jazz\". Este pequeño glosario fue repartido en los conciertos de Gibson por unos cuantos años. No era un glosario completo de la jerga del jazzista, sólo incluía las expresiones encontradas en la letra de sus canciones."
+    },
+    "hit_D-046.1": {
+        "id_term": "T-046",
+        "term": "hit",
+        "original": "Exito.",
+        "adapted": "éxito; gran éxito; número uno en ventas",
+        "id_definition": "D-046.1",
+        "id_adaptation": "S-046.1",
+        "context": "En 1966 publica un nuevo EP, acompañada por Los Gemelos y con producción de Rafael Ibarbia. Es un producto de circunstancias que incluye tres villancicos populares españoles y uno peruano. Pero su apuesta fuerte es un LP que viene nada menos que con portada del prestigioso fotógrafo Gyenes y que está encabezado por «Amarraditos», un nuevo vals peruano que será uno de sus temas señeros. Aunque el auténtico hit del álbum es una nueva versión de «La flor de la canela», su tema más exitoso hasta el momento, que ahora, en una revisión canónica con el acompañamiento de Los Gemelos, se convertirá en el mayor clásico de su repertorio, ineludible en cualquiera de sus conciertos."
+    },
+    "it-girl_D-047.1": {
+        "id_term": "T-047",
+        "term": "it-girl",
+        "original": "Una joven famosa conocida por asistir a muchas fiestas y eventos sociales.",
+        "adapted": "chica de moda; chica icono",
+        "id_definition": "D-047.1",
+        "id_adaptation": "S-047.1",
+        "context": "Aunque, siendo justos, sí hay una ganadora de los Critics' Choice que podría hacer ruido en los Emmy: Amy Schumer. Reconocida como mejor actriz de comedia por \"Inside Amy Schumer\", está sustituyendo a Louis CK como el cómico del momento entre los periodistas estadounidenses, y la tercera temporada de su programa está llamando la atención fuera de las fronteras de Estados Unidos. Su humor es, tal vez, demasiado crudo y agresivo para los Emmy, pero es la mayor esperanza de que haya una verdadera revolución en esos premios cuando llegue septiembre. No es ninguna debutante, pero ahora es cuando Schumer está posicionándose para asaltar el trono de la comedia norteamericana, si no lo ha hecho ya. Su siguiente paso es una película, \"Trainwreck\", que hasta ahora sólo era conocida por ser la cinta en la que aparecía LeBron James, pero que puede contribuir este verano a elevar el perfil de Schumer. ¿Será la nueva it-girl cómica?"
+    },
+    "jumpsuit_D-048.1": {
+        "id_term": "T-048",
+        "term": "jumpsuit",
+        "original": "Mono (de vestir).",
+        "adapted": "mono",
+        "id_definition": "D-048.1",
+        "id_adaptation": "S-048.1",
+        "context": "Su primer coqueteo con los tejidos metalizados y la elegancia del cine clásico llegó un poco después, gracias a un jumpsuit de estampado floral firmado por Schiaparelli."
+    },
+    "late night_D-049.1": {
+        "id_term": "T-049",
+        "term": "late night",
+        "original": "Horario nocturno, sesión de noche, franja de medianoche.",
+        "adapted": "programa de medianoche; programa nocturno; franja de medianoche",
+        "id_definition": "D-049.1",
+        "id_adaptation": "S-049.1",
+        "context": "- Por ello me atrajo un programa tan distinto. No tiene nada que ver con lo que he hecho hasta ahora ni con nada que el espectador haya visto. Es un formato de \"late night\" en el que se busca el equilibrio entre reportajes de investigación en los que no dudamos en utilizar la cámara oculta y otros de puro entretenimiento, con un corte incluso sensual."
+    },
+    "look_D-050.1": {
+        "id_term": "T-050",
+        "term": "look",
+        "original": "Imagen, presencia, aspecto, apariencia, estilo.",
+        "adapted": "imagen; estilo; aire; apariencia; aspecto; conjunto; vestimenta",
+        "id_definition": "D-050.1",
+        "id_adaptation": "S-050.1",
+        "context": "En estos momentos, en el mundo musulmán uno no puede proclamarse gay para nada, excepto en el Líbano, donde ha habido momentos de muchísima apertura. Incluso había un grupo llamado Mashrou Leila, cuyo líder era abiertamente homosexual y tenía un éxito alucinante, hasta que tuvieron que pararlo porque era demasiado para el cambio de costumbres. Pero vamos, yo tampoco soy un líder de nada, ¿eh? Estoy retirado en mi pueblo, con mis gatos… En los lugares cerrados o donde no hay mujeres, en las cárceles por ejemplo, si te caen muchos años, pues mira, te cepillas o te dejas cepillar a lo que se te pone a tono. Entre los curas, ni digamos. En esos ambientes tan machos, tan cerrados, los hombres nos volvemos como críos, nos volvemos idiotas. Yo seré gay, pero las fronteras no están tan definidas. He estado con mujeres, también. Y no podría vivir en un mundo sin mujeres, y eso lo acusaba en Egipto, todo era demasiado viril. Esa gente de gimnasio con barbas, tan machos y de derechas y de look legionario van de noche a los parques a ver si los enculan…"
+    },
+    "lookbook_D-051.1": {
+        "id_term": "T-051",
+        "term": "lookbook",
+        "original": "Catálogo de novedades.",
+        "adapted": "catálogo; porfolio; libreta de tendencias",
+        "id_definition": "D-051.1",
+        "id_adaptation": "S-051.1",
+        "context": "Sabemos que te apasiona la fotografía. ¿Cómo ha sido trabajar junto a Adrià Cañameras en el nuevo lookbook?"
+    },
+    "magazine_D-052.1": {
+        "id_term": "T-052",
+        "term": "magazine",
+        "original": "Suplemento (de un periódico), revista, programa de variedades.",
+        "adapted": "magacín; magazín; programa de variedades",
+        "id_definition": "D-052.1",
+        "id_adaptation": "S-052.1",
+        "context": "Esas fotos permitían asomarse a las vidas de los que no tenían patrón ni límite de tiempo para el disfrute y son las que todavía hoy miran quienes quieren reempaquetar ese estilo de vida para venderlo al peso o asociarse a él. No hay un mes que un magazine no ilustre algún reportaje con alguna de las imágenes de Aarons o que una niña aspirante a influencer no cite alguna de sus instantáneas con un pie de foto engolado"
+    },
+    "main round_D-053.1": {
+        "id_term": "T-053",
+        "term": "main round",
+        "original": "Segunda fase (ciertos partidos de balonmano).",
+        "adapted": "segunda fase",
+        "id_definition": "D-053.1",
+        "id_adaptation": "S-053.1",
+        "context": "También hay que pensar que ha sido una fase de grupos muy dura y la main round también. Ha habido mucha dificultad. Solo hay que ver los equipos que se han quedado fuera. Y que ha dependido en muchas ocasiones de la diferencia de goles. Hemos perdido dos partidos. Espero que sean los últimos que vayamos a perder."
+    },
+    "make up_D-054.1": {
+        "id_term": "T-054",
+        "term": "make up",
+        "original": "Afeite, cosmético.",
+        "adapted": "maquillaje",
+        "id_definition": "D-054.1",
+        "id_adaptation": "S-054.1",
+        "context": "ubican los inflables para los más grandes y varios metegoles. Por si fuera poco, hay dos puestos de make up artístico."
+    },
+    "mansplaining_D-055.1": {
+        "id_term": "T-055",
+        "term": "mansplaining",
+        "original": "Condescendencia masculina, machoexplicación.",
+        "adapted": "machoexplicación",
+        "id_definition": "D-055.1",
+        "id_adaptation": "S-055.1",
+        "context": "Una propuesta así corre el riesgo de ser calificada abiertamente de mansplaining. Pero si todo este alboroto no ayuda a tener conversaciones más francas entre hombres y mujeres, ¿entonces para qué sirve?"
+    },
+    "marketing_D-056.1": {
+        "id_term": "T-056",
+        "term": "marketing",
+        "original": "Mercadotecnia, mercadeo.",
+        "adapted": "Conjunto de técnicas que se utilizan para vender un producto.",
+        "id_definition": "D-056.1",
+        "id_adaptation": "DA-056",
+        "context": "Este proyecto se centra en la creación de un paquete biodegradable, flexible, resistente y seguro para alimentos. Además de ser ecológico, el proyecto incluía un plan de marketing y de viabilidad para introducir el producto en el mercado sueco, adaptándose a los valores de sostenibilidad y regulación alimentaria locales."
+    },
+    "match_D-057.1": {
+        "id_term": "T-057",
+        "term": "match",
+        "original": "Lucha deportiva, competición deportiva, partido, partida, juego, mano, encuentro; combate (de boxeo); carrera o regata (náutica); asalto (esgrima); prueba y suma total de puntos (tiro deportivo); partido decisivo, contienda (política o de otra clase) y crisis ('momento decisivo y peligroso de un negocio').",
+        "adapted": "encuentro; partido; partida; combate; pelea",
+        "id_definition": "D-057.1",
+        "id_adaptation": "S-057.1",
+        "context": "Esa fue una partida que nunca tuvo la menor opción de ganar. Quizá si hubiera obtenido una educación más equilibrada. Quizá si no se hubiese sentido siempre solo. Quizá si no hubiera tenido un don tan extraño. «Por lo general, Bobby estaba deprimido, pero aun así conseguía levantarse y salir todos los días. […] Esta tristeza acumulada contribuía a que no quisiera estar con otras personas, a no ser que se sintiera muy seguro y cómodo con ellas» (Brady, 2015, p. 250), cosa infrecuente. Descuidó su aspecto. Perdió pelo, su planta atlética y varios dientes. Emergió veinte años después para jugar un match de revancha con Spassky (entre otras razones, porque estaba próximo a la bancarrota), lo cual violaba las sanciones que Estados Unidos tenía contra Yugoslavia, sede del encuentro, en aquella época. Escupió sobre el aviso (literalmente y ante la prensa), por lo que fue declarado fugitivo. Ganó el encuentro, tristemente irrelevante, y nunca pudo regresar a su país. Aunque tampoco hicieron demasiado por perseguirlo, al menos, hasta que años después, el 11 de septiembre de 2001, dio una entrevista en la radio cargada de ideaciones delirantes, con una voz quebrada de agudos, tan propia de las patologías mentales sin tratar, en la que se refería al ataque contra el World Trade Center como «noticias maravillosas, ya era hora de que alguien pusiera a los putos Estados Unidos en su sitio» (Martin, 2006, traducción mía). Aquella gota colmó el vaso."
+    },
+    "meet and greet_D-058.1": {
+        "id_term": "T-058",
+        "term": "meet and greet",
+        "original": "Para conocerse, para conocerse y saludarse, para verse y saludarse.",
+        "adapted": "encuentro; pase especial",
+        "id_definition": "D-058.1",
+        "id_adaptation": "S-058.1",
+        "context": "El día del evento 20 dólares y meet and greet 30 dólares, donde podrás disfrutar del 'affter party' con los artistas y tomarse fotos en el local 360 Grados."
+    },
+    "mindfulness_D-059.1": {
+        "id_term": "T-059",
+        "term": "mindfulness",
+        "original": "Conciencia plena, atención plena.",
+        "adapted": "Estado de la persona cuando presta atención y se da cuenta de las sensaciones, emociones y todo lo que le rodea, sin pensar si están bien o mal. Es una palabra inglesa que traducimos como atención plena o conciencia plena.",
+        "id_definition": "D-059.1",
+        "id_adaptation": "DA-059",
+        "context": "Una herramienta que puede resultar muy útil en nuestros objetivos en la denominada técnica de mindfulness o atención plena. Existen evidencias científicas de que la incorporación de dichas técnicas al tratamiento de la obesidad puede ser útil para mejorar la sensación de autocontrol con respecto de la comida, para controlar nuestra respuesta a distintos estados emocionales y para conseguir un mayor grado de consciencia de las señales de hambre y saciedad; de este modo, resulta posible elegir de modo consciente los alimentos que nos llevamos a la boca y controlar los atracones, así como también disminuir los síntomas depresivos, cultivar la autoaceptación, luchar contra el estrés y el desasosiego y aprender a tomar una mayor distancia de las cosas."
+    },
+    "momentum_D-060.1": {
+        "id_term": "T-060",
+        "term": "momentum",
+        "original": "La cualidad que hace que un acontecimiento siga desarrollándose o avanzando una vez que ha comenzado.",
+        "adapted": "impulso; ímpetu; ventaja; oportunidad; ritmo de aceleración",
+        "id_definition": "D-060.1",
+        "id_adaptation": "S-060.1",
+        "context": "Larreta buscó ganar un momentum con su anuncio oficial de la candidatura y concentró su raid mediático en los días siguientes, con una cantidad de apariciones en medios que seguramente sostendrá en los momentos clave. El lunes tendrá otra aparición con el inicio de clases y luego con su último discurso como jefe de Gobierno ante la Legislatura porteña. Serán dos hitos de gestión, para luego retomar su campaña por el resto del país. Estará en la Fiesta de la Vendimia en Mendoza unos días más tarde."
+    },
+    "monochrome_D-061.1": {
+        "id_term": "T-061",
+        "term": "monochrome",
+        "original": "Monocromo, de un solo color.",
+        "adapted": "monocromático; monocromo; monocolor",
+        "id_definition": "D-061.1",
+        "id_adaptation": "S-061.1",
+        "context": "La nueva colección de la firma apuesta por un estilo monochrome en tonos tierra, buscando eliminar las distracciones visuales y resaltar la textura de los materiales bajo una sola paleta cromática."
+    },
+    "monogram_D-062.1": {
+        "id_term": "T-062",
+        "term": "monogram",
+        "original": "Monograma.",
+        "adapted": "monograma",
+        "id_definition": "D-062.1",
+        "id_adaptation": "S-062.1",
+        "context": "La colección se caracterizó por clonar mutuamente sus logos, siluetas y estilos. The Hacker Project estuvo conformada por prendas de ropa, bolsos, accesorios y una variedad de complementos, como gorras, calcetines o cinturones. Los más característico fue, por ejemplo, que el icónico estampado monogram de Gucci formado por la letra \"G\", se sustituyó por la letra \"B\" de Balenciaga."
+    },
+    "mule_D-063.1": {
+        "id_term": "T-063",
+        "term": "mule",
+        "original": "Babucha o sandalia.",
+        "adapted": "babuchas; sandalias tipo babucha",
+        "id_definition": "D-063.1",
+        "id_adaptation": "S-063.1",
+        "context": "Esta 'moda a la turca' como se la denominó en el siglo XVIII, comenzó su andadura un siglo antes al ser vestida por hombres y mujeres de Francia. El término 'mule', que proviene de este país vecino, comenzó así a tomar forma. El diseño, durante este tiempo, comenzó a cambiar. Se redujo el tacón, se levantó la puntera y comenzó a decorarse, formando una parte esencial del armario de la nobleza francesa, entre las que encontramos figuras históricas como Madame Pompadour. Sin embargo, estos se reservaban para el interior de las viviendas y no servirían como zapato de calle hasta 1970\""
+    },
+    "must_D-064.1": {
+        "id_term": "T-064",
+        "term": "must",
+        "original": "Necesidad, obligación, requisito.",
+        "adapted": "imprescindible; infaltable",
+        "id_definition": "D-064.1",
+        "id_adaptation": "S-064.1",
+        "context": "La Gran Manzana es el destino ideal para viajar los dos. La ciudad, ofrece una amplia variedad de actividades para todos los gustos. Para los amantes de la cultura, Nueva York nos brinda una increíble variedad de museos que no os podéis perder. Si a esto, le sumas visitar lugares tan emblemáticos como el Empire State Building o pasear por el famoso puente de Brooklyn al atardecer, os prometemos una postal de película. ¿Quién no ha soñado con recorrer sus icónicas calles? O ¿tomarse un café en una de sus míticas cafeterías? Para los amantes de la gastronomía Nueva York también es un must, ya que podéis encontrar lugares de todo tipo, desde restaurantes muy top con estrella Michelín a puestos de comida rápida en muchas calles de la ciudad de los rascacielos."
+    },
+    "must have_D-065.1": {
+        "id_term": "T-065",
+        "term": "must have",
+        "original": "Imprescindible.",
+        "adapted": "imprescindible; infaltable",
+        "id_definition": "D-065.1",
+        "id_adaptation": "S-065.1",
+        "context": "A base de volantes y transparencias, esta camisa de cuello gorguera es una de las mejores armas para aportar feminidad a 'looks' de cierto toque masculino. En seda, con encaje o combinada con terciopelo, la joya de la corona —al menos en la era victoriana (primera década del S.XIX)— desprende picardía y sensualidad en cada uno de los diseños que nos proponen Fendi, Giamba o Philosophy di Alberta Ferreti. ¿Nuestra recomendación? Que investigues en el álbum de fotos familiar. Puede que te sorprendas y encuentres tu próximo \"must have\"."
+    },
+    "new face_D-066.1": {
+        "id_term": "T-066",
+        "term": "new face",
+        "original": "Un recién llegado, alguien que se ha incorporado recientemente a una organización, alguien a quien no has visto antes.",
+        "adapted": "cara nueva",
+        "id_definition": "D-066.1",
+        "id_adaptation": "S-066.1",
+        "context": "La agencia ha confirmado que su apuesta principal para la próxima Fashion Week será una new face descubierta en Madrid, cuyo perfil disruptivo encaja perfectamente con la estética de las marcas de lujo actuales"
+    },
+    "outfit_D-067.1": {
+        "id_term": "T-067",
+        "term": "outfit",
+        "original": "Vestimenta, ropa.",
+        "adapted": "conjunto",
+        "id_definition": "D-067.1",
+        "id_adaptation": "S-067.1",
+        "context": "Y si lo que quieres es darle otro toque distinto al outfit prueba con jeans de colores mezclados con blazer. Una apuesta perfecta para estilismos de día a día, de trabajo o de una tarde con las amigas."
+    },
+    "outlet_D-068.1": {
+        "id_term": "T-068",
+        "term": "outlet",
+        "original": "Saldos, productos descatalogados, productos de temporada anterior.",
+        "adapted": "término asentado; si se usa, en cursiva o entre comillas",
+        "id_definition": "D-068.1",
+        "id_adaptation": "S-068.1",
+        "context": "Pero, ¿qué sucede del otro lado? Marcelo Caro (59) y María del Carmen (55) llegaron el viernes a Miami. Son porteños. \"Vinimos a festejar el cumpleaños de ella. Ahora hay muchas mas facilidades para viajar, por el tipo de cambio y el crédito para los viajes y hoteles\", comentan. Apenas bajaron del avión, enfilaron para el shopping Aventura Mall . Se alojaron en un hotel de Miami Beach y alquilaron un auto. Su recorrido incluirá el Sawgrass Mill , la meca del outlet, donde buscarán productos Victoria's Secret para ella y algún electrónico para él."
+    },
+    "oversize_D-069.1": {
+        "id_term": "T-069",
+        "term": "oversize",
+        "original": "Ancho, holgado, extragrande, de talla grande.",
+        "adapted": "holgado",
+        "id_definition": "D-069.1",
+        "id_adaptation": "S-069.1",
+        "context": "Las sudaderas de día son similares a las que, por ejemplo, triunfaron en los 80, cuando se llevaban en plan oversize, como si se la hubieses robado a tu primer novio. Ahora se llevan más cortas y de algodón, lisas o estampadas; las lavas una y otra vez, resisten de maravilla y, además, apenas necesitas plancharlas. En este sentido, es un tipo de prenda comodísima, perfecta para formar parte de una maleta hacia cualquier destino."
+    },
+    "paillette_D-070.1": {
+        "id_term": "T-070",
+        "term": "paillette",
+        "original": "Lentejuela.",
+        "adapted": "lentejuela",
+        "id_definition": "D-070.1",
+        "id_adaptation": "S-070.1",
+        "context": "Como ves, ¡el escote manda cuando se trata de elegir el tipo de joyas para la noche! Pero también rige el estilo del vestido. Por ejemplo, un vestido ajustado en paillette dorado o plateado te pide solo unos bonitos pendientes largos en oro de color o en oro blanco. Si el paillette es de algún color, entonces puedes llevar estos mismos pendientes con alguna piedra preciosa que lo potencie."
+    },
+    "pay per view_D-071.1": {
+        "id_term": "T-071",
+        "term": "pay per view",
+        "original": "Un servicio de televisión en el que los espectadores deben pagar una cuota para poder ver un programa concreto.",
+        "adapted": "pago por visión; pago por evento",
+        "id_definition": "D-071.1",
+        "id_adaptation": "S-071.1",
+        "context": "La historia es la siguiente: una especie de extraños animales que gobiernan el mundo contratan los servicios de la empresa de entretención de la Sra. Muerte y la Sra. Dios. Se trata de un espectáculo \"pay per view\" sobre la vida de un ser humano desde su gestación hasta su fin. El Tapir, el Ciervo y Cachahamster interrumpen con sus comentarios, burlas y comerciales."
+    },
+    "performance_D-072.1": {
+        "id_term": "T-072",
+        "term": "performance",
+        "original": "Actividad, especialmente artística; resultado o rendimiento de una actividad.",
+        "adapted": "representación; actuación",
+        "id_definition": "D-072.1",
+        "id_adaptation": "S-072.1",
+        "context": "En su obra Daaalí, figura un diálogo entre el protagonista y un grupo formado por Picasso, acompañado de sus ladillas intelectuales, en el que Dalí se expresa en estos términos:DALÍ... pues como soy un loco catalán con mucho sentido comercial..., yo me pregunto: ¿quién cobrará los derechos de autor del graffiti? (refiriéndose a las reproducciones del Guernica).LADILLA AMERICANA Está claro: ¡el Maestro!DALÍ Pues no está tan claro, querida ladilla, porque el único creador de la performance de Guernica es el señor de las caderas blandas y rollizas.LADILLA FRANCESA ¿Hitler?DALÍ ¡Hitler! en verdad, en verdad os digo, que solo a él le pertenecen los derechos de autor, por su revolucionario concepto de urbanismo radical."
+    },
+    "prime time_D-073.1": {
+        "id_term": "T-073",
+        "term": "prime time",
+        "original": "Horario de máximo auditorio, horario preferido por el público.",
+        "adapted": "horario estelar; horario de máxima audiencia",
+        "id_definition": "D-073.1",
+        "id_adaptation": "S-073.1",
+        "context": "Cuando todas las miradas parecen apuntar al rating, surge una nueva \"tabla de posiciones\", pero ahora relacionada con la calidad televisiva: el Observatorio de la Televisión de la Universidad Austral armó un informe al respecto con los cinco canales de la TV abierta durante el prime time (20 a 24 horas) y concluyó con que Canal 13 lidera el informe (82.78), Canal 9 se ubica segundo (62.27) y más tarde aparecen Telefé (59.29), Canal 7 (53.57) y América (41.78)"
+    },
+    "print_D-074.1": {
+        "id_term": "T-074",
+        "term": "print",
+        "original": "Letters, numbers, or symbols that have been produced on paper by a machine using ink.",
+        "adapted": "estampado",
+        "id_definition": "D-074.1",
+        "id_adaptation": "S-074.1",
+        "context": "El diseñador optó por un print geométrico de inspiración setentera para la pieza central de la colección, logrando un contraste visual que definirá la identidad de la marca este año"
+    },
+    "rally_D-075.1": {
+        "id_term": "T-075",
+        "term": "rally",
+        "original": "Carrera automovilística.",
+        "adapted": "rali",
+        "id_definition": "D-075.1",
+        "id_adaptation": "S-075.1",
+        "context": "Sin paz, recorrió la vida entre dos fuegos: su padre y su madre. \"Soñaba con tener una vida normal. Sin gritos, sin peleas, sin política. Muchas veces se benefició con ser el hijo del Presidente. Y lo disfrutaba. Mandaba a buscar a las chicas con la custodia, o pedía el Tango 01 para llevarnos a una carrera de rally. Era un transgresor nato. Entraba en los lugares prepoteando. Pero su mayor anhelo era ver a sus padres juntos\", cuentan sus amigos."
+    },
+    "rating_D-076.1": {
+        "id_term": "T-076",
+        "term": "rating",
+        "original": "Tanto por ciento de espectadores, cuota de espectadores (de un programa de televisión o de un espectáculo) y calificación.",
+        "adapted": "índice de audiencia televisiva",
+        "id_definition": "D-076.1",
+        "id_adaptation": "S-076.1",
+        "context": "Si se analiza la existencia de un posible mercado de información de este tipo, se podrá concluir que sólo podría funcionar con transparencia cuando los diversos grupos de una sociedad tuvieran una pluralidad de medios y formas para expresarse. Es decir, cuando hubiera una libre competencia basada en una pluralidad de medios de comunicación que representara a diversos sectores sociales, económicos, políticos y culturales que tuvieran un poder de difusión más o menos equilibrado. Para que operase eficientemente, el mercado económico en general debería funcionar con gran fluidez. Por ejemplo, sería muy importante que la gran inversión publicitaria estuviera diversificada sobre la base de una transparencia en la circulación de los medios escritos, al igual como existe el rating en la televisión y las radios."
+    },
+    "rating_D-076.2": {
+        "id_term": "T-076",
+        "term": "rating",
+        "original": "Arqueo (de un velero).",
+        "adapted": "arqueo",
+        "id_definition": "D-076.2",
+        "id_adaptation": "S-076.2",
+        "context": "Tras la modificación del calado y el cambio de la hélice, el armador solicitó una nueva medición oficial para actualizar el rating del velero y así poder competir en tiempo compensado durante la Copa del Rey."
+    },
+    "rating_D-076.3": {
+        "id_term": "T-076",
+        "term": "rating",
+        "original": "Clasificación (crediticia), empresa de clasificación (crediticia) y clasificación de yates.",
+        "adapted": "clasificación crediticia",
+        "id_definition": "D-076.3",
+        "id_adaptation": "S-076.3",
+        "context": "Además, diversos bancos de inversión han considerado en diferentes ocasiones esta alternativa como una opción muy positiva. Primero, tras la expropiación de YPF, cuando Repsol puso en marcha un plan de desinversiones para mantener su rating crediticio. Pero el grupo logró obtener unas cuantiosas plusvalías con la venta de sus activos de Gas Natural Licuado (GNL) a Shell por más de 5.000 millones de euros y se dejó a un lado la posibilidad de salir de la gasista."
+    },
+    "reality show_D-077.1": {
+        "id_term": "T-077",
+        "term": "reality show",
+        "original": "Telerrealidad, programa de telerrealidad, espectáculo de sucesos.",
+        "adapted": "programa de telerrealidad; telerrealidad",
+        "id_definition": "D-077.1",
+        "id_adaptation": "S-077.1",
+        "context": "Leo.- ¿Cómo se permiten esos gastos si no han invertido ni la mitad que en el nuestro? Mezclar reality show con corazón es mucho más rentable que hacer esto. Por lo menos sabes que la mitad del presupuesto te sale a precio de saldo porque no tienes que pagar a los cuatro que denuncian."
+    },
+    "resort_D-078.1": {
+        "id_term": "T-078",
+        "term": "resort",
+        "original": "Estación turística.",
+        "adapted": "resort",
+        "id_definition": "D-078.1",
+        "id_adaptation": "S-078.1",
+        "context": "Por la mañana nos fuimos al conocido resort de Heavenly Valley, donde la diversión empezó desde el momento en que nos subimos a los \"lift chairs\", pues después de sentarse en la silla, a uno de nuestros amigos se le cayó un \"pole\", lo que provocó nuestra risa."
+    },
+    "roaming_D-079.1": {
+        "id_term": "T-079",
+        "term": "roaming",
+        "original": "Itinerancia o tarifas (o costos o servicios) de itinerancia.",
+        "adapted": "Servicio que permite a un usuario de un teléfono móvil conectarse a la red telefónica de otra compañía en otro país. Es una palabra inglesa que traducimos como itinerancia. Se pronuncia roumin.",
+        "id_definition": "D-079.1",
+        "id_adaptation": "DA-079",
+        "context": "Justo cuando Valentina había agarrado una de las almohadas para atacar a Oliver, sonó su propio teléfono móvil. Le sorprendió, porque pensaba que estaba prácticamente inoperativo. En las últimas horas había intentado conectarlo al roaming internacional, pero las operadoras no le habían hecho mucho caso y, desde luego, no había conseguido tener internet. Para mayor sorpresa, comprobó que quien llamaba era el subteniente Sabadelle, de su Sección de Investigación en la Guardia Civil de Santander."
+    },
+    "set_D-080.1": {
+        "id_term": "T-080",
+        "term": "set",
+        "original": "Equipo, juego, colección o conjunto (de cosas similares), pandilla, camarilla.",
+        "adapted": "plató",
+        "id_definition": "D-080.1",
+        "id_adaptation": "S-080.1",
+        "context": "La Municipalidad de Buenos Aires había invitado a varias comparsas del interior y la avenida Julio Roca, engalanada para la ocasión, se llenó de sentimiento entrerriano. Su hija fue seleccionada por la producción del canal junto con otras chicas; las hicieron bailar, al día siguiente, en el programa de Mirta, tres minutos al final del almuerzo. La partera estuvo en el set de grabación, le dio un beso y ahí Mirta le firmó el póster. Y las enfermeras asentían como vacas recordando lo bárbaro que fue verla aparecer al día siguiente con semejante dedicatoria. Decían tele como si hablaran de Dios. Estaban excitadas."
+    },
+    "share_D-081.1": {
+        "id_term": "T-081",
+        "term": "share",
+        "original": "Cuota, participación, tanto por ciento.",
+        "adapted": "cuota de pantalla; cuota de audiencia; porcentaje de audiencia",
+        "id_definition": "D-081.1",
+        "id_adaptation": "S-081.1",
+        "context": "La segunda jornada de expulsión y nominaciones del programa que presenta Mercedes Milá superó en 13,5 puntos de share a la suma de la audiencia obtenida por sus dos inmediatos competidores: Las películas \"El guardaespaldas\", que emitió La Primera de TVE, y \"La venganza\", que ofreció Antena 3."
+    },
+    "shooting_D-082.1": {
+        "id_term": "T-082",
+        "term": "shooting",
+        "original": "Fotografía, sesión fotográfica, grabación o rodaje.",
+        "adapted": "sesión fotográfica",
+        "id_definition": "D-082.1",
+        "id_adaptation": "S-082.1",
+        "context": "Además, también descubriremos el increíble impacto que la moda y la cultura popular española tuvieron en aquella época. Unos años en los que fotógrafos internacionales viajaban a España para realizar reportajes gráficos, como la prestigiosa Louise Dahl-Wolf, pionera en la realización de editoriales en exóticos exteriores. Ella, favorita de Christian Dior por aquel entonces, también vino hasta Granada para realizar un shooting en la Alhambra. Fue en 1953. Y es que el franquismo intentó que el mundo pudiera descubrir otra España más festiva, más vibrante, abierta y llena de color. Una España... Different! Por eso facilitó que pudieran llevarse a cabo este tipo de colaboraciones."
+    },
+    "shopping_D-083.1": {
+        "id_term": "T-083",
+        "term": "shopping",
+        "original": "Compra; acción de comprar.",
+        "adapted": "ir de compras",
+        "id_definition": "D-083.1",
+        "id_adaptation": "S-083.1",
+        "context": "Con ese dinero extra, pensé en invitar a mi prima a tomar un té con tortas en alguna de las confiterías del Ivy en Londres, que ella eligiera si la de Covent Garden o la de Kensington, las dos son preciosas. Estábamos planeando el reencuentro: unos días solas en su casa, para charlar, pasear, comer rico, ir de shopping, contarnos todo. El viaje había salido divinamente y quería agradecérselo."
+    },
+    "show_D-084.1": {
+        "id_term": "T-084",
+        "term": "show",
+        "original": "Espectáculo, actuación.",
+        "adapted": "espectáculo; función; gala; número; exhibición",
+        "id_definition": "D-084.1",
+        "id_adaptation": "S-084.1",
+        "context": "Que el vigilante, aterrorizado, tiró al piso el maletín con el perro. Que Dimon quiso comerse hasta a su propio amo, que unos vendedores se acercaron y le dijeron a Roger que no se admitían animales adentro, y que finalmente pudo levantar el maletín aunque Dimon seguiría con su show hasta que Roger se lo ordenara, pero que primero tuvo que arrastrarme afuera y sacudirme y gritarme que ya todo había pasado."
+    },
+    "show-woman_D-085.1": {
+        "id_term": "T-085",
+        "term": "show-woman",
+        "original": "Presentadora, animadora.",
+        "adapted": "animadora-presentadora",
+        "id_definition": "D-085.1",
+        "id_adaptation": "S-085.1",
+        "context": "Convertida en bailarina de primer nivel, actriz de gran carisma e intensidad dramática y en una cantante de potencia vocal inusual, Liza con Z logra sacudirse una pesada herencia y ser reconocida por méritos propios como una auténtica show-woman; son memorables sus interpretaciones al lado de Frank Sinatra y Sammy Davies Jr. en Las Vegas, así como de Freddie Mercury, Luciano Pavarotti y hasta de los Muppets. Su versatilidad es tal, que en su discografía resalta Results, producido por los Pet Shop Boys."
+    },
+    "showman_D-086.1": {
+        "id_term": "T-086",
+        "term": "showman",
+        "original": "Presentador, animador.",
+        "adapted": "animador-presentador; presentador; conductor",
+        "id_definition": "D-086.1",
+        "id_adaptation": "S-086.1",
+        "context": "No puede sustraerse a sus capacidades como showman, leyendo por el altavoz de un carrito de helados la ley antiterrorista que los congresistas firmaron sin leer, recogiendo firmas de esos mismos congresistas para que envíen a sus hijos a Iraq o ridiculizando por la vía tosca a los miembros de la coalición (por cierto, ni España ni Aznar aparecen para nada): Holanda queda representada por un porro gigante y Rumanía por el vampiro Nosferatu."
+    },
+    "showroom_D-087.1": {
+        "id_term": "T-087",
+        "term": "showroom",
+        "original": "Sala de exposiciones.",
+        "adapted": "salón de exposición",
+        "id_definition": "D-087.1",
+        "id_adaptation": "S-087.1",
+        "context": "usó los conocimientos adquiridos diseñando el vestuario para los musicales y teatrillos de la sociedad del West End de Londres transformando su showroom de Hanover Street en un pequeño teatro: \"Tenía una suave y lujosa alfombra que discurría en un gran"
+    },
+    "simulcast_D-088.1": {
+        "id_term": "T-088",
+        "term": "simulcast",
+        "original": "Transmisión simultánea, difusión simultánea (en el ámbito de las telecomunicaciones).",
+        "adapted": "emisión simultánea; transmisión simultánea; estreno simultáneo",
+        "id_definition": "D-088.1",
+        "id_adaptation": "S-088.1",
+        "context": "la situación de los trabajos realizados hasta la fecha en toda España. Por otra parte, las emisiones en simulcast (emisión simultánea de un canal de televisión a través de las frecuencias nueva y antigua) se van a mantener hasta"
+    },
+    "sitcom_D-089.1": {
+        "id_term": "T-089",
+        "term": "sitcom",
+        "original": "Comedia de lugar.",
+        "adapted": "comedia; comedia de situación; telecomedia",
+        "id_definition": "D-089.1",
+        "id_adaptation": "S-089.1",
+        "context": "La nueva sitcom americana no se presentó en los últimos upfronts, así que todo parece indicar que la serie se estrenará en la temporada 2012/2013. La productora Electus, propiedad de Sofia Vergara (Modern Family) será la responsable de adaptar al mercado norteamericano una de las ficciones nacionales más exitosas de la última década en nuestro país."
+    },
+    "sneakers_D-090.1": {
+        "id_term": "T-090",
+        "term": "sneakers",
+        "original": "Calzado deportivo.",
+        "adapted": "zapatillas deportivas",
+        "id_definition": "D-090.1",
+        "id_adaptation": "S-090.1",
+        "context": "Las combinaciones de camisetas blancas con sencillos pantalones rectos y calzado semideportivo en tonos neutros son un indicio de cómo Anderson ve el futuro próximo en la moda, un futuro en el que el atuendo se «bajará del burro» con frecuencia para adaptarse al mayor de los lujos después del tiempo y el espacio: la comodidad. Y todo esto sin dejar atrás la creatividad, la innovación en materiales y formas —como los bajos hechos trizas de gabardinas y faldas—, la recuperación de lo antiguo —como la manta estribera de rayas llevada al hombro—, o el juego por el juego de la original punta de los sneakers del desfile, un cruce perfecto entre los botines de Peter Pan o los zapatos de leprechaun, duendecillos irlandeses que a buen seguro Jonathan tiene in mente."
+    },
+    "spin-off_D-091.1": {
+        "id_term": "T-091",
+        "term": "spin-off",
+        "original": "Un producto derivado de otro más importante.",
+        "adapted": "serie derivada; esqueje",
+        "id_definition": "D-091.1",
+        "id_adaptation": "S-091.1",
+        "context": "No era un remake, sino un spin-off catódico de la película de los Coen, concebido y realizado con un lucidez y brutalidad extraordinarias. Todos los personajes son memorables, pero el villano Lorne Malvo (Billy Bob Thornton) es de otra dimensión. El magistral, insuperable sexto capítulo es una obra de arte, con un tiroteo en la niebla para los anales."
+    },
+    "sport wear_D-092.1": {
+        "id_term": "T-092",
+        "term": "sport wear",
+        "original": "Ropa deportiva, ropa sencilla.",
+        "adapted": "ropa deportiva",
+        "id_definition": "D-092.1",
+        "id_adaptation": "S-092.1",
+        "context": "La tripulación del velero se presentó en el pesaje oficial luciendo el nuevo sport wear del patrocinador, diseñado con tejidos transpirables de alta tecnología para soportar las condiciones de humedad en cubierta"
+    },
+    "spot_D-093.1": {
+        "id_term": "T-093",
+        "term": "spot",
+        "original": "Anuncio, mensaje publicitario.",
+        "adapted": "cuña; anuncio; aviso; publicidad comercial; comercial",
+        "id_definition": "D-093.1",
+        "id_adaptation": "S-093.1",
+        "context": "hombres en la lucha contra el machismo?», explicó Pam en la presentación de la campaña. El spot mostraba situaciones de machismo cotidiano en las que los hombres que lo ejercen no son conscientes de ello, y"
+    },
+    "start-up_D-094.1": {
+        "id_term": "T-094",
+        "term": "start-up",
+        "original": "Empresa naciente, compañía incipiente. Encendido, arranque, período de arranque (de algún aparato mecánico).",
+        "adapted": "empresa emergente",
+        "id_definition": "D-094.1",
+        "id_adaptation": "S-094.1",
+        "context": "Desde su creación a finales de 2005, el crecimiento vertiginoso de esta start-up ha sido una de las historias más comentadas en Silicon Valley. Su servicio llegó como una bendición para los internautas, hartos de la falta de interoperabilidad entre las diferentes plataformas de mensajería. Sin software, sin descargas, Meebo permite acceder de forma simultánea a casi todas ellas. Basta con introducir las contraseñas y en una sola ventana aparecen los amigos diseminados por MSN Messenger, Yahoo!, Google Talk, AIM, ICQ y Jabber. \"Si Hotmail llevó el e-mail a la web, ¿por qué no hacer lo mismo con el chat?\"."
+    },
+    "streaming_D-095.1": {
+        "id_term": "T-095",
+        "term": "streaming",
+        "original": "Transmisión en directo, transmisión en continuo, emisión en directo, transmisión por secuencias.",
+        "adapted": "en directo; en continuo",
+        "id_definition": "D-095.1",
+        "id_adaptation": "S-095.1",
+        "context": "Música en streaming por la red 3G o Wi-Fi. Spotify llega al móvil, bajo modelo de suscripción, para el iPhone y los teléfonos Android. El servicio sólo está disponible para los clientes Premium de Spotify (9,99 euros al mes). Tras instalar la aplicación, que se descarga gratuitamente, éstos acceden a sus listas de reproducción y pueden incluso almacenarlas en el terminal para escucharlas sin estar conectado a la red, durante un máximo de un mes y mientras se permanezca abonado al servicio musical."
+    },
+    "street workout_D-096.1": {
+        "id_term": "T-096",
+        "term": "street workout",
+        "original": "Adiestramiento en la calle, entrenamiento en la calle.",
+        "adapted": "entrenamiento callejero; entrenamiento de calle",
+        "id_definition": "D-096.1",
+        "id_adaptation": "S-096.1",
+        "context": "El ayuntamiento ha inaugurado una nueva zona de street workout en el paseo marítimo, permitiendo que los ciudadanos entrenen calistenia frente al mar con equipamiento profesional"
+    },
+    "stretch_D-097.1": {
+        "id_term": "T-097",
+        "term": "stretch",
+        "original": "Extensible y por tejido elástico.",
+        "adapted": "elástico",
+        "id_definition": "D-097.1",
+        "id_adaptation": "S-097.1",
+        "context": "Para el tapizado de los camarotes, se ha seleccionado un tejido stretch de alta resistencia, ya que su capacidad elástica permite una adaptación perfecta a las curvaturas del casco sin generar arrugas"
+    },
+    "surgery_D-098.1": {
+        "id_term": "T-098",
+        "term": "surgery",
+        "original": "El tratamiento de lesiones o enfermedades en personas o animales mediante la apertura del cuerpo y la extirpación o reparación de la parte dañada:.",
+        "adapted": "operación; intervención quirúrgica",
+        "id_definition": "D-098.1",
+        "id_adaptation": "S-098.1",
+        "context": "El doctor presentó los resultados de su última surgery reconstructiva en el congreso de Madrid, destacando el uso de tecnología robótica para minimizar el tiempo de recuperación del paciente."
+    },
+    "talent show_D-099.1": {
+        "id_term": "T-099",
+        "term": "talent show",
+        "original": "Un concurso para encontrar al mejor cantante, bailarín u otro artista, que se celebra en forma de espectáculo sobre un escenario.",
+        "adapted": "concurso de talentos",
+        "id_definition": "D-099.1",
+        "id_adaptation": "S-099.1",
+        "context": "Los seguidores del talent show revolucionaron las redes sociales tras el incidente, un suceso sobre el que 'Hora punta' preguntó a Mónica Naranjo, hasta el momento el miembro más controvertido del programa de TVE. La líder del jurado, tras visionar las imágenes, no pudo contener la risa lanzando a los espectadores una pregunta con mucha guasa: \"¿Y después decís que yo soy dura? ¡Anda ya! ¡Anda ya!\", repitió."
+    },
+    "talk show_D-100.1": {
+        "id_term": "T-100",
+        "term": "talk show",
+        "original": "Programa de entrevistas.",
+        "adapted": "programa de entrevistas; programa de debate",
+        "id_definition": "D-100.1",
+        "id_adaptation": "S-100.1",
+        "context": "Radio Caracas Televisión estrenará Cartas a Dios. El programa contará con la conducción de la aninadora Michelle Badillo y será un talk show que pondrá al descubierto los deseos y las peticiones que la gente hace al ser Todopoderoso."
+    },
+    "target_D-101.1": {
+        "id_term": "T-101",
+        "term": "target",
+        "original": "Meta, propósito, blanco; destinatarios, consumidores, público.",
+        "adapted": "público objetivo; grupo objetivo; grupo de destinatarios",
+        "id_definition": "D-101.1",
+        "id_adaptation": "S-101.1",
+        "context": "Son tan extravagantes y abigarradas las instrucciones de los juegos infantiles de moda, que sólo la mente llana e impresionable de los niños puede descifrarlas. La completa extensión de la magia que encierran estos métodos se estrella de frente —y se parte los dientes— contra el muro de contención que sostiene el río revuelto de la vida adulta. Éste es el caso de la metodología de Yu-Gi-Oh!, el críptico y enigmático juego de mesa de origen japonés —de más está decirlo—, derivado de un anime, y que se ha convertido en el furor de los niños venezolanos. Es fácil detectar el target: no miden más de metro y medio, van con un koala a la cintura repleto de cartas de colores, y, cuando se topan con un igual, sacan de inmediato su privada colección y hacen alarde de ella."
+    },
+    "target group_D-102.1": {
+        "id_term": "T-102",
+        "term": "target group",
+        "original": "El grupo concreto de personas al que va dirigido un anuncio.",
+        "adapted": "público objetivo; grupo objetivo; grupo de destinatarios",
+        "id_definition": "D-102.1",
+        "id_adaptation": "S-102.1",
+        "context": "Antes de lanzar la nueva línea de cosméticos, el departamento de marketing realizó un estudio profundo para definir el target group, concluyendo que el mayor potencial reside en mujeres de entre 25 y 40 años interesadas en la sostenibilidad."
+    },
+    "tier_D-103.1": {
+        "id_term": "T-103",
+        "term": "tier",
+        "original": "Nivel, categoría.",
+        "adapted": "nivel",
+        "id_definition": "D-103.1",
+        "id_adaptation": "S-103.1",
+        "context": "Los proveedores tier 3 forman el segmento más favorecido con el aumento al salario mínimo, ya que esta alza sólo aplicó a los trabajadores que perciben dicho ingreso."
+    },
+    "top model_D-104.1": {
+        "id_term": "T-104",
+        "term": "top model",
+        "original": "Supermodelo.",
+        "adapted": "supermodelo",
+        "id_definition": "D-104.1",
+        "id_adaptation": "S-104.1",
+        "context": "La adhesión fue tan grande que el gobierno tuvo que pedirles a algunos especialistas que patenten la marca, porque se había vuelto un negocio. \"Ford Cero, hambre cero\", anunciaban en letras gigantes la concesionarias, prometiendo donar parte de lo recaudado con sus ventas. La top model brasileña Giselle Bündchen, hoy la modelo mejor paga del mundo, donó 50.000 dólares de su cachet por un desfile para el programa contra el hambre."
+    },
+    "trendy_D-105.1": {
+        "id_term": "T-105",
+        "term": "trendy",
+        "original": "De moda, moderno.",
+        "adapted": "de última moda; de moda; lo último; tendencia",
+        "id_definition": "D-105.1",
+        "id_adaptation": "S-105.1",
+        "context": "Con su privilegiada capacidad para visionar lo diferente, el cazatendencias es la persona que en una fiesta multitudinaria capta rápidamente algún detalle inusual o alguna característica que por su anormalidad resulta atractiva. Archiva qué música acentúa la euforia de la gente y qué bebidas son las más consumidas. Intercambia opiniones sobre los diferentes gustos, se patea los restaurantes, museos, galerías, exposiciones, bares..., y a diario revisa todos los medios de información. Siempre observando lo que resulta trendy. Su perfil es el de un joven profesional con background artístico, capacidad de investigación, mucha intuición y, sobre todo, curiosidad."
+    },
+    "tricot_D-106.1": {
+        "id_term": "T-106",
+        "term": "tricot",
+        "original": "Punto, tejido de punto, labor de punto, prenda de punto.",
+        "adapted": "punto",
+        "id_definition": "D-106.1",
+        "id_adaptation": "S-106.1",
+        "context": "Xenia Rosales se decidió por Cenesse, una oda a la elegancia. El blanco y el rosa palo crearon vestidos largos y frescos, con movimiento, que volaban y caían con serenidad y gentileza. El azul y el amarillo fueron los encargados de darles vida. Jugó con la seda, con la lana y con el tricot. Lo que nos acabó de seducir fueron la trascendencia de los nudos, que cambiaban el sentido de las piezas, y los cuellos en forma de flor. Una exquisitez."
+    },
+    "vintage_D-107.1": {
+        "id_term": "T-107",
+        "term": "vintage",
+        "original": "Retrógrado (dicho de la moda o de cosas de adorno), vino añejo y antigualla, época.",
+        "adapted": "término asentado; si se usa, en cursiva o entre comillas",
+        "id_definition": "D-107.1",
+        "id_adaptation": "S-107.1",
+        "context": "Spitalfields Market es un mercadillo de moda que se encuentra en la city. Empezó su actividad en 1682. Tiene fama de tener buena fruta ecológica y comida de mucha calidad. También es famoso por sus tiendas de ropa estilo vintage y tiendas de bricolaje, artesanía y ropa a la última. Permanece abierto todos los días de 11 a 15 horas y de 9,30 a 17,30 los domingos."
+    },
+    "warning_D-108.1": {
+        "id_term": "T-108",
+        "term": "warning",
+        "original": "Precaución, advertencia, aviso.",
+        "adapted": "aviso; advertencia",
+        "id_definition": "D-108.1",
+        "id_adaptation": "S-108.1",
+        "context": "Y en ese contexto, continúa Advisor, \"debes cuidar tu puesto, porque tu jefe inmediato puede querer removerte para colocar a alguien con quien tuvo sexo. El intercambio de relaciones sexuales por cargos es bastante habitual. Y aunque tu jefe no te despida, el sistema te mantiene a presión. Todos los servicios son sometidos a la evaluación del cliente mediante una encuesta donde tu trabajo es clasificado en varias categorías según su calidad: excellent, very good, good, poor. Si te dan un poor, consigues un warning y tienes una audiencia con el capitán. A los dos o tres warnings, puedes ser despedido\". En este sistema de coacción, el Big Brother es el ojo del cliente. El cliente evalúa, retribuye con sus propinas y despide. Y todo desde una impoluta conciencia que ignora su poder omnímodo. La ciudad flotante carece de sindicatos, asonadas y revueltas. Es un mundo feliz huxleyano, donde las inyecciones de placer mantienen sedados a los ship-out levantiscos. Las fiestecitas semanales ahogan el descontento en galones de licor."
+    },
+    "waterpolo_D-109.1": {
+        "id_term": "T-109",
+        "term": "waterpolo",
+        "original": "Juego practicado en una piscina entre dos equipos de siete jugadores cada uno, que consiste en introducir el balón con la mano en la portería contraria mientras se nada.",
+        "adapted": "Deporte de piscina en el que dos equipos tratan de marcar goles en la portería contraria. Se pronuncia guaterpolo.",
+        "id_definition": "D-109.1",
+        "id_adaptation": "DA-109",
+        "context": "Dispone de un trinquete y frontón para la práctica de la pelota valenciana, frontón y frontenis con un aforo de 500 espectadores. El pabellón polideportivo Castalia da cabida a 1.200 espectadores y ofrece la práctica del bádminton, balonmano, fútbol sala, gimnasia de mantenimiento, gimnasia, voley y patinaje. Tiene, además, una piscina cubierta con aforo de 300 personas y destinada a la natación y el waterpolo."
+    },
+    "western_D-110.1": {
+        "id_term": "T-110",
+        "term": "western",
+        "original": "Película del lejano Oeste",
+        "adapted": "Película del oeste americano, en la época en la que los americanos conquistaban el territorio a los indios. Se pronuncia güéstern.",
+        "id_definition": "D-110.1",
+        "id_adaptation": "DA-110",
+        "context": "El choque de miradas entre el cazador ruso Vassili Zaitsev, que recrea con magnetismo y precisión el actor británico Jude Law, y el oficial de las SS Konig, que inventa con fuerza arrolladora el norteamericano Ed Harris, es un tenso y emocionante juego de western clásico incrustado con rara sabiduría por el guionista Alain Goddard y el director Jean-Jacques Annaud dentro de una vasta construcción, muy firme y sólidamente calculada, de cine de guerra sobre base histórica y documental."
+    },
+    "windsurf_D-111.1": {
+        "id_term": "T-111",
+        "term": "windsurf",
+        "original": "Cierta clase de deporte que se hace en el mar con una tabla.",
+        "adapted": "Deporte acuático. Consiste en navegar sobre una tabla con una vela. Se pronuncia güínsurf.",
+        "id_definition": "D-111.1",
+        "id_adaptation": "DA-111",
+        "context": "Arvelo era la patinadora de una de las primeras cuñas de Mi Vaca Descremada, en esos años en que los productos low fat parecían una excentricidad. El jingle, no dejaba colar las dudas: \"La gente dice que muy bien essstoooy, tengo la línea del mundo de hoy...\". \"Esa cuña fue una beca, la pasaron durante años\". Desde esa época es relacionada con el mundo de los deportes, la vida sana y el cuerpo perfecto: \"Creo que me he posicionado como la modelo deportista. Tengo gustos hacia los deportes extremos que la gente puede ver raros, pero así soy yo, tengo un estilo como modelo que va acorde con mi personalidad\". Arvelo practica windsurf, kite surfing y tiene un novio surfista: la gama de los deportes acuáticos la tiene bastante completa."
+    }
+}
